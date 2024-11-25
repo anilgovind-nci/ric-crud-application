@@ -1,0 +1,59 @@
+# "org" ensures this Service is used with the correct Serverless Framework Access Key.
+org: x23176458
+app: lambdas
+service: ric-crud-application
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: eu-west-1  # Ensure this matches the region of your layer
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "dynamodb:*"         # Allows access to DynamoDB
+        - "logs:*"
+        - "secretsmanager:GetSecretValue"
+        - lambda:GetLayerVersion
+      Resource: "*"
+
+functions:
+  ricGet:
+    handler: functions/ric-get.handler # Adjust the path based on your file structure
+    environment:
+      CENTRALISED_LOG_GROUP_NAME: 'RIC-CRUD-log-group'
+    layers:
+      - arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13
+    events:
+      - http:
+          path: ric-get
+          method: get
+  ricPost:
+    handler: functions/ric-post.handler # Adjust the path based on your file structure
+    environment:
+      CENTRALISED_LOG_GROUP_NAME: 'RIC-CRUD-log-group'
+    layers:
+      - arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13
+    events:
+      - http:
+          path: ric-post
+          method: post
+  ricDelete:
+    handler: functions/ric-delete.handler # Adjust the path based on your file structure
+    environment:
+      CENTRALISED_LOG_GROUP_NAME: 'RIC-CRUD-log-group'
+    layers:
+      - arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13
+    events:
+      - http:
+          path: ric-delete
+          method: delete
+  ricPut:
+    handler: functions/ric-put.handler # Adjust the path based on your file structure
+    environment:
+      CENTRALISED_LOG_GROUP_NAME: 'RIC-CRUD-log-group'
+    layers:
+      - arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13
+    events:
+      - http:
+          path: ric-put
+          method: put

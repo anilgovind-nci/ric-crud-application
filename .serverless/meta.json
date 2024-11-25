@@ -1,0 +1,1844 @@
+{
+  "/Users/anilgovindka/CollageDays/Thesis/ric-crud-application": {
+    "versionSfCore": null,
+    "versionFramework": "4.4.10",
+    "isWithinCompose": false,
+    "isCompose": false,
+    "composeOrgName": null,
+    "composeResolverProviders": {
+      "default-aws-credential-resolver": "<REDACTED>",
+      "sls": {
+        "instance": {
+          "credentials": "<REDACTED>",
+          "serviceConfigFile": {
+            "org": "x23176458",
+            "app": "lambdas",
+            "service": "ric-crud-application",
+            "provider": {
+              "name": "aws",
+              "runtime": "nodejs18.x",
+              "region": "eu-west-1",
+              "iamRoleStatements": [
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "dynamodb:*",
+                    "logs:*",
+                    "secretsmanager:GetSecretValue",
+                    "lambda:GetLayerVersion"
+                  ],
+                  "Resource": "*"
+                }
+              ],
+              "stage": "dev",
+              "versionFunctions": true,
+              "compiledCloudFormationTemplate": {
+                "AWSTemplateFormatVersion": "2010-09-09",
+                "Description": "The AWS CloudFormation template for this Serverless application",
+                "Resources": {
+                  "RicGetLogGroup": {
+                    "Type": "AWS::Logs::LogGroup",
+                    "Properties": {
+                      "LogGroupName": "/aws/lambda/ric-crud-application-dev-ricGet"
+                    }
+                  },
+                  "RicPostLogGroup": {
+                    "Type": "AWS::Logs::LogGroup",
+                    "Properties": {
+                      "LogGroupName": "/aws/lambda/ric-crud-application-dev-ricPost"
+                    }
+                  },
+                  "RicDeleteLogGroup": {
+                    "Type": "AWS::Logs::LogGroup",
+                    "Properties": {
+                      "LogGroupName": "/aws/lambda/ric-crud-application-dev-ricDelete"
+                    }
+                  },
+                  "RicPutLogGroup": {
+                    "Type": "AWS::Logs::LogGroup",
+                    "Properties": {
+                      "LogGroupName": "/aws/lambda/ric-crud-application-dev-ricPut"
+                    }
+                  },
+                  "IamRoleLambdaExecution": {
+                    "Type": "AWS::IAM::Role",
+                    "Properties": {
+                      "AssumeRolePolicyDocument": {
+                        "Version": "2012-10-17",
+                        "Statement": [
+                          {
+                            "Effect": "Allow",
+                            "Principal": {
+                              "Service": [
+                                "lambda.amazonaws.com"
+                              ]
+                            },
+                            "Action": [
+                              "sts:AssumeRole"
+                            ]
+                          }
+                        ]
+                      },
+                      "Policies": [
+                        {
+                          "PolicyName": {
+                            "Fn::Join": [
+                              "-",
+                              [
+                                "ric-crud-application",
+                                "dev",
+                                "lambda"
+                              ]
+                            ]
+                          },
+                          "PolicyDocument": {
+                            "Version": "2012-10-17",
+                            "Statement": [
+                              {
+                                "Effect": "Allow",
+                                "Action": [
+                                  "logs:CreateLogStream",
+                                  "logs:CreateLogGroup",
+                                  "logs:TagResource"
+                                ],
+                                "Resource": [
+                                  {
+                                    "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/ric-crud-application-dev*:*"
+                                  }
+                                ]
+                              },
+                              {
+                                "Effect": "Allow",
+                                "Action": [
+                                  "logs:PutLogEvents"
+                                ],
+                                "Resource": [
+                                  {
+                                    "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/ric-crud-application-dev*:*:*"
+                                  }
+                                ]
+                              },
+                              {
+                                "Effect": "Allow",
+                                "Action": [
+                                  "dynamodb:*",
+                                  "logs:*",
+                                  "secretsmanager:GetSecretValue",
+                                  "lambda:GetLayerVersion"
+                                ],
+                                "Resource": "*"
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "Path": "/",
+                      "RoleName": {
+                        "Fn::Join": [
+                          "-",
+                          [
+                            "ric-crud-application",
+                            "dev",
+                            {
+                              "Ref": "AWS::Region"
+                            },
+                            "lambdaRole"
+                          ]
+                        ]
+                      }
+                    }
+                  },
+                  "RicGetLambdaFunction": {
+                    "Type": "AWS::Lambda::Function",
+                    "Properties": {
+                      "Code": {
+                        "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
+                        "S3Key": "serverless/ric-crud-application/dev/1732014684019-2024-11-19T11:11:24.019Z/ric-crud-application.zip"
+                      },
+                      "Handler": "functions/ric-get.handler",
+                      "Runtime": "nodejs18.x",
+                      "FunctionName": "ric-crud-application-dev-ricGet",
+                      "MemorySize": 1024,
+                      "Timeout": 6,
+                      "Role": {
+                        "Fn::GetAtt": [
+                          "IamRoleLambdaExecution",
+                          "Arn"
+                        ]
+                      },
+                      "Layers": [
+                        "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:9"
+                      ]
+                    },
+                    "DependsOn": [
+                      "RicGetLogGroup"
+                    ]
+                  },
+                  "RicPostLambdaFunction": {
+                    "Type": "AWS::Lambda::Function",
+                    "Properties": {
+                      "Code": {
+                        "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
+                        "S3Key": "serverless/ric-crud-application/dev/1732014684019-2024-11-19T11:11:24.019Z/ric-crud-application.zip"
+                      },
+                      "Handler": "functions/ric-post.handler",
+                      "Runtime": "nodejs18.x",
+                      "FunctionName": "ric-crud-application-dev-ricPost",
+                      "MemorySize": 1024,
+                      "Timeout": 6,
+                      "Role": {
+                        "Fn::GetAtt": [
+                          "IamRoleLambdaExecution",
+                          "Arn"
+                        ]
+                      },
+                      "Layers": [
+                        "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:9"
+                      ]
+                    },
+                    "DependsOn": [
+                      "RicPostLogGroup"
+                    ]
+                  },
+                  "RicDeleteLambdaFunction": {
+                    "Type": "AWS::Lambda::Function",
+                    "Properties": {
+                      "Code": {
+                        "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
+                        "S3Key": "serverless/ric-crud-application/dev/1732014684019-2024-11-19T11:11:24.019Z/ric-crud-application.zip"
+                      },
+                      "Handler": "functions/ric-delete.handler",
+                      "Runtime": "nodejs18.x",
+                      "FunctionName": "ric-crud-application-dev-ricDelete",
+                      "MemorySize": 1024,
+                      "Timeout": 6,
+                      "Role": {
+                        "Fn::GetAtt": [
+                          "IamRoleLambdaExecution",
+                          "Arn"
+                        ]
+                      },
+                      "Layers": [
+                        "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:9"
+                      ]
+                    },
+                    "DependsOn": [
+                      "RicDeleteLogGroup"
+                    ]
+                  },
+                  "RicPutLambdaFunction": {
+                    "Type": "AWS::Lambda::Function",
+                    "Properties": {
+                      "Code": {
+                        "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
+                        "S3Key": "serverless/ric-crud-application/dev/1732014684019-2024-11-19T11:11:24.019Z/ric-crud-application.zip"
+                      },
+                      "Handler": "functions/ric-put.handler",
+                      "Runtime": "nodejs18.x",
+                      "FunctionName": "ric-crud-application-dev-ricPut",
+                      "MemorySize": 1024,
+                      "Timeout": 6,
+                      "Role": {
+                        "Fn::GetAtt": [
+                          "IamRoleLambdaExecution",
+                          "Arn"
+                        ]
+                      },
+                      "Layers": [
+                        "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:9"
+                      ]
+                    },
+                    "DependsOn": [
+                      "RicPutLogGroup"
+                    ]
+                  },
+                  "RicGetLambdaVersion4TP9EXHkTtIK7XI3lWgjCwL0wInHMsNHsBGGKwKw": {
+                    "Type": "AWS::Lambda::Version",
+                    "DeletionPolicy": "Retain",
+                    "Properties": {
+                      "FunctionName": {
+                        "Ref": "RicGetLambdaFunction"
+                      },
+                      "CodeSha256": "8OjYf1xcXHg8kqLlcy1IXa8msTzUn2R5sSztF2Lj+ss="
+                    }
+                  },
+                  "RicPostLambdaVersion3HNEtqv0tn9DGHQdWo7doAzjOi5p7bQVFCQ7xCNGE": {
+                    "Type": "AWS::Lambda::Version",
+                    "DeletionPolicy": "Retain",
+                    "Properties": {
+                      "FunctionName": {
+                        "Ref": "RicPostLambdaFunction"
+                      },
+                      "CodeSha256": "8OjYf1xcXHg8kqLlcy1IXa8msTzUn2R5sSztF2Lj+ss="
+                    }
+                  },
+                  "RicDeleteLambdaVersioneFmAvIAbu5eoFWfj1boy4OuESpsFO9owF1yaNCypzM": {
+                    "Type": "AWS::Lambda::Version",
+                    "DeletionPolicy": "Retain",
+                    "Properties": {
+                      "FunctionName": {
+                        "Ref": "RicDeleteLambdaFunction"
+                      },
+                      "CodeSha256": "8OjYf1xcXHg8kqLlcy1IXa8msTzUn2R5sSztF2Lj+ss="
+                    }
+                  },
+                  "RicPutLambdaVersionoZj7dbFVbkYQZqHHEfmQ3jQE6xBn8vUq9eI8YSZRcg": {
+                    "Type": "AWS::Lambda::Version",
+                    "DeletionPolicy": "Retain",
+                    "Properties": {
+                      "FunctionName": {
+                        "Ref": "RicPutLambdaFunction"
+                      },
+                      "CodeSha256": "8OjYf1xcXHg8kqLlcy1IXa8msTzUn2R5sSztF2Lj+ss="
+                    }
+                  },
+                  "ApiGatewayRestApi": {
+                    "Type": "AWS::ApiGateway::RestApi",
+                    "Properties": {
+                      "Name": "dev-ric-crud-application",
+                      "EndpointConfiguration": {
+                        "Types": [
+                          "EDGE"
+                        ]
+                      },
+                      "Policy": ""
+                    }
+                  },
+                  "ApiGatewayResourceRicDashget": {
+                    "Type": "AWS::ApiGateway::Resource",
+                    "Properties": {
+                      "ParentId": {
+                        "Fn::GetAtt": [
+                          "ApiGatewayRestApi",
+                          "RootResourceId"
+                        ]
+                      },
+                      "PathPart": "ric-get",
+                      "RestApiId": {
+                        "Ref": "ApiGatewayRestApi"
+                      }
+                    }
+                  },
+                  "ApiGatewayResourceRicDashpost": {
+                    "Type": "AWS::ApiGateway::Resource",
+                    "Properties": {
+                      "ParentId": {
+                        "Fn::GetAtt": [
+                          "ApiGatewayRestApi",
+                          "RootResourceId"
+                        ]
+                      },
+                      "PathPart": "ric-post",
+                      "RestApiId": {
+                        "Ref": "ApiGatewayRestApi"
+                      }
+                    }
+                  },
+                  "ApiGatewayResourceRicDashdelete": {
+                    "Type": "AWS::ApiGateway::Resource",
+                    "Properties": {
+                      "ParentId": {
+                        "Fn::GetAtt": [
+                          "ApiGatewayRestApi",
+                          "RootResourceId"
+                        ]
+                      },
+                      "PathPart": "ric-delete",
+                      "RestApiId": {
+                        "Ref": "ApiGatewayRestApi"
+                      }
+                    }
+                  },
+                  "ApiGatewayResourceRicDashput": {
+                    "Type": "AWS::ApiGateway::Resource",
+                    "Properties": {
+                      "ParentId": {
+                        "Fn::GetAtt": [
+                          "ApiGatewayRestApi",
+                          "RootResourceId"
+                        ]
+                      },
+                      "PathPart": "ric-put",
+                      "RestApiId": {
+                        "Ref": "ApiGatewayRestApi"
+                      }
+                    }
+                  },
+                  "ApiGatewayMethodRicDashgetGet": {
+                    "Type": "AWS::ApiGateway::Method",
+                    "Properties": {
+                      "HttpMethod": "GET",
+                      "RequestParameters": {},
+                      "ResourceId": {
+                        "Ref": "ApiGatewayResourceRicDashget"
+                      },
+                      "RestApiId": {
+                        "Ref": "ApiGatewayRestApi"
+                      },
+                      "ApiKeyRequired": "<REDACTED>",
+                      "AuthorizationType": "NONE",
+                      "Integration": {
+                        "IntegrationHttpMethod": "POST",
+                        "Type": "AWS_PROXY",
+                        "Uri": {
+                          "Fn::Join": [
+                            "",
+                            [
+                              "arn:",
+                              {
+                                "Ref": "AWS::Partition"
+                              },
+                              ":apigateway:",
+                              {
+                                "Ref": "AWS::Region"
+                              },
+                              ":lambda:path/2015-03-31/functions/",
+                              {
+                                "Fn::GetAtt": [
+                                  "RicGetLambdaFunction",
+                                  "Arn"
+                                ]
+                              },
+                              "/invocations"
+                            ]
+                          ]
+                        }
+                      },
+                      "MethodResponses": []
+                    },
+                    "DependsOn": [
+                      "RicGetLambdaPermissionApiGateway"
+                    ]
+                  },
+                  "ApiGatewayMethodRicDashpostPost": {
+                    "Type": "AWS::ApiGateway::Method",
+                    "Properties": {
+                      "HttpMethod": "POST",
+                      "RequestParameters": {},
+                      "ResourceId": {
+                        "Ref": "ApiGatewayResourceRicDashpost"
+                      },
+                      "RestApiId": {
+                        "Ref": "ApiGatewayRestApi"
+                      },
+                      "ApiKeyRequired": "<REDACTED>",
+                      "AuthorizationType": "NONE",
+                      "Integration": {
+                        "IntegrationHttpMethod": "POST",
+                        "Type": "AWS_PROXY",
+                        "Uri": {
+                          "Fn::Join": [
+                            "",
+                            [
+                              "arn:",
+                              {
+                                "Ref": "AWS::Partition"
+                              },
+                              ":apigateway:",
+                              {
+                                "Ref": "AWS::Region"
+                              },
+                              ":lambda:path/2015-03-31/functions/",
+                              {
+                                "Fn::GetAtt": [
+                                  "RicPostLambdaFunction",
+                                  "Arn"
+                                ]
+                              },
+                              "/invocations"
+                            ]
+                          ]
+                        }
+                      },
+                      "MethodResponses": []
+                    },
+                    "DependsOn": [
+                      "RicPostLambdaPermissionApiGateway"
+                    ]
+                  },
+                  "ApiGatewayMethodRicDashdeleteDelete": {
+                    "Type": "AWS::ApiGateway::Method",
+                    "Properties": {
+                      "HttpMethod": "DELETE",
+                      "RequestParameters": {},
+                      "ResourceId": {
+                        "Ref": "ApiGatewayResourceRicDashdelete"
+                      },
+                      "RestApiId": {
+                        "Ref": "ApiGatewayRestApi"
+                      },
+                      "ApiKeyRequired": "<REDACTED>",
+                      "AuthorizationType": "NONE",
+                      "Integration": {
+                        "IntegrationHttpMethod": "POST",
+                        "Type": "AWS_PROXY",
+                        "Uri": {
+                          "Fn::Join": [
+                            "",
+                            [
+                              "arn:",
+                              {
+                                "Ref": "AWS::Partition"
+                              },
+                              ":apigateway:",
+                              {
+                                "Ref": "AWS::Region"
+                              },
+                              ":lambda:path/2015-03-31/functions/",
+                              {
+                                "Fn::GetAtt": [
+                                  "RicDeleteLambdaFunction",
+                                  "Arn"
+                                ]
+                              },
+                              "/invocations"
+                            ]
+                          ]
+                        }
+                      },
+                      "MethodResponses": []
+                    },
+                    "DependsOn": [
+                      "RicDeleteLambdaPermissionApiGateway"
+                    ]
+                  },
+                  "ApiGatewayMethodRicDashputPut": {
+                    "Type": "AWS::ApiGateway::Method",
+                    "Properties": {
+                      "HttpMethod": "PUT",
+                      "RequestParameters": {},
+                      "ResourceId": {
+                        "Ref": "ApiGatewayResourceRicDashput"
+                      },
+                      "RestApiId": {
+                        "Ref": "ApiGatewayRestApi"
+                      },
+                      "ApiKeyRequired": "<REDACTED>",
+                      "AuthorizationType": "NONE",
+                      "Integration": {
+                        "IntegrationHttpMethod": "POST",
+                        "Type": "AWS_PROXY",
+                        "Uri": {
+                          "Fn::Join": [
+                            "",
+                            [
+                              "arn:",
+                              {
+                                "Ref": "AWS::Partition"
+                              },
+                              ":apigateway:",
+                              {
+                                "Ref": "AWS::Region"
+                              },
+                              ":lambda:path/2015-03-31/functions/",
+                              {
+                                "Fn::GetAtt": [
+                                  "RicPutLambdaFunction",
+                                  "Arn"
+                                ]
+                              },
+                              "/invocations"
+                            ]
+                          ]
+                        }
+                      },
+                      "MethodResponses": []
+                    },
+                    "DependsOn": [
+                      "RicPutLambdaPermissionApiGateway"
+                    ]
+                  },
+                  "ApiGatewayDeployment1732014672237": {
+                    "Type": "AWS::ApiGateway::Deployment",
+                    "Properties": {
+                      "RestApiId": {
+                        "Ref": "ApiGatewayRestApi"
+                      },
+                      "StageName": "dev"
+                    },
+                    "DependsOn": [
+                      "ApiGatewayMethodRicDashgetGet",
+                      "ApiGatewayMethodRicDashpostPost",
+                      "ApiGatewayMethodRicDashdeleteDelete",
+                      "ApiGatewayMethodRicDashputPut"
+                    ]
+                  },
+                  "RicGetLambdaPermissionApiGateway": {
+                    "Type": "AWS::Lambda::Permission",
+                    "Properties": {
+                      "FunctionName": {
+                        "Fn::GetAtt": [
+                          "RicGetLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "Action": "lambda:InvokeFunction",
+                      "Principal": "apigateway.amazonaws.com",
+                      "SourceArn": {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:",
+                            {
+                              "Ref": "AWS::Partition"
+                            },
+                            ":execute-api:",
+                            {
+                              "Ref": "AWS::Region"
+                            },
+                            ":",
+                            {
+                              "Ref": "AWS::AccountId"
+                            },
+                            ":",
+                            {
+                              "Ref": "ApiGatewayRestApi"
+                            },
+                            "/*/*"
+                          ]
+                        ]
+                      }
+                    }
+                  },
+                  "RicPostLambdaPermissionApiGateway": {
+                    "Type": "AWS::Lambda::Permission",
+                    "Properties": {
+                      "FunctionName": {
+                        "Fn::GetAtt": [
+                          "RicPostLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "Action": "lambda:InvokeFunction",
+                      "Principal": "apigateway.amazonaws.com",
+                      "SourceArn": {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:",
+                            {
+                              "Ref": "AWS::Partition"
+                            },
+                            ":execute-api:",
+                            {
+                              "Ref": "AWS::Region"
+                            },
+                            ":",
+                            {
+                              "Ref": "AWS::AccountId"
+                            },
+                            ":",
+                            {
+                              "Ref": "ApiGatewayRestApi"
+                            },
+                            "/*/*"
+                          ]
+                        ]
+                      }
+                    }
+                  },
+                  "RicDeleteLambdaPermissionApiGateway": {
+                    "Type": "AWS::Lambda::Permission",
+                    "Properties": {
+                      "FunctionName": {
+                        "Fn::GetAtt": [
+                          "RicDeleteLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "Action": "lambda:InvokeFunction",
+                      "Principal": "apigateway.amazonaws.com",
+                      "SourceArn": {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:",
+                            {
+                              "Ref": "AWS::Partition"
+                            },
+                            ":execute-api:",
+                            {
+                              "Ref": "AWS::Region"
+                            },
+                            ":",
+                            {
+                              "Ref": "AWS::AccountId"
+                            },
+                            ":",
+                            {
+                              "Ref": "ApiGatewayRestApi"
+                            },
+                            "/*/*"
+                          ]
+                        ]
+                      }
+                    }
+                  },
+                  "RicPutLambdaPermissionApiGateway": {
+                    "Type": "AWS::Lambda::Permission",
+                    "Properties": {
+                      "FunctionName": {
+                        "Fn::GetAtt": [
+                          "RicPutLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "Action": "lambda:InvokeFunction",
+                      "Principal": "apigateway.amazonaws.com",
+                      "SourceArn": {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:",
+                            {
+                              "Ref": "AWS::Partition"
+                            },
+                            ":execute-api:",
+                            {
+                              "Ref": "AWS::Region"
+                            },
+                            ":",
+                            {
+                              "Ref": "AWS::AccountId"
+                            },
+                            ":",
+                            {
+                              "Ref": "ApiGatewayRestApi"
+                            },
+                            "/*/*"
+                          ]
+                        ]
+                      }
+                    }
+                  }
+                },
+                "Outputs": {
+                  "ServerlessDeploymentBucketName": {
+                    "Value": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
+                    "Export": {
+                      "Name": "sls-ric-crud-application-dev-ServerlessDeploymentBucketName"
+                    }
+                  },
+                  "RicGetLambdaFunctionQualifiedArn": {
+                    "Description": "Current Lambda function version",
+                    "Value": {
+                      "Ref": "RicGetLambdaVersion4TP9EXHkTtIK7XI3lWgjCwL0wInHMsNHsBGGKwKw"
+                    },
+                    "Export": {
+                      "Name": "sls-ric-crud-application-dev-RicGetLambdaFunctionQualifiedArn"
+                    }
+                  },
+                  "RicPostLambdaFunctionQualifiedArn": {
+                    "Description": "Current Lambda function version",
+                    "Value": {
+                      "Ref": "RicPostLambdaVersion3HNEtqv0tn9DGHQdWo7doAzjOi5p7bQVFCQ7xCNGE"
+                    },
+                    "Export": {
+                      "Name": "sls-ric-crud-application-dev-RicPostLambdaFunctionQualifiedArn"
+                    }
+                  },
+                  "RicDeleteLambdaFunctionQualifiedArn": {
+                    "Description": "Current Lambda function version",
+                    "Value": {
+                      "Ref": "RicDeleteLambdaVersioneFmAvIAbu5eoFWfj1boy4OuESpsFO9owF1yaNCypzM"
+                    },
+                    "Export": {
+                      "Name": "sls-ric-crud-application-dev-RicDeleteLambdaFunctionQualifiedArn"
+                    }
+                  },
+                  "RicPutLambdaFunctionQualifiedArn": {
+                    "Description": "Current Lambda function version",
+                    "Value": {
+                      "Ref": "RicPutLambdaVersionoZj7dbFVbkYQZqHHEfmQ3jQE6xBn8vUq9eI8YSZRcg"
+                    },
+                    "Export": {
+                      "Name": "sls-ric-crud-application-dev-RicPutLambdaFunctionQualifiedArn"
+                    }
+                  },
+                  "ServiceEndpoint": {
+                    "Description": "URL of the service endpoint",
+                    "Value": {
+                      "Fn::Join": [
+                        "",
+                        [
+                          "https://",
+                          {
+                            "Ref": "ApiGatewayRestApi"
+                          },
+                          ".execute-api.",
+                          {
+                            "Ref": "AWS::Region"
+                          },
+                          ".",
+                          {
+                            "Ref": "AWS::URLSuffix"
+                          },
+                          "/dev"
+                        ]
+                      ]
+                    },
+                    "Export": {
+                      "Name": "sls-ric-crud-application-dev-ServiceEndpoint"
+                    }
+                  }
+                }
+              },
+              "vpc": {}
+            },
+            "functions": {
+              "ricGet": {
+                "handler": "functions/ric-get.handler",
+                "layers": [
+                  "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:9"
+                ],
+                "events": [
+                  {
+                    "http": {
+                      "path": "ric-get",
+                      "method": "get",
+                      "integration": "AWS_PROXY"
+                    }
+                  }
+                ],
+                "name": "ric-crud-application-dev-ricGet",
+                "package": {},
+                "memory": 1024,
+                "timeout": 6,
+                "runtime": "nodejs18.x",
+                "vpc": {},
+                "versionLogicalId": "RicGetLambdaVersion4TP9EXHkTtIK7XI3lWgjCwL0wInHMsNHsBGGKwKw"
+              },
+              "ricPost": {
+                "handler": "functions/ric-post.handler",
+                "layers": [
+                  "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:9"
+                ],
+                "events": [
+                  {
+                    "http": {
+                      "path": "ric-post",
+                      "method": "post",
+                      "integration": "AWS_PROXY"
+                    }
+                  }
+                ],
+                "name": "ric-crud-application-dev-ricPost",
+                "package": {},
+                "memory": 1024,
+                "timeout": 6,
+                "runtime": "nodejs18.x",
+                "vpc": {},
+                "versionLogicalId": "RicPostLambdaVersion3HNEtqv0tn9DGHQdWo7doAzjOi5p7bQVFCQ7xCNGE"
+              },
+              "ricDelete": {
+                "handler": "functions/ric-delete.handler",
+                "layers": [
+                  "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:9"
+                ],
+                "events": [
+                  {
+                    "http": {
+                      "path": "ric-delete",
+                      "method": "delete",
+                      "integration": "AWS_PROXY"
+                    }
+                  }
+                ],
+                "name": "ric-crud-application-dev-ricDelete",
+                "package": {},
+                "memory": 1024,
+                "timeout": 6,
+                "runtime": "nodejs18.x",
+                "vpc": {},
+                "versionLogicalId": "RicDeleteLambdaVersioneFmAvIAbu5eoFWfj1boy4OuESpsFO9owF1yaNCypzM"
+              },
+              "ricPut": {
+                "handler": "functions/ric-put.handler",
+                "layers": [
+                  "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:9"
+                ],
+                "events": [
+                  {
+                    "http": {
+                      "path": "ric-put",
+                      "method": "put",
+                      "integration": "AWS_PROXY"
+                    }
+                  }
+                ],
+                "name": "ric-crud-application-dev-ricPut",
+                "package": {},
+                "memory": 1024,
+                "timeout": 6,
+                "runtime": "nodejs18.x",
+                "vpc": {},
+                "versionLogicalId": "RicPutLambdaVersionoZj7dbFVbkYQZqHHEfmQ3jQE6xBn8vUq9eI8YSZRcg"
+              }
+            }
+          },
+          "configFileDirPath": "/Users/anilgovindka/CollageDays/Thesis/ric-crud-application",
+          "config": {
+            "type": "sls"
+          },
+          "options": {},
+          "stage": "dev",
+          "dashboard": null,
+          "logger": {
+            "namespace": "s:core:resolver:sls",
+            "prefix": null,
+            "prefixColor": null
+          },
+          "_credentialsPromise": "<REDACTED>"
+        },
+        "resolvers": {}
+      }
+    },
+    "composeServiceName": null,
+    "servicePath": "/Users/anilgovindka/CollageDays/Thesis/ric-crud-application",
+    "serviceConfigFileName": "serverless.yml",
+    "service": {
+      "org": "x23176458",
+      "app": "lambdas",
+      "service": "ric-crud-application",
+      "provider": {
+        "name": "aws",
+        "runtime": "nodejs18.x",
+        "region": "eu-west-1",
+        "iamRoleStatements": [
+          {
+            "Effect": "Allow",
+            "Action": [
+              "dynamodb:*",
+              "logs:*",
+              "secretsmanager:GetSecretValue",
+              "lambda:GetLayerVersion"
+            ],
+            "Resource": "*"
+          }
+        ],
+        "stage": "dev",
+        "versionFunctions": true,
+        "compiledCloudFormationTemplate": {
+          "AWSTemplateFormatVersion": "2010-09-09",
+          "Description": "The AWS CloudFormation template for this Serverless application",
+          "Resources": {
+            "RicGetLogGroup": {
+              "Type": "AWS::Logs::LogGroup",
+              "Properties": {
+                "LogGroupName": "/aws/lambda/ric-crud-application-dev-ricGet"
+              }
+            },
+            "RicPostLogGroup": {
+              "Type": "AWS::Logs::LogGroup",
+              "Properties": {
+                "LogGroupName": "/aws/lambda/ric-crud-application-dev-ricPost"
+              }
+            },
+            "RicDeleteLogGroup": {
+              "Type": "AWS::Logs::LogGroup",
+              "Properties": {
+                "LogGroupName": "/aws/lambda/ric-crud-application-dev-ricDelete"
+              }
+            },
+            "RicPutLogGroup": {
+              "Type": "AWS::Logs::LogGroup",
+              "Properties": {
+                "LogGroupName": "/aws/lambda/ric-crud-application-dev-ricPut"
+              }
+            },
+            "IamRoleLambdaExecution": {
+              "Type": "AWS::IAM::Role",
+              "Properties": {
+                "AssumeRolePolicyDocument": {
+                  "Version": "2012-10-17",
+                  "Statement": [
+                    {
+                      "Effect": "Allow",
+                      "Principal": {
+                        "Service": [
+                          "lambda.amazonaws.com"
+                        ]
+                      },
+                      "Action": [
+                        "sts:AssumeRole"
+                      ]
+                    }
+                  ]
+                },
+                "Policies": [
+                  {
+                    "PolicyName": {
+                      "Fn::Join": [
+                        "-",
+                        [
+                          "ric-crud-application",
+                          "dev",
+                          "lambda"
+                        ]
+                      ]
+                    },
+                    "PolicyDocument": {
+                      "Version": "2012-10-17",
+                      "Statement": [
+                        {
+                          "Effect": "Allow",
+                          "Action": [
+                            "logs:CreateLogStream",
+                            "logs:CreateLogGroup",
+                            "logs:TagResource"
+                          ],
+                          "Resource": [
+                            {
+                              "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/ric-crud-application-dev*:*"
+                            }
+                          ]
+                        },
+                        {
+                          "Effect": "Allow",
+                          "Action": [
+                            "logs:PutLogEvents"
+                          ],
+                          "Resource": [
+                            {
+                              "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/ric-crud-application-dev*:*:*"
+                            }
+                          ]
+                        },
+                        {
+                          "Effect": "Allow",
+                          "Action": [
+                            "dynamodb:*",
+                            "logs:*",
+                            "secretsmanager:GetSecretValue",
+                            "lambda:GetLayerVersion"
+                          ],
+                          "Resource": "*"
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "Path": "/",
+                "RoleName": {
+                  "Fn::Join": [
+                    "-",
+                    [
+                      "ric-crud-application",
+                      "dev",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      "lambdaRole"
+                    ]
+                  ]
+                }
+              }
+            },
+            "RicGetLambdaFunction": {
+              "Type": "AWS::Lambda::Function",
+              "Properties": {
+                "Code": {
+                  "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
+                  "S3Key": "serverless/ric-crud-application/dev/1732014684019-2024-11-19T11:11:24.019Z/ric-crud-application.zip"
+                },
+                "Handler": "functions/ric-get.handler",
+                "Runtime": "nodejs18.x",
+                "FunctionName": "ric-crud-application-dev-ricGet",
+                "MemorySize": 1024,
+                "Timeout": 6,
+                "Role": {
+                  "Fn::GetAtt": [
+                    "IamRoleLambdaExecution",
+                    "Arn"
+                  ]
+                },
+                "Layers": [
+                  "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:9"
+                ]
+              },
+              "DependsOn": [
+                "RicGetLogGroup"
+              ]
+            },
+            "RicPostLambdaFunction": {
+              "Type": "AWS::Lambda::Function",
+              "Properties": {
+                "Code": {
+                  "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
+                  "S3Key": "serverless/ric-crud-application/dev/1732014684019-2024-11-19T11:11:24.019Z/ric-crud-application.zip"
+                },
+                "Handler": "functions/ric-post.handler",
+                "Runtime": "nodejs18.x",
+                "FunctionName": "ric-crud-application-dev-ricPost",
+                "MemorySize": 1024,
+                "Timeout": 6,
+                "Role": {
+                  "Fn::GetAtt": [
+                    "IamRoleLambdaExecution",
+                    "Arn"
+                  ]
+                },
+                "Layers": [
+                  "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:9"
+                ]
+              },
+              "DependsOn": [
+                "RicPostLogGroup"
+              ]
+            },
+            "RicDeleteLambdaFunction": {
+              "Type": "AWS::Lambda::Function",
+              "Properties": {
+                "Code": {
+                  "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
+                  "S3Key": "serverless/ric-crud-application/dev/1732014684019-2024-11-19T11:11:24.019Z/ric-crud-application.zip"
+                },
+                "Handler": "functions/ric-delete.handler",
+                "Runtime": "nodejs18.x",
+                "FunctionName": "ric-crud-application-dev-ricDelete",
+                "MemorySize": 1024,
+                "Timeout": 6,
+                "Role": {
+                  "Fn::GetAtt": [
+                    "IamRoleLambdaExecution",
+                    "Arn"
+                  ]
+                },
+                "Layers": [
+                  "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:9"
+                ]
+              },
+              "DependsOn": [
+                "RicDeleteLogGroup"
+              ]
+            },
+            "RicPutLambdaFunction": {
+              "Type": "AWS::Lambda::Function",
+              "Properties": {
+                "Code": {
+                  "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
+                  "S3Key": "serverless/ric-crud-application/dev/1732014684019-2024-11-19T11:11:24.019Z/ric-crud-application.zip"
+                },
+                "Handler": "functions/ric-put.handler",
+                "Runtime": "nodejs18.x",
+                "FunctionName": "ric-crud-application-dev-ricPut",
+                "MemorySize": 1024,
+                "Timeout": 6,
+                "Role": {
+                  "Fn::GetAtt": [
+                    "IamRoleLambdaExecution",
+                    "Arn"
+                  ]
+                },
+                "Layers": [
+                  "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:9"
+                ]
+              },
+              "DependsOn": [
+                "RicPutLogGroup"
+              ]
+            },
+            "RicGetLambdaVersion4TP9EXHkTtIK7XI3lWgjCwL0wInHMsNHsBGGKwKw": {
+              "Type": "AWS::Lambda::Version",
+              "DeletionPolicy": "Retain",
+              "Properties": {
+                "FunctionName": {
+                  "Ref": "RicGetLambdaFunction"
+                },
+                "CodeSha256": "8OjYf1xcXHg8kqLlcy1IXa8msTzUn2R5sSztF2Lj+ss="
+              }
+            },
+            "RicPostLambdaVersion3HNEtqv0tn9DGHQdWo7doAzjOi5p7bQVFCQ7xCNGE": {
+              "Type": "AWS::Lambda::Version",
+              "DeletionPolicy": "Retain",
+              "Properties": {
+                "FunctionName": {
+                  "Ref": "RicPostLambdaFunction"
+                },
+                "CodeSha256": "8OjYf1xcXHg8kqLlcy1IXa8msTzUn2R5sSztF2Lj+ss="
+              }
+            },
+            "RicDeleteLambdaVersioneFmAvIAbu5eoFWfj1boy4OuESpsFO9owF1yaNCypzM": {
+              "Type": "AWS::Lambda::Version",
+              "DeletionPolicy": "Retain",
+              "Properties": {
+                "FunctionName": {
+                  "Ref": "RicDeleteLambdaFunction"
+                },
+                "CodeSha256": "8OjYf1xcXHg8kqLlcy1IXa8msTzUn2R5sSztF2Lj+ss="
+              }
+            },
+            "RicPutLambdaVersionoZj7dbFVbkYQZqHHEfmQ3jQE6xBn8vUq9eI8YSZRcg": {
+              "Type": "AWS::Lambda::Version",
+              "DeletionPolicy": "Retain",
+              "Properties": {
+                "FunctionName": {
+                  "Ref": "RicPutLambdaFunction"
+                },
+                "CodeSha256": "8OjYf1xcXHg8kqLlcy1IXa8msTzUn2R5sSztF2Lj+ss="
+              }
+            },
+            "ApiGatewayRestApi": {
+              "Type": "AWS::ApiGateway::RestApi",
+              "Properties": {
+                "Name": "dev-ric-crud-application",
+                "EndpointConfiguration": {
+                  "Types": [
+                    "EDGE"
+                  ]
+                },
+                "Policy": ""
+              }
+            },
+            "ApiGatewayResourceRicDashget": {
+              "Type": "AWS::ApiGateway::Resource",
+              "Properties": {
+                "ParentId": {
+                  "Fn::GetAtt": [
+                    "ApiGatewayRestApi",
+                    "RootResourceId"
+                  ]
+                },
+                "PathPart": "ric-get",
+                "RestApiId": {
+                  "Ref": "ApiGatewayRestApi"
+                }
+              }
+            },
+            "ApiGatewayResourceRicDashpost": {
+              "Type": "AWS::ApiGateway::Resource",
+              "Properties": {
+                "ParentId": {
+                  "Fn::GetAtt": [
+                    "ApiGatewayRestApi",
+                    "RootResourceId"
+                  ]
+                },
+                "PathPart": "ric-post",
+                "RestApiId": {
+                  "Ref": "ApiGatewayRestApi"
+                }
+              }
+            },
+            "ApiGatewayResourceRicDashdelete": {
+              "Type": "AWS::ApiGateway::Resource",
+              "Properties": {
+                "ParentId": {
+                  "Fn::GetAtt": [
+                    "ApiGatewayRestApi",
+                    "RootResourceId"
+                  ]
+                },
+                "PathPart": "ric-delete",
+                "RestApiId": {
+                  "Ref": "ApiGatewayRestApi"
+                }
+              }
+            },
+            "ApiGatewayResourceRicDashput": {
+              "Type": "AWS::ApiGateway::Resource",
+              "Properties": {
+                "ParentId": {
+                  "Fn::GetAtt": [
+                    "ApiGatewayRestApi",
+                    "RootResourceId"
+                  ]
+                },
+                "PathPart": "ric-put",
+                "RestApiId": {
+                  "Ref": "ApiGatewayRestApi"
+                }
+              }
+            },
+            "ApiGatewayMethodRicDashgetGet": {
+              "Type": "AWS::ApiGateway::Method",
+              "Properties": {
+                "HttpMethod": "GET",
+                "RequestParameters": {},
+                "ResourceId": {
+                  "Ref": "ApiGatewayResourceRicDashget"
+                },
+                "RestApiId": {
+                  "Ref": "ApiGatewayRestApi"
+                },
+                "ApiKeyRequired": "<REDACTED>",
+                "AuthorizationType": "NONE",
+                "Integration": {
+                  "IntegrationHttpMethod": "POST",
+                  "Type": "AWS_PROXY",
+                  "Uri": {
+                    "Fn::Join": [
+                      "",
+                      [
+                        "arn:",
+                        {
+                          "Ref": "AWS::Partition"
+                        },
+                        ":apigateway:",
+                        {
+                          "Ref": "AWS::Region"
+                        },
+                        ":lambda:path/2015-03-31/functions/",
+                        {
+                          "Fn::GetAtt": [
+                            "RicGetLambdaFunction",
+                            "Arn"
+                          ]
+                        },
+                        "/invocations"
+                      ]
+                    ]
+                  }
+                },
+                "MethodResponses": []
+              },
+              "DependsOn": [
+                "RicGetLambdaPermissionApiGateway"
+              ]
+            },
+            "ApiGatewayMethodRicDashpostPost": {
+              "Type": "AWS::ApiGateway::Method",
+              "Properties": {
+                "HttpMethod": "POST",
+                "RequestParameters": {},
+                "ResourceId": {
+                  "Ref": "ApiGatewayResourceRicDashpost"
+                },
+                "RestApiId": {
+                  "Ref": "ApiGatewayRestApi"
+                },
+                "ApiKeyRequired": "<REDACTED>",
+                "AuthorizationType": "NONE",
+                "Integration": {
+                  "IntegrationHttpMethod": "POST",
+                  "Type": "AWS_PROXY",
+                  "Uri": {
+                    "Fn::Join": [
+                      "",
+                      [
+                        "arn:",
+                        {
+                          "Ref": "AWS::Partition"
+                        },
+                        ":apigateway:",
+                        {
+                          "Ref": "AWS::Region"
+                        },
+                        ":lambda:path/2015-03-31/functions/",
+                        {
+                          "Fn::GetAtt": [
+                            "RicPostLambdaFunction",
+                            "Arn"
+                          ]
+                        },
+                        "/invocations"
+                      ]
+                    ]
+                  }
+                },
+                "MethodResponses": []
+              },
+              "DependsOn": [
+                "RicPostLambdaPermissionApiGateway"
+              ]
+            },
+            "ApiGatewayMethodRicDashdeleteDelete": {
+              "Type": "AWS::ApiGateway::Method",
+              "Properties": {
+                "HttpMethod": "DELETE",
+                "RequestParameters": {},
+                "ResourceId": {
+                  "Ref": "ApiGatewayResourceRicDashdelete"
+                },
+                "RestApiId": {
+                  "Ref": "ApiGatewayRestApi"
+                },
+                "ApiKeyRequired": "<REDACTED>",
+                "AuthorizationType": "NONE",
+                "Integration": {
+                  "IntegrationHttpMethod": "POST",
+                  "Type": "AWS_PROXY",
+                  "Uri": {
+                    "Fn::Join": [
+                      "",
+                      [
+                        "arn:",
+                        {
+                          "Ref": "AWS::Partition"
+                        },
+                        ":apigateway:",
+                        {
+                          "Ref": "AWS::Region"
+                        },
+                        ":lambda:path/2015-03-31/functions/",
+                        {
+                          "Fn::GetAtt": [
+                            "RicDeleteLambdaFunction",
+                            "Arn"
+                          ]
+                        },
+                        "/invocations"
+                      ]
+                    ]
+                  }
+                },
+                "MethodResponses": []
+              },
+              "DependsOn": [
+                "RicDeleteLambdaPermissionApiGateway"
+              ]
+            },
+            "ApiGatewayMethodRicDashputPut": {
+              "Type": "AWS::ApiGateway::Method",
+              "Properties": {
+                "HttpMethod": "PUT",
+                "RequestParameters": {},
+                "ResourceId": {
+                  "Ref": "ApiGatewayResourceRicDashput"
+                },
+                "RestApiId": {
+                  "Ref": "ApiGatewayRestApi"
+                },
+                "ApiKeyRequired": "<REDACTED>",
+                "AuthorizationType": "NONE",
+                "Integration": {
+                  "IntegrationHttpMethod": "POST",
+                  "Type": "AWS_PROXY",
+                  "Uri": {
+                    "Fn::Join": [
+                      "",
+                      [
+                        "arn:",
+                        {
+                          "Ref": "AWS::Partition"
+                        },
+                        ":apigateway:",
+                        {
+                          "Ref": "AWS::Region"
+                        },
+                        ":lambda:path/2015-03-31/functions/",
+                        {
+                          "Fn::GetAtt": [
+                            "RicPutLambdaFunction",
+                            "Arn"
+                          ]
+                        },
+                        "/invocations"
+                      ]
+                    ]
+                  }
+                },
+                "MethodResponses": []
+              },
+              "DependsOn": [
+                "RicPutLambdaPermissionApiGateway"
+              ]
+            },
+            "ApiGatewayDeployment1732014672237": {
+              "Type": "AWS::ApiGateway::Deployment",
+              "Properties": {
+                "RestApiId": {
+                  "Ref": "ApiGatewayRestApi"
+                },
+                "StageName": "dev"
+              },
+              "DependsOn": [
+                "ApiGatewayMethodRicDashgetGet",
+                "ApiGatewayMethodRicDashpostPost",
+                "ApiGatewayMethodRicDashdeleteDelete",
+                "ApiGatewayMethodRicDashputPut"
+              ]
+            },
+            "RicGetLambdaPermissionApiGateway": {
+              "Type": "AWS::Lambda::Permission",
+              "Properties": {
+                "FunctionName": {
+                  "Fn::GetAtt": [
+                    "RicGetLambdaFunction",
+                    "Arn"
+                  ]
+                },
+                "Action": "lambda:InvokeFunction",
+                "Principal": "apigateway.amazonaws.com",
+                "SourceArn": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":execute-api:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":",
+                      {
+                        "Ref": "AWS::AccountId"
+                      },
+                      ":",
+                      {
+                        "Ref": "ApiGatewayRestApi"
+                      },
+                      "/*/*"
+                    ]
+                  ]
+                }
+              }
+            },
+            "RicPostLambdaPermissionApiGateway": {
+              "Type": "AWS::Lambda::Permission",
+              "Properties": {
+                "FunctionName": {
+                  "Fn::GetAtt": [
+                    "RicPostLambdaFunction",
+                    "Arn"
+                  ]
+                },
+                "Action": "lambda:InvokeFunction",
+                "Principal": "apigateway.amazonaws.com",
+                "SourceArn": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":execute-api:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":",
+                      {
+                        "Ref": "AWS::AccountId"
+                      },
+                      ":",
+                      {
+                        "Ref": "ApiGatewayRestApi"
+                      },
+                      "/*/*"
+                    ]
+                  ]
+                }
+              }
+            },
+            "RicDeleteLambdaPermissionApiGateway": {
+              "Type": "AWS::Lambda::Permission",
+              "Properties": {
+                "FunctionName": {
+                  "Fn::GetAtt": [
+                    "RicDeleteLambdaFunction",
+                    "Arn"
+                  ]
+                },
+                "Action": "lambda:InvokeFunction",
+                "Principal": "apigateway.amazonaws.com",
+                "SourceArn": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":execute-api:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":",
+                      {
+                        "Ref": "AWS::AccountId"
+                      },
+                      ":",
+                      {
+                        "Ref": "ApiGatewayRestApi"
+                      },
+                      "/*/*"
+                    ]
+                  ]
+                }
+              }
+            },
+            "RicPutLambdaPermissionApiGateway": {
+              "Type": "AWS::Lambda::Permission",
+              "Properties": {
+                "FunctionName": {
+                  "Fn::GetAtt": [
+                    "RicPutLambdaFunction",
+                    "Arn"
+                  ]
+                },
+                "Action": "lambda:InvokeFunction",
+                "Principal": "apigateway.amazonaws.com",
+                "SourceArn": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":execute-api:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":",
+                      {
+                        "Ref": "AWS::AccountId"
+                      },
+                      ":",
+                      {
+                        "Ref": "ApiGatewayRestApi"
+                      },
+                      "/*/*"
+                    ]
+                  ]
+                }
+              }
+            }
+          },
+          "Outputs": {
+            "ServerlessDeploymentBucketName": {
+              "Value": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
+              "Export": {
+                "Name": "sls-ric-crud-application-dev-ServerlessDeploymentBucketName"
+              }
+            },
+            "RicGetLambdaFunctionQualifiedArn": {
+              "Description": "Current Lambda function version",
+              "Value": {
+                "Ref": "RicGetLambdaVersion4TP9EXHkTtIK7XI3lWgjCwL0wInHMsNHsBGGKwKw"
+              },
+              "Export": {
+                "Name": "sls-ric-crud-application-dev-RicGetLambdaFunctionQualifiedArn"
+              }
+            },
+            "RicPostLambdaFunctionQualifiedArn": {
+              "Description": "Current Lambda function version",
+              "Value": {
+                "Ref": "RicPostLambdaVersion3HNEtqv0tn9DGHQdWo7doAzjOi5p7bQVFCQ7xCNGE"
+              },
+              "Export": {
+                "Name": "sls-ric-crud-application-dev-RicPostLambdaFunctionQualifiedArn"
+              }
+            },
+            "RicDeleteLambdaFunctionQualifiedArn": {
+              "Description": "Current Lambda function version",
+              "Value": {
+                "Ref": "RicDeleteLambdaVersioneFmAvIAbu5eoFWfj1boy4OuESpsFO9owF1yaNCypzM"
+              },
+              "Export": {
+                "Name": "sls-ric-crud-application-dev-RicDeleteLambdaFunctionQualifiedArn"
+              }
+            },
+            "RicPutLambdaFunctionQualifiedArn": {
+              "Description": "Current Lambda function version",
+              "Value": {
+                "Ref": "RicPutLambdaVersionoZj7dbFVbkYQZqHHEfmQ3jQE6xBn8vUq9eI8YSZRcg"
+              },
+              "Export": {
+                "Name": "sls-ric-crud-application-dev-RicPutLambdaFunctionQualifiedArn"
+              }
+            },
+            "ServiceEndpoint": {
+              "Description": "URL of the service endpoint",
+              "Value": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "https://",
+                    {
+                      "Ref": "ApiGatewayRestApi"
+                    },
+                    ".execute-api.",
+                    {
+                      "Ref": "AWS::Region"
+                    },
+                    ".",
+                    {
+                      "Ref": "AWS::URLSuffix"
+                    },
+                    "/dev"
+                  ]
+                ]
+              },
+              "Export": {
+                "Name": "sls-ric-crud-application-dev-ServiceEndpoint"
+              }
+            }
+          }
+        },
+        "vpc": {}
+      },
+      "functions": {
+        "ricGet": {
+          "handler": "functions/ric-get.handler",
+          "layers": [
+            "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:9"
+          ],
+          "events": [
+            {
+              "http": {
+                "path": "ric-get",
+                "method": "get",
+                "integration": "AWS_PROXY"
+              }
+            }
+          ],
+          "name": "ric-crud-application-dev-ricGet",
+          "package": {},
+          "memory": 1024,
+          "timeout": 6,
+          "runtime": "nodejs18.x",
+          "vpc": {},
+          "versionLogicalId": "RicGetLambdaVersion4TP9EXHkTtIK7XI3lWgjCwL0wInHMsNHsBGGKwKw"
+        },
+        "ricPost": {
+          "handler": "functions/ric-post.handler",
+          "layers": [
+            "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:9"
+          ],
+          "events": [
+            {
+              "http": {
+                "path": "ric-post",
+                "method": "post",
+                "integration": "AWS_PROXY"
+              }
+            }
+          ],
+          "name": "ric-crud-application-dev-ricPost",
+          "package": {},
+          "memory": 1024,
+          "timeout": 6,
+          "runtime": "nodejs18.x",
+          "vpc": {},
+          "versionLogicalId": "RicPostLambdaVersion3HNEtqv0tn9DGHQdWo7doAzjOi5p7bQVFCQ7xCNGE"
+        },
+        "ricDelete": {
+          "handler": "functions/ric-delete.handler",
+          "layers": [
+            "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:9"
+          ],
+          "events": [
+            {
+              "http": {
+                "path": "ric-delete",
+                "method": "delete",
+                "integration": "AWS_PROXY"
+              }
+            }
+          ],
+          "name": "ric-crud-application-dev-ricDelete",
+          "package": {},
+          "memory": 1024,
+          "timeout": 6,
+          "runtime": "nodejs18.x",
+          "vpc": {},
+          "versionLogicalId": "RicDeleteLambdaVersioneFmAvIAbu5eoFWfj1boy4OuESpsFO9owF1yaNCypzM"
+        },
+        "ricPut": {
+          "handler": "functions/ric-put.handler",
+          "layers": [
+            "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:9"
+          ],
+          "events": [
+            {
+              "http": {
+                "path": "ric-put",
+                "method": "put",
+                "integration": "AWS_PROXY"
+              }
+            }
+          ],
+          "name": "ric-crud-application-dev-ricPut",
+          "package": {},
+          "memory": 1024,
+          "timeout": 6,
+          "runtime": "nodejs18.x",
+          "vpc": {},
+          "versionLogicalId": "RicPutLambdaVersionoZj7dbFVbkYQZqHHEfmQ3jQE6xBn8vUq9eI8YSZRcg"
+        }
+      }
+    },
+    "serviceRawFile": "# \"org\" ensures this Service is used with the correct Serverless Framework Access Key.\norg: x23176458\n# \"app\" enables Serverless Framework Dashboard features and sharing them with other Services.\napp: lambdas\nservice: ric-crud-application\n\nprovider:\n  name: aws\n  runtime: nodejs18.x\n  region: eu-west-1  # Ensure this matches the region of your layer\n  iamRoleStatements:\n    - Effect: \"Allow\"\n      Action:\n        - \"dynamodb:*\"         # Allows access to DynamoDB\n        - \"logs:*\"\n        - \"secretsmanager:GetSecretValue\"\n        - lambda:GetLayerVersion\n      Resource: \"*\"\n\nfunctions:\n  ricGet:\n    handler: functions/ric-get.handler # Adjust the path based on your file structure\n    layers:\n      - arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:9\n    events:\n      - http:\n          path: ric-get\n          method: get\n  ricPost:\n    handler: functions/ric-post.handler # Adjust the path based on your file structure\n    layers:\n      - arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:9\n    events:\n      - http:\n          path: ric-post\n          method: post\n  ricDelete:\n    handler: functions/ric-delete.handler # Adjust the path based on your file structure\n    layers:\n      - arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:9\n    events:\n      - http:\n          path: ric-delete\n          method: delete\n  ricPut:\n    handler: functions/ric-put.handler # Adjust the path based on your file structure\n    layers:\n      - arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:9\n    events:\n      - http:\n          path: ric-put\n          method: put",
+    "command": [
+      "deploy"
+    ],
+    "options": {},
+    "error": null,
+    "params": {},
+    "machineId": "bf8b68e057ca37d3809b5dfb124c24c2",
+    "stage": "dev",
+    "accessKeyV2": "<REDACTED>",
+    "accessKeyV1": "<REDACTED>",
+    "orgId": "090b084b-ba6a-42dd-b7e5-1be967ea7f51",
+    "orgName": "x23176458",
+    "userId": "XdxKKCdVJr17w6SZhj",
+    "dashboard": {
+      "isEnabledForService": true,
+      "requiredAuthentication": false,
+      "orgFeaturesInUse": {
+        "providers": false,
+        "monitoring": false
+      },
+      "orgObservabilityIntegrations": null,
+      "serviceAppId": "y9YyTDlK4ZQyYChjHN",
+      "serviceProvider": null,
+      "instanceParameters": null
+    },
+    "userName": "x23176458",
+    "subscription": null,
+    "userEmail": "x23176458@student.ncirl.ie",
+    "serviceProviderAwsRegion": "eu-west-1",
+    "serviceProviderAwsCredentials": "<REDACTED>",
+    "serviceProviderAwsAccountId": "557690584148",
+    "projectType": "traditional",
+    "versionSf": "4.4.10",
+    "serviceProviderAwsCfStackName": "ric-crud-application-dev",
+    "integrations": {},
+    "serviceUniqueId": "arn:aws:cloudformation:eu-west-1:557690584148:stack/ric-crud-application-dev/99e5c440-a530-11ef-8eb5-0a2fffe974c1",
+    "serviceProviderAwsCfStackId": "arn:aws:cloudformation:eu-west-1:557690584148:stack/ric-crud-application-dev/99e5c440-a530-11ef-8eb5-0a2fffe974c1",
+    "serviceProviderAwsCfStackCreated": "2024-11-17T22:09:23.158Z",
+    "serviceProviderAwsCfStackUpdated": "2024-11-19T11:11:31.764Z",
+    "serviceProviderAwsCfStackStatus": "UPDATE_COMPLETE",
+    "serviceProviderAwsCfStackOutputs": [
+      {
+        "OutputKey": "RicPostLambdaFunctionQualifiedArn",
+        "OutputValue": "arn:aws:lambda:eu-west-1:557690584148:function:ric-crud-application-dev-ricPost:3",
+        "Description": "Current Lambda function version",
+        "ExportName": "sls-ric-crud-application-dev-RicPostLambdaFunctionQualifiedArn"
+      },
+      {
+        "OutputKey": "RicGetLambdaFunctionQualifiedArn",
+        "OutputValue": "arn:aws:lambda:eu-west-1:557690584148:function:ric-crud-application-dev-ricGet:12",
+        "Description": "Current Lambda function version",
+        "ExportName": "sls-ric-crud-application-dev-RicGetLambdaFunctionQualifiedArn"
+      },
+      {
+        "OutputKey": "RicPutLambdaFunctionQualifiedArn",
+        "OutputValue": "arn:aws:lambda:eu-west-1:557690584148:function:ric-crud-application-dev-ricPut:2",
+        "Description": "Current Lambda function version",
+        "ExportName": "sls-ric-crud-application-dev-RicPutLambdaFunctionQualifiedArn"
+      },
+      {
+        "OutputKey": "RicDeleteLambdaFunctionQualifiedArn",
+        "OutputValue": "arn:aws:lambda:eu-west-1:557690584148:function:ric-crud-application-dev-ricDelete:2",
+        "Description": "Current Lambda function version",
+        "ExportName": "sls-ric-crud-application-dev-RicDeleteLambdaFunctionQualifiedArn"
+      },
+      {
+        "OutputKey": "ServiceEndpoint",
+        "OutputValue": "https://vpsllm3pah.execute-api.eu-west-1.amazonaws.com/dev",
+        "Description": "URL of the service endpoint",
+        "ExportName": "sls-ric-crud-application-dev-ServiceEndpoint"
+      },
+      {
+        "OutputKey": "ServerlessDeploymentBucketName",
+        "OutputValue": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
+        "ExportName": "sls-ric-crud-application-dev-ServerlessDeploymentBucketName"
+      }
+    ]
+  }
+}
