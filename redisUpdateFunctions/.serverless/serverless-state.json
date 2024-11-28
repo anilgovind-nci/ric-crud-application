@@ -16,7 +16,8 @@
               "Effect": "Allow",
               "Action": [
                 "logs:*",
-                "lambda:GetLayerVersion"
+                "lambda:GetLayerVersion",
+                "lambda:InvokeFunction"
               ],
               "Resource": "*"
             }
@@ -147,7 +148,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
-                "S3Key": "serverless/ric-redis-operations/dev/1732549689550-2024-11-25T15:48:09.550Z/ric-redis-operations.zip"
+                "S3Key": "serverless/ric-redis-operations/dev/1732733897076-2024-11-27T18:58:17.076Z/ric-redis-operations.zip"
               },
               "Handler": "./redisTimeAdjustmentsForEndpoints.handler",
               "Runtime": "nodejs18.x",
@@ -183,7 +184,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
-                "S3Key": "serverless/ric-redis-operations/dev/1732549689550-2024-11-25T15:48:09.550Z/ric-redis-operations.zip"
+                "S3Key": "serverless/ric-redis-operations/dev/1732733897076-2024-11-27T18:58:17.076Z/ric-redis-operations.zip"
               },
               "Handler": "./queryCloudwatchAndUpdateFunctionTimes.handler",
               "Runtime": "nodejs18.x",
@@ -213,7 +214,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
-                "S3Key": "serverless/ric-redis-operations/dev/1732549689550-2024-11-25T15:48:09.550Z/ric-redis-operations.zip"
+                "S3Key": "serverless/ric-redis-operations/dev/1732733897076-2024-11-27T18:58:17.076Z/ric-redis-operations.zip"
               },
               "Handler": "./keepLambdasWarm.handler",
               "Runtime": "nodejs18.x",
@@ -236,34 +237,108 @@
               "KeepLambdasWarmLogGroup"
             ]
           },
-          "RedisTimeAdjustmentsForEndpointsLambdaVersionyIffwqp5jYYldDnBL6glRHeVBDGDDsbJgSL5Ep20XDw": {
+          "RedisTimeAdjustmentsForEndpointsLambdaVersioncHIPFDE9ksWF61v7qD6jEX0fsSfY8uogQ8mczgg8Pg": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "RedisTimeAdjustmentsForEndpointsLambdaFunction"
               },
-              "CodeSha256": "DHNMcOx+i/qE4t5E9j0jjndl1Sald6DSF6bToMOjDh0="
+              "CodeSha256": "1gxfDFNGy70ohlRKl5qx8jJyNFVQJy0tnMPkhEZheug="
             }
           },
-          "QueryCloudwatchAndUpdateFunctionTimesLambdaVersionQneaNzEUJPUmjE8M1fsDiuiAfQ2K54ZGaLSmkgvCDc": {
+          "QueryCloudwatchAndUpdateFunctionTimesLambdaVersionhURiaTrQrym7TAXeI9pCQUmtIcbbOo6oRBpcjEmsaso": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "QueryCloudwatchAndUpdateFunctionTimesLambdaFunction"
               },
-              "CodeSha256": "DHNMcOx+i/qE4t5E9j0jjndl1Sald6DSF6bToMOjDh0="
+              "CodeSha256": "1gxfDFNGy70ohlRKl5qx8jJyNFVQJy0tnMPkhEZheug="
             }
           },
-          "KeepLambdasWarmLambdaVersionhufppVcYHAn92PH7TvnuBeUOL7rwDEzF5Hl0R32iNyU": {
+          "KeepLambdasWarmLambdaVersionjXhNHBC9YXyukMffMJEXwL4AxxIdLSBQHvmjBUtdhAg": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "KeepLambdasWarmLambdaFunction"
               },
-              "CodeSha256": "DHNMcOx+i/qE4t5E9j0jjndl1Sald6DSF6bToMOjDh0="
+              "CodeSha256": "1gxfDFNGy70ohlRKl5qx8jJyNFVQJy0tnMPkhEZheug="
+            }
+          },
+          "QueryCloudwatchAndUpdateFunctionTimesEventsRuleSchedule1": {
+            "Type": "AWS::Events::Rule",
+            "Properties": {
+              "ScheduleExpression": "rate(15 minutes)",
+              "State": "ENABLED",
+              "Targets": [
+                {
+                  "Arn": {
+                    "Fn::GetAtt": [
+                      "QueryCloudwatchAndUpdateFunctionTimesLambdaFunction",
+                      "Arn"
+                    ]
+                  },
+                  "Id": "queryCloudwatchAndUpdateFunctionTimesSchedule"
+                }
+              ]
+            }
+          },
+          "QueryCloudwatchAndUpdateFunctionTimesLambdaPermissionEventsRuleSchedule1": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+              "FunctionName": {
+                "Fn::GetAtt": [
+                  "QueryCloudwatchAndUpdateFunctionTimesLambdaFunction",
+                  "Arn"
+                ]
+              },
+              "Action": "lambda:InvokeFunction",
+              "Principal": "events.amazonaws.com",
+              "SourceArn": {
+                "Fn::GetAtt": [
+                  "QueryCloudwatchAndUpdateFunctionTimesEventsRuleSchedule1",
+                  "Arn"
+                ]
+              }
+            }
+          },
+          "KeepLambdasWarmEventsRuleSchedule1": {
+            "Type": "AWS::Events::Rule",
+            "Properties": {
+              "ScheduleExpression": "rate(15 minutes)",
+              "State": "ENABLED",
+              "Targets": [
+                {
+                  "Arn": {
+                    "Fn::GetAtt": [
+                      "KeepLambdasWarmLambdaFunction",
+                      "Arn"
+                    ]
+                  },
+                  "Id": "keepLambdasWarmSchedule"
+                }
+              ]
+            }
+          },
+          "KeepLambdasWarmLambdaPermissionEventsRuleSchedule1": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+              "FunctionName": {
+                "Fn::GetAtt": [
+                  "KeepLambdasWarmLambdaFunction",
+                  "Arn"
+                ]
+              },
+              "Action": "lambda:InvokeFunction",
+              "Principal": "events.amazonaws.com",
+              "SourceArn": {
+                "Fn::GetAtt": [
+                  "KeepLambdasWarmEventsRuleSchedule1",
+                  "Arn"
+                ]
+              }
             }
           },
           "RedisFunctionRole": {
@@ -326,7 +401,7 @@
           "RedisTimeAdjustmentsForEndpointsLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "RedisTimeAdjustmentsForEndpointsLambdaVersionyIffwqp5jYYldDnBL6glRHeVBDGDDsbJgSL5Ep20XDw"
+              "Ref": "RedisTimeAdjustmentsForEndpointsLambdaVersioncHIPFDE9ksWF61v7qD6jEX0fsSfY8uogQ8mczgg8Pg"
             },
             "Export": {
               "Name": "sls-ric-redis-operations-dev-RedisTimeAdjustmentsForEndpointsLambdaFunctionQualifiedArn"
@@ -335,7 +410,7 @@
           "QueryCloudwatchAndUpdateFunctionTimesLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "QueryCloudwatchAndUpdateFunctionTimesLambdaVersionQneaNzEUJPUmjE8M1fsDiuiAfQ2K54ZGaLSmkgvCDc"
+              "Ref": "QueryCloudwatchAndUpdateFunctionTimesLambdaVersionhURiaTrQrym7TAXeI9pCQUmtIcbbOo6oRBpcjEmsaso"
             },
             "Export": {
               "Name": "sls-ric-redis-operations-dev-QueryCloudwatchAndUpdateFunctionTimesLambdaFunctionQualifiedArn"
@@ -344,7 +419,7 @@
           "KeepLambdasWarmLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "KeepLambdasWarmLambdaVersionhufppVcYHAn92PH7TvnuBeUOL7rwDEzF5Hl0R32iNyU"
+              "Ref": "KeepLambdasWarmLambdaVersionjXhNHBC9YXyukMffMJEXwL4AxxIdLSBQHvmjBUtdhAg"
             },
             "Export": {
               "Name": "sls-ric-redis-operations-dev-KeepLambdasWarmLambdaFunctionQualifiedArn"
@@ -377,7 +452,7 @@
         "package": {},
         "memory": 128,
         "runtime": "nodejs18.x",
-        "versionLogicalId": "RedisTimeAdjustmentsForEndpointsLambdaVersionyIffwqp5jYYldDnBL6glRHeVBDGDDsbJgSL5Ep20XDw"
+        "versionLogicalId": "RedisTimeAdjustmentsForEndpointsLambdaVersioncHIPFDE9ksWF61v7qD6jEX0fsSfY8uogQ8mczgg8Pg"
       },
       "queryCloudwatchAndUpdateFunctionTimes": {
         "handler": "./queryCloudwatchAndUpdateFunctionTimes.handler",
@@ -388,13 +463,22 @@
             "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"QueryCloudwatchAndUpdateFunctionTimesLambdaFunction\"][\"Properties\"][\"Environment\"][\"Variables\"][\"REDIS_FUNCTION_NAME\"]"
           }
         },
-        "events": [],
+        "events": [
+          {
+            "schedule": {
+              "rate": [
+                "rate(15 minutes)"
+              ],
+              "enabled": true
+            }
+          }
+        ],
         "name": "ric-redis-operations-dev-queryCloudwatchAndUpdateFunctionTimes",
         "package": {},
         "memory": 256,
         "runtime": "nodejs18.x",
         "vpc": {},
-        "versionLogicalId": "QueryCloudwatchAndUpdateFunctionTimesLambdaVersionQneaNzEUJPUmjE8M1fsDiuiAfQ2K54ZGaLSmkgvCDc"
+        "versionLogicalId": "QueryCloudwatchAndUpdateFunctionTimesLambdaVersionhURiaTrQrym7TAXeI9pCQUmtIcbbOo6oRBpcjEmsaso"
       },
       "keepLambdasWarm": {
         "handler": "./keepLambdasWarm.handler",
@@ -403,13 +487,22 @@
         "environment": {
           "CENTRALISED_LOG_GROUP_NAME": "RIC-CRUD-log-group"
         },
-        "events": [],
+        "events": [
+          {
+            "schedule": {
+              "rate": [
+                "rate(15 minutes)"
+              ],
+              "enabled": true
+            }
+          }
+        ],
         "name": "ric-redis-operations-dev-keepLambdasWarm",
         "package": {},
         "memory": 256,
         "runtime": "nodejs18.x",
         "vpc": {},
-        "versionLogicalId": "KeepLambdasWarmLambdaVersionhufppVcYHAn92PH7TvnuBeUOL7rwDEzF5Hl0R32iNyU"
+        "versionLogicalId": "KeepLambdasWarmLambdaVersionjXhNHBC9YXyukMffMJEXwL4AxxIdLSBQHvmjBUtdhAg"
       }
     },
     "resources": {
@@ -490,7 +583,7 @@
     "artifact": "/Users/anilgovindka/CollageDays/Thesis/ric-crud-application/redisUpdateFunctions/.serverless/ric-redis-operations.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/ric-redis-operations/dev/1732549689550-2024-11-25T15:48:09.550Z",
+    "artifactDirectoryName": "serverless/ric-redis-operations/dev/1732733897076-2024-11-27T18:58:17.076Z",
     "artifact": "ric-redis-operations.zip"
   }
 }

@@ -62,13 +62,13 @@ const handler = async (event) => {
     const parsedData = JSON.parse(redisData);
 
     // Update lambdaAverageColdStartTime if provided
-    if (lambdaAverageColdStartTime !== null && lambdaAverageColdStartTime !== undefined) {
-      parsedData.lambdaAverageColdStartTime = lambdaAverageColdStartTime;
+    if (lambdaAverageColdStartTime != null && lambdaAverageColdStartTime != undefined) {
+      parsedData.lambdaAverageColdStartTime = Math.round(parseFloat(lambdaAverageColdStartTime));;
     }
 
     // Update lambdaAverageExecutionTime if provided
-    if (lambdaAverageExecutionTime !== null && lambdaAverageExecutionTime !== undefined) {
-      parsedData.lambdaAverageExecutionTime = lambdaAverageExecutionTime;
+    if (lambdaAverageExecutionTime != null && lambdaAverageExecutionTime != undefined) {
+      parsedData.lambdaAverageExecutionTime = Math.round(parseFloat(lambdaAverageExecutionTime));;
     }
 
     // Update Redis with the modified data

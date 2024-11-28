@@ -11,6 +11,9 @@ const logGroupName = process.env.CENTRALISED_LOG_GROUP_NAME;
 const lambdaExecutionEnvironment = randomUUID(); // Unique ID for each Lambda invocation
 const logStreamName = `RIC-DELETE-Stream-${lambdaExecutionEnvironment}`; // Unique stream name
 
+require('./delayInitialization');
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 // Initialize DynamoDB and CloudWatch Logs clients
 const client = new DynamoDBClient({ region: process.env.AWS_REGION });
 const dynamoDBClient = DynamoDBDocumentClient.from(client);
@@ -41,9 +44,10 @@ const validateDeleteData = (data) => {
   }
   return errors;
 };
-
 // Lambda handler
 const handler = async (event, context) => {
+  
+  await delay(500);
   const requestId = context.awsRequestId;
   const startTime = moment().format();
 

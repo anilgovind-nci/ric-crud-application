@@ -7,6 +7,7 @@ const validator = require("validator");
 const { logToCustomLogGroup } = require('./logToCustomCloudWatch'); // Import functions
 // Import delay initialization (This will block execution for the first invocation)
 require('./delayInitialization'); // This will block the execution and simulate cold start delay
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 // Create clients for DynamoDB and CloudWatch Logs
 const client = new DynamoDBClient({ region: process.env.AWS_REGION });
 const dynamoDBClient = DynamoDBDocumentClient.from(client);
@@ -29,9 +30,10 @@ const validateQueryParams = (params) => {
   }
   return errors;
 };
-
 // Lambda handler function
 const handler = async (event, context) => {
+  
+  await delay(500);
   const requestId = context.awsRequestId;
   const startTime = moment().format();
 

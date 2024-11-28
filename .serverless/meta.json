@@ -1,7 +1,7 @@
 {
   "/Users/anilgovindka/CollageDays/Thesis/ric-crud-application": {
     "versionSfCore": null,
-    "versionFramework": "4.4.10",
+    "versionFramework": "4.4.13",
     "isWithinCompose": false,
     "isCompose": false,
     "composeOrgName": null,
@@ -153,13 +153,18 @@
                     "Properties": {
                       "Code": {
                         "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
-                        "S3Key": "serverless/ric-crud-application/dev/1732014684019-2024-11-19T11:11:24.019Z/ric-crud-application.zip"
+                        "S3Key": "serverless/ric-crud-application/dev/1732729342837-2024-11-27T17:42:22.837Z/ric-crud-application.zip"
                       },
                       "Handler": "functions/ric-get.handler",
                       "Runtime": "nodejs18.x",
                       "FunctionName": "ric-crud-application-dev-ricGet",
                       "MemorySize": 1024,
                       "Timeout": 6,
+                      "Environment": {
+                        "Variables": {
+                          "CENTRALISED_LOG_GROUP_NAME": "RIC-CRUD-log-group"
+                        }
+                      },
                       "Role": {
                         "Fn::GetAtt": [
                           "IamRoleLambdaExecution",
@@ -167,7 +172,7 @@
                         ]
                       },
                       "Layers": [
-                        "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:9"
+                        "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13"
                       ]
                     },
                     "DependsOn": [
@@ -179,13 +184,18 @@
                     "Properties": {
                       "Code": {
                         "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
-                        "S3Key": "serverless/ric-crud-application/dev/1732014684019-2024-11-19T11:11:24.019Z/ric-crud-application.zip"
+                        "S3Key": "serverless/ric-crud-application/dev/1732729342837-2024-11-27T17:42:22.837Z/ric-crud-application.zip"
                       },
                       "Handler": "functions/ric-post.handler",
                       "Runtime": "nodejs18.x",
                       "FunctionName": "ric-crud-application-dev-ricPost",
                       "MemorySize": 1024,
                       "Timeout": 6,
+                      "Environment": {
+                        "Variables": {
+                          "CENTRALISED_LOG_GROUP_NAME": "RIC-CRUD-log-group"
+                        }
+                      },
                       "Role": {
                         "Fn::GetAtt": [
                           "IamRoleLambdaExecution",
@@ -193,7 +203,7 @@
                         ]
                       },
                       "Layers": [
-                        "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:9"
+                        "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13"
                       ]
                     },
                     "DependsOn": [
@@ -205,13 +215,18 @@
                     "Properties": {
                       "Code": {
                         "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
-                        "S3Key": "serverless/ric-crud-application/dev/1732014684019-2024-11-19T11:11:24.019Z/ric-crud-application.zip"
+                        "S3Key": "serverless/ric-crud-application/dev/1732729342837-2024-11-27T17:42:22.837Z/ric-crud-application.zip"
                       },
                       "Handler": "functions/ric-delete.handler",
                       "Runtime": "nodejs18.x",
                       "FunctionName": "ric-crud-application-dev-ricDelete",
                       "MemorySize": 1024,
                       "Timeout": 6,
+                      "Environment": {
+                        "Variables": {
+                          "CENTRALISED_LOG_GROUP_NAME": "RIC-CRUD-log-group"
+                        }
+                      },
                       "Role": {
                         "Fn::GetAtt": [
                           "IamRoleLambdaExecution",
@@ -219,7 +234,7 @@
                         ]
                       },
                       "Layers": [
-                        "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:9"
+                        "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13"
                       ]
                     },
                     "DependsOn": [
@@ -231,13 +246,18 @@
                     "Properties": {
                       "Code": {
                         "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
-                        "S3Key": "serverless/ric-crud-application/dev/1732014684019-2024-11-19T11:11:24.019Z/ric-crud-application.zip"
+                        "S3Key": "serverless/ric-crud-application/dev/1732729342837-2024-11-27T17:42:22.837Z/ric-crud-application.zip"
                       },
                       "Handler": "functions/ric-put.handler",
                       "Runtime": "nodejs18.x",
                       "FunctionName": "ric-crud-application-dev-ricPut",
                       "MemorySize": 1024,
                       "Timeout": 6,
+                      "Environment": {
+                        "Variables": {
+                          "CENTRALISED_LOG_GROUP_NAME": "RIC-CRUD-log-group"
+                        }
+                      },
                       "Role": {
                         "Fn::GetAtt": [
                           "IamRoleLambdaExecution",
@@ -245,51 +265,51 @@
                         ]
                       },
                       "Layers": [
-                        "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:9"
+                        "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13"
                       ]
                     },
                     "DependsOn": [
                       "RicPutLogGroup"
                     ]
                   },
-                  "RicGetLambdaVersion4TP9EXHkTtIK7XI3lWgjCwL0wInHMsNHsBGGKwKw": {
+                  "RicGetLambdaVersion0hNPoa8FRhnVqajcpEc0hO4KDL4SHa04ngxIjNlBiA": {
                     "Type": "AWS::Lambda::Version",
                     "DeletionPolicy": "Retain",
                     "Properties": {
                       "FunctionName": {
                         "Ref": "RicGetLambdaFunction"
                       },
-                      "CodeSha256": "8OjYf1xcXHg8kqLlcy1IXa8msTzUn2R5sSztF2Lj+ss="
+                      "CodeSha256": "gSbyVKmh2drqPNKKFK3ZcENQDP1leYFpQ1KZVR+0DxM="
                     }
                   },
-                  "RicPostLambdaVersion3HNEtqv0tn9DGHQdWo7doAzjOi5p7bQVFCQ7xCNGE": {
+                  "RicPostLambdaVersionGj8LJDDWUK0LgXN6Yb3SnR2WuKY50dodVsijtciSU": {
                     "Type": "AWS::Lambda::Version",
                     "DeletionPolicy": "Retain",
                     "Properties": {
                       "FunctionName": {
                         "Ref": "RicPostLambdaFunction"
                       },
-                      "CodeSha256": "8OjYf1xcXHg8kqLlcy1IXa8msTzUn2R5sSztF2Lj+ss="
+                      "CodeSha256": "gSbyVKmh2drqPNKKFK3ZcENQDP1leYFpQ1KZVR+0DxM="
                     }
                   },
-                  "RicDeleteLambdaVersioneFmAvIAbu5eoFWfj1boy4OuESpsFO9owF1yaNCypzM": {
+                  "RicDeleteLambdaVersionFBNkzzUsifVLm2aXye7RYUT6tJTaev2cOwrPgYAlNJI": {
                     "Type": "AWS::Lambda::Version",
                     "DeletionPolicy": "Retain",
                     "Properties": {
                       "FunctionName": {
                         "Ref": "RicDeleteLambdaFunction"
                       },
-                      "CodeSha256": "8OjYf1xcXHg8kqLlcy1IXa8msTzUn2R5sSztF2Lj+ss="
+                      "CodeSha256": "gSbyVKmh2drqPNKKFK3ZcENQDP1leYFpQ1KZVR+0DxM="
                     }
                   },
-                  "RicPutLambdaVersionoZj7dbFVbkYQZqHHEfmQ3jQE6xBn8vUq9eI8YSZRcg": {
+                  "RicPutLambdaVersionz89KicixxyVm3CGbqwIYfOxKUG7YKClv4XRrIAPH0": {
                     "Type": "AWS::Lambda::Version",
                     "DeletionPolicy": "Retain",
                     "Properties": {
                       "FunctionName": {
                         "Ref": "RicPutLambdaFunction"
                       },
-                      "CodeSha256": "8OjYf1xcXHg8kqLlcy1IXa8msTzUn2R5sSztF2Lj+ss="
+                      "CodeSha256": "gSbyVKmh2drqPNKKFK3ZcENQDP1leYFpQ1KZVR+0DxM="
                     }
                   },
                   "ApiGatewayRestApi": {
@@ -548,7 +568,7 @@
                       "RicPutLambdaPermissionApiGateway"
                     ]
                   },
-                  "ApiGatewayDeployment1732014672237": {
+                  "ApiGatewayDeployment1732729334710": {
                     "Type": "AWS::ApiGateway::Deployment",
                     "Properties": {
                       "RestApiId": {
@@ -722,7 +742,7 @@
                   "RicGetLambdaFunctionQualifiedArn": {
                     "Description": "Current Lambda function version",
                     "Value": {
-                      "Ref": "RicGetLambdaVersion4TP9EXHkTtIK7XI3lWgjCwL0wInHMsNHsBGGKwKw"
+                      "Ref": "RicGetLambdaVersion0hNPoa8FRhnVqajcpEc0hO4KDL4SHa04ngxIjNlBiA"
                     },
                     "Export": {
                       "Name": "sls-ric-crud-application-dev-RicGetLambdaFunctionQualifiedArn"
@@ -731,7 +751,7 @@
                   "RicPostLambdaFunctionQualifiedArn": {
                     "Description": "Current Lambda function version",
                     "Value": {
-                      "Ref": "RicPostLambdaVersion3HNEtqv0tn9DGHQdWo7doAzjOi5p7bQVFCQ7xCNGE"
+                      "Ref": "RicPostLambdaVersionGj8LJDDWUK0LgXN6Yb3SnR2WuKY50dodVsijtciSU"
                     },
                     "Export": {
                       "Name": "sls-ric-crud-application-dev-RicPostLambdaFunctionQualifiedArn"
@@ -740,7 +760,7 @@
                   "RicDeleteLambdaFunctionQualifiedArn": {
                     "Description": "Current Lambda function version",
                     "Value": {
-                      "Ref": "RicDeleteLambdaVersioneFmAvIAbu5eoFWfj1boy4OuESpsFO9owF1yaNCypzM"
+                      "Ref": "RicDeleteLambdaVersionFBNkzzUsifVLm2aXye7RYUT6tJTaev2cOwrPgYAlNJI"
                     },
                     "Export": {
                       "Name": "sls-ric-crud-application-dev-RicDeleteLambdaFunctionQualifiedArn"
@@ -749,7 +769,7 @@
                   "RicPutLambdaFunctionQualifiedArn": {
                     "Description": "Current Lambda function version",
                     "Value": {
-                      "Ref": "RicPutLambdaVersionoZj7dbFVbkYQZqHHEfmQ3jQE6xBn8vUq9eI8YSZRcg"
+                      "Ref": "RicPutLambdaVersionz89KicixxyVm3CGbqwIYfOxKUG7YKClv4XRrIAPH0"
                     },
                     "Export": {
                       "Name": "sls-ric-crud-application-dev-RicPutLambdaFunctionQualifiedArn"
@@ -788,8 +808,11 @@
             "functions": {
               "ricGet": {
                 "handler": "functions/ric-get.handler",
+                "environment": {
+                  "CENTRALISED_LOG_GROUP_NAME": "RIC-CRUD-log-group"
+                },
                 "layers": [
-                  "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:9"
+                  "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13"
                 ],
                 "events": [
                   {
@@ -806,12 +829,15 @@
                 "timeout": 6,
                 "runtime": "nodejs18.x",
                 "vpc": {},
-                "versionLogicalId": "RicGetLambdaVersion4TP9EXHkTtIK7XI3lWgjCwL0wInHMsNHsBGGKwKw"
+                "versionLogicalId": "RicGetLambdaVersion0hNPoa8FRhnVqajcpEc0hO4KDL4SHa04ngxIjNlBiA"
               },
               "ricPost": {
                 "handler": "functions/ric-post.handler",
+                "environment": {
+                  "CENTRALISED_LOG_GROUP_NAME": "RIC-CRUD-log-group"
+                },
                 "layers": [
-                  "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:9"
+                  "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13"
                 ],
                 "events": [
                   {
@@ -828,12 +854,15 @@
                 "timeout": 6,
                 "runtime": "nodejs18.x",
                 "vpc": {},
-                "versionLogicalId": "RicPostLambdaVersion3HNEtqv0tn9DGHQdWo7doAzjOi5p7bQVFCQ7xCNGE"
+                "versionLogicalId": "RicPostLambdaVersionGj8LJDDWUK0LgXN6Yb3SnR2WuKY50dodVsijtciSU"
               },
               "ricDelete": {
                 "handler": "functions/ric-delete.handler",
+                "environment": {
+                  "CENTRALISED_LOG_GROUP_NAME": "RIC-CRUD-log-group"
+                },
                 "layers": [
-                  "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:9"
+                  "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13"
                 ],
                 "events": [
                   {
@@ -850,12 +879,15 @@
                 "timeout": 6,
                 "runtime": "nodejs18.x",
                 "vpc": {},
-                "versionLogicalId": "RicDeleteLambdaVersioneFmAvIAbu5eoFWfj1boy4OuESpsFO9owF1yaNCypzM"
+                "versionLogicalId": "RicDeleteLambdaVersionFBNkzzUsifVLm2aXye7RYUT6tJTaev2cOwrPgYAlNJI"
               },
               "ricPut": {
                 "handler": "functions/ric-put.handler",
+                "environment": {
+                  "CENTRALISED_LOG_GROUP_NAME": "RIC-CRUD-log-group"
+                },
                 "layers": [
-                  "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:9"
+                  "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13"
                 ],
                 "events": [
                   {
@@ -872,7 +904,7 @@
                 "timeout": 6,
                 "runtime": "nodejs18.x",
                 "vpc": {},
-                "versionLogicalId": "RicPutLambdaVersionoZj7dbFVbkYQZqHHEfmQ3jQE6xBn8vUq9eI8YSZRcg"
+                "versionLogicalId": "RicPutLambdaVersionz89KicixxyVm3CGbqwIYfOxKUG7YKClv4XRrIAPH0"
               }
             }
           },
@@ -1039,13 +1071,18 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
-                  "S3Key": "serverless/ric-crud-application/dev/1732014684019-2024-11-19T11:11:24.019Z/ric-crud-application.zip"
+                  "S3Key": "serverless/ric-crud-application/dev/1732729342837-2024-11-27T17:42:22.837Z/ric-crud-application.zip"
                 },
                 "Handler": "functions/ric-get.handler",
                 "Runtime": "nodejs18.x",
                 "FunctionName": "ric-crud-application-dev-ricGet",
                 "MemorySize": 1024,
                 "Timeout": 6,
+                "Environment": {
+                  "Variables": {
+                    "CENTRALISED_LOG_GROUP_NAME": "RIC-CRUD-log-group"
+                  }
+                },
                 "Role": {
                   "Fn::GetAtt": [
                     "IamRoleLambdaExecution",
@@ -1053,7 +1090,7 @@
                   ]
                 },
                 "Layers": [
-                  "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:9"
+                  "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13"
                 ]
               },
               "DependsOn": [
@@ -1065,13 +1102,18 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
-                  "S3Key": "serverless/ric-crud-application/dev/1732014684019-2024-11-19T11:11:24.019Z/ric-crud-application.zip"
+                  "S3Key": "serverless/ric-crud-application/dev/1732729342837-2024-11-27T17:42:22.837Z/ric-crud-application.zip"
                 },
                 "Handler": "functions/ric-post.handler",
                 "Runtime": "nodejs18.x",
                 "FunctionName": "ric-crud-application-dev-ricPost",
                 "MemorySize": 1024,
                 "Timeout": 6,
+                "Environment": {
+                  "Variables": {
+                    "CENTRALISED_LOG_GROUP_NAME": "RIC-CRUD-log-group"
+                  }
+                },
                 "Role": {
                   "Fn::GetAtt": [
                     "IamRoleLambdaExecution",
@@ -1079,7 +1121,7 @@
                   ]
                 },
                 "Layers": [
-                  "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:9"
+                  "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13"
                 ]
               },
               "DependsOn": [
@@ -1091,13 +1133,18 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
-                  "S3Key": "serverless/ric-crud-application/dev/1732014684019-2024-11-19T11:11:24.019Z/ric-crud-application.zip"
+                  "S3Key": "serverless/ric-crud-application/dev/1732729342837-2024-11-27T17:42:22.837Z/ric-crud-application.zip"
                 },
                 "Handler": "functions/ric-delete.handler",
                 "Runtime": "nodejs18.x",
                 "FunctionName": "ric-crud-application-dev-ricDelete",
                 "MemorySize": 1024,
                 "Timeout": 6,
+                "Environment": {
+                  "Variables": {
+                    "CENTRALISED_LOG_GROUP_NAME": "RIC-CRUD-log-group"
+                  }
+                },
                 "Role": {
                   "Fn::GetAtt": [
                     "IamRoleLambdaExecution",
@@ -1105,7 +1152,7 @@
                   ]
                 },
                 "Layers": [
-                  "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:9"
+                  "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13"
                 ]
               },
               "DependsOn": [
@@ -1117,13 +1164,18 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
-                  "S3Key": "serverless/ric-crud-application/dev/1732014684019-2024-11-19T11:11:24.019Z/ric-crud-application.zip"
+                  "S3Key": "serverless/ric-crud-application/dev/1732729342837-2024-11-27T17:42:22.837Z/ric-crud-application.zip"
                 },
                 "Handler": "functions/ric-put.handler",
                 "Runtime": "nodejs18.x",
                 "FunctionName": "ric-crud-application-dev-ricPut",
                 "MemorySize": 1024,
                 "Timeout": 6,
+                "Environment": {
+                  "Variables": {
+                    "CENTRALISED_LOG_GROUP_NAME": "RIC-CRUD-log-group"
+                  }
+                },
                 "Role": {
                   "Fn::GetAtt": [
                     "IamRoleLambdaExecution",
@@ -1131,51 +1183,51 @@
                   ]
                 },
                 "Layers": [
-                  "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:9"
+                  "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13"
                 ]
               },
               "DependsOn": [
                 "RicPutLogGroup"
               ]
             },
-            "RicGetLambdaVersion4TP9EXHkTtIK7XI3lWgjCwL0wInHMsNHsBGGKwKw": {
+            "RicGetLambdaVersion0hNPoa8FRhnVqajcpEc0hO4KDL4SHa04ngxIjNlBiA": {
               "Type": "AWS::Lambda::Version",
               "DeletionPolicy": "Retain",
               "Properties": {
                 "FunctionName": {
                   "Ref": "RicGetLambdaFunction"
                 },
-                "CodeSha256": "8OjYf1xcXHg8kqLlcy1IXa8msTzUn2R5sSztF2Lj+ss="
+                "CodeSha256": "gSbyVKmh2drqPNKKFK3ZcENQDP1leYFpQ1KZVR+0DxM="
               }
             },
-            "RicPostLambdaVersion3HNEtqv0tn9DGHQdWo7doAzjOi5p7bQVFCQ7xCNGE": {
+            "RicPostLambdaVersionGj8LJDDWUK0LgXN6Yb3SnR2WuKY50dodVsijtciSU": {
               "Type": "AWS::Lambda::Version",
               "DeletionPolicy": "Retain",
               "Properties": {
                 "FunctionName": {
                   "Ref": "RicPostLambdaFunction"
                 },
-                "CodeSha256": "8OjYf1xcXHg8kqLlcy1IXa8msTzUn2R5sSztF2Lj+ss="
+                "CodeSha256": "gSbyVKmh2drqPNKKFK3ZcENQDP1leYFpQ1KZVR+0DxM="
               }
             },
-            "RicDeleteLambdaVersioneFmAvIAbu5eoFWfj1boy4OuESpsFO9owF1yaNCypzM": {
+            "RicDeleteLambdaVersionFBNkzzUsifVLm2aXye7RYUT6tJTaev2cOwrPgYAlNJI": {
               "Type": "AWS::Lambda::Version",
               "DeletionPolicy": "Retain",
               "Properties": {
                 "FunctionName": {
                   "Ref": "RicDeleteLambdaFunction"
                 },
-                "CodeSha256": "8OjYf1xcXHg8kqLlcy1IXa8msTzUn2R5sSztF2Lj+ss="
+                "CodeSha256": "gSbyVKmh2drqPNKKFK3ZcENQDP1leYFpQ1KZVR+0DxM="
               }
             },
-            "RicPutLambdaVersionoZj7dbFVbkYQZqHHEfmQ3jQE6xBn8vUq9eI8YSZRcg": {
+            "RicPutLambdaVersionz89KicixxyVm3CGbqwIYfOxKUG7YKClv4XRrIAPH0": {
               "Type": "AWS::Lambda::Version",
               "DeletionPolicy": "Retain",
               "Properties": {
                 "FunctionName": {
                   "Ref": "RicPutLambdaFunction"
                 },
-                "CodeSha256": "8OjYf1xcXHg8kqLlcy1IXa8msTzUn2R5sSztF2Lj+ss="
+                "CodeSha256": "gSbyVKmh2drqPNKKFK3ZcENQDP1leYFpQ1KZVR+0DxM="
               }
             },
             "ApiGatewayRestApi": {
@@ -1434,7 +1486,7 @@
                 "RicPutLambdaPermissionApiGateway"
               ]
             },
-            "ApiGatewayDeployment1732014672237": {
+            "ApiGatewayDeployment1732729334710": {
               "Type": "AWS::ApiGateway::Deployment",
               "Properties": {
                 "RestApiId": {
@@ -1608,7 +1660,7 @@
             "RicGetLambdaFunctionQualifiedArn": {
               "Description": "Current Lambda function version",
               "Value": {
-                "Ref": "RicGetLambdaVersion4TP9EXHkTtIK7XI3lWgjCwL0wInHMsNHsBGGKwKw"
+                "Ref": "RicGetLambdaVersion0hNPoa8FRhnVqajcpEc0hO4KDL4SHa04ngxIjNlBiA"
               },
               "Export": {
                 "Name": "sls-ric-crud-application-dev-RicGetLambdaFunctionQualifiedArn"
@@ -1617,7 +1669,7 @@
             "RicPostLambdaFunctionQualifiedArn": {
               "Description": "Current Lambda function version",
               "Value": {
-                "Ref": "RicPostLambdaVersion3HNEtqv0tn9DGHQdWo7doAzjOi5p7bQVFCQ7xCNGE"
+                "Ref": "RicPostLambdaVersionGj8LJDDWUK0LgXN6Yb3SnR2WuKY50dodVsijtciSU"
               },
               "Export": {
                 "Name": "sls-ric-crud-application-dev-RicPostLambdaFunctionQualifiedArn"
@@ -1626,7 +1678,7 @@
             "RicDeleteLambdaFunctionQualifiedArn": {
               "Description": "Current Lambda function version",
               "Value": {
-                "Ref": "RicDeleteLambdaVersioneFmAvIAbu5eoFWfj1boy4OuESpsFO9owF1yaNCypzM"
+                "Ref": "RicDeleteLambdaVersionFBNkzzUsifVLm2aXye7RYUT6tJTaev2cOwrPgYAlNJI"
               },
               "Export": {
                 "Name": "sls-ric-crud-application-dev-RicDeleteLambdaFunctionQualifiedArn"
@@ -1635,7 +1687,7 @@
             "RicPutLambdaFunctionQualifiedArn": {
               "Description": "Current Lambda function version",
               "Value": {
-                "Ref": "RicPutLambdaVersionoZj7dbFVbkYQZqHHEfmQ3jQE6xBn8vUq9eI8YSZRcg"
+                "Ref": "RicPutLambdaVersionz89KicixxyVm3CGbqwIYfOxKUG7YKClv4XRrIAPH0"
               },
               "Export": {
                 "Name": "sls-ric-crud-application-dev-RicPutLambdaFunctionQualifiedArn"
@@ -1674,8 +1726,11 @@
       "functions": {
         "ricGet": {
           "handler": "functions/ric-get.handler",
+          "environment": {
+            "CENTRALISED_LOG_GROUP_NAME": "RIC-CRUD-log-group"
+          },
           "layers": [
-            "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:9"
+            "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13"
           ],
           "events": [
             {
@@ -1692,12 +1747,15 @@
           "timeout": 6,
           "runtime": "nodejs18.x",
           "vpc": {},
-          "versionLogicalId": "RicGetLambdaVersion4TP9EXHkTtIK7XI3lWgjCwL0wInHMsNHsBGGKwKw"
+          "versionLogicalId": "RicGetLambdaVersion0hNPoa8FRhnVqajcpEc0hO4KDL4SHa04ngxIjNlBiA"
         },
         "ricPost": {
           "handler": "functions/ric-post.handler",
+          "environment": {
+            "CENTRALISED_LOG_GROUP_NAME": "RIC-CRUD-log-group"
+          },
           "layers": [
-            "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:9"
+            "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13"
           ],
           "events": [
             {
@@ -1714,12 +1772,15 @@
           "timeout": 6,
           "runtime": "nodejs18.x",
           "vpc": {},
-          "versionLogicalId": "RicPostLambdaVersion3HNEtqv0tn9DGHQdWo7doAzjOi5p7bQVFCQ7xCNGE"
+          "versionLogicalId": "RicPostLambdaVersionGj8LJDDWUK0LgXN6Yb3SnR2WuKY50dodVsijtciSU"
         },
         "ricDelete": {
           "handler": "functions/ric-delete.handler",
+          "environment": {
+            "CENTRALISED_LOG_GROUP_NAME": "RIC-CRUD-log-group"
+          },
           "layers": [
-            "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:9"
+            "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13"
           ],
           "events": [
             {
@@ -1736,12 +1797,15 @@
           "timeout": 6,
           "runtime": "nodejs18.x",
           "vpc": {},
-          "versionLogicalId": "RicDeleteLambdaVersioneFmAvIAbu5eoFWfj1boy4OuESpsFO9owF1yaNCypzM"
+          "versionLogicalId": "RicDeleteLambdaVersionFBNkzzUsifVLm2aXye7RYUT6tJTaev2cOwrPgYAlNJI"
         },
         "ricPut": {
           "handler": "functions/ric-put.handler",
+          "environment": {
+            "CENTRALISED_LOG_GROUP_NAME": "RIC-CRUD-log-group"
+          },
           "layers": [
-            "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:9"
+            "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13"
           ],
           "events": [
             {
@@ -1758,18 +1822,18 @@
           "timeout": 6,
           "runtime": "nodejs18.x",
           "vpc": {},
-          "versionLogicalId": "RicPutLambdaVersionoZj7dbFVbkYQZqHHEfmQ3jQE6xBn8vUq9eI8YSZRcg"
+          "versionLogicalId": "RicPutLambdaVersionz89KicixxyVm3CGbqwIYfOxKUG7YKClv4XRrIAPH0"
         }
       }
     },
-    "serviceRawFile": "# \"org\" ensures this Service is used with the correct Serverless Framework Access Key.\norg: x23176458\n# \"app\" enables Serverless Framework Dashboard features and sharing them with other Services.\napp: lambdas\nservice: ric-crud-application\n\nprovider:\n  name: aws\n  runtime: nodejs18.x\n  region: eu-west-1  # Ensure this matches the region of your layer\n  iamRoleStatements:\n    - Effect: \"Allow\"\n      Action:\n        - \"dynamodb:*\"         # Allows access to DynamoDB\n        - \"logs:*\"\n        - \"secretsmanager:GetSecretValue\"\n        - lambda:GetLayerVersion\n      Resource: \"*\"\n\nfunctions:\n  ricGet:\n    handler: functions/ric-get.handler # Adjust the path based on your file structure\n    layers:\n      - arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:9\n    events:\n      - http:\n          path: ric-get\n          method: get\n  ricPost:\n    handler: functions/ric-post.handler # Adjust the path based on your file structure\n    layers:\n      - arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:9\n    events:\n      - http:\n          path: ric-post\n          method: post\n  ricDelete:\n    handler: functions/ric-delete.handler # Adjust the path based on your file structure\n    layers:\n      - arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:9\n    events:\n      - http:\n          path: ric-delete\n          method: delete\n  ricPut:\n    handler: functions/ric-put.handler # Adjust the path based on your file structure\n    layers:\n      - arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:9\n    events:\n      - http:\n          path: ric-put\n          method: put",
+    "serviceRawFile": "# \"org\" ensures this Service is used with the correct Serverless Framework Access Key.\norg: x23176458\napp: lambdas\nservice: ric-crud-application\n\nprovider:\n  name: aws\n  runtime: nodejs18.x\n  region: eu-west-1  # Ensure this matches the region of your layer\n  iamRoleStatements:\n    - Effect: \"Allow\"\n      Action:\n        - \"dynamodb:*\"         # Allows access to DynamoDB\n        - \"logs:*\"\n        - \"secretsmanager:GetSecretValue\"\n        - lambda:GetLayerVersion\n      Resource: \"*\"\n\nfunctions:\n  ricGet:\n    handler: functions/ric-get.handler # Adjust the path based on your file structure\n    environment:\n      CENTRALISED_LOG_GROUP_NAME: 'RIC-CRUD-log-group'\n    layers:\n      - arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13\n    events:\n      - http:\n          path: ric-get\n          method: get\n  ricPost:\n    handler: functions/ric-post.handler # Adjust the path based on your file structure\n    environment:\n      CENTRALISED_LOG_GROUP_NAME: 'RIC-CRUD-log-group'\n    layers:\n      - arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13\n    events:\n      - http:\n          path: ric-post\n          method: post\n  ricDelete:\n    handler: functions/ric-delete.handler # Adjust the path based on your file structure\n    environment:\n      CENTRALISED_LOG_GROUP_NAME: 'RIC-CRUD-log-group'\n    layers:\n      - arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13\n    events:\n      - http:\n          path: ric-delete\n          method: delete\n  ricPut:\n    handler: functions/ric-put.handler # Adjust the path based on your file structure\n    environment:\n      CENTRALISED_LOG_GROUP_NAME: 'RIC-CRUD-log-group'\n    layers:\n      - arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13\n    events:\n      - http:\n          path: ric-put\n          method: put",
     "command": [
       "deploy"
     ],
     "options": {},
     "error": null,
     "params": {},
-    "machineId": "bf8b68e057ca37d3809b5dfb124c24c2",
+    "machineId": "2fbf2c66c6e4a475f2674f8781ffbb89",
     "stage": "dev",
     "accessKeyV2": "<REDACTED>",
     "accessKeyV1": "<REDACTED>",
@@ -1795,36 +1859,36 @@
     "serviceProviderAwsCredentials": "<REDACTED>",
     "serviceProviderAwsAccountId": "557690584148",
     "projectType": "traditional",
-    "versionSf": "4.4.10",
+    "versionSf": "4.4.13",
     "serviceProviderAwsCfStackName": "ric-crud-application-dev",
     "integrations": {},
     "serviceUniqueId": "arn:aws:cloudformation:eu-west-1:557690584148:stack/ric-crud-application-dev/99e5c440-a530-11ef-8eb5-0a2fffe974c1",
     "serviceProviderAwsCfStackId": "arn:aws:cloudformation:eu-west-1:557690584148:stack/ric-crud-application-dev/99e5c440-a530-11ef-8eb5-0a2fffe974c1",
     "serviceProviderAwsCfStackCreated": "2024-11-17T22:09:23.158Z",
-    "serviceProviderAwsCfStackUpdated": "2024-11-19T11:11:31.764Z",
+    "serviceProviderAwsCfStackUpdated": "2024-11-27T17:42:25.544Z",
     "serviceProviderAwsCfStackStatus": "UPDATE_COMPLETE",
     "serviceProviderAwsCfStackOutputs": [
       {
         "OutputKey": "RicPostLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:eu-west-1:557690584148:function:ric-crud-application-dev-ricPost:3",
+        "OutputValue": "arn:aws:lambda:eu-west-1:557690584148:function:ric-crud-application-dev-ricPost:12",
         "Description": "Current Lambda function version",
         "ExportName": "sls-ric-crud-application-dev-RicPostLambdaFunctionQualifiedArn"
       },
       {
         "OutputKey": "RicGetLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:eu-west-1:557690584148:function:ric-crud-application-dev-ricGet:12",
+        "OutputValue": "arn:aws:lambda:eu-west-1:557690584148:function:ric-crud-application-dev-ricGet:21",
         "Description": "Current Lambda function version",
         "ExportName": "sls-ric-crud-application-dev-RicGetLambdaFunctionQualifiedArn"
       },
       {
         "OutputKey": "RicPutLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:eu-west-1:557690584148:function:ric-crud-application-dev-ricPut:2",
+        "OutputValue": "arn:aws:lambda:eu-west-1:557690584148:function:ric-crud-application-dev-ricPut:11",
         "Description": "Current Lambda function version",
         "ExportName": "sls-ric-crud-application-dev-RicPutLambdaFunctionQualifiedArn"
       },
       {
         "OutputKey": "RicDeleteLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:eu-west-1:557690584148:function:ric-crud-application-dev-ricDelete:2",
+        "OutputValue": "arn:aws:lambda:eu-west-1:557690584148:function:ric-crud-application-dev-ricDelete:11",
         "Description": "Current Lambda function version",
         "ExportName": "sls-ric-crud-application-dev-RicDeleteLambdaFunctionQualifiedArn"
       },

@@ -1,0 +1,5 @@
+ 
+[36mINFO[0m[0002] INFO POST  Response Time: 2843.910 ms and status 200 
+[36mINFO[0m[0005] INFO GET  Response Time: 2718.732 ms and status 200 
+[36mINFO[0m[0008] INFO PUT  Response Time: 2661.610 ms and status 200 
+[36mINFO[0m[0011] INFO DELETE  Response Time: 2702.549 ms and status 200 

@@ -12,8 +12,8 @@ export let options = {
 };
 
 export default async function () {
-  const url = 'http://localhost:3000/test';
-//   const url = 'https://vpsllm3pah.execute-api.eu-west-1.amazonaws.com/dev/ric-get?id=75&pps=999';
+  // const url = 'http://localhost:3000/test';
+  const url = 'https://vpsllm3pah.execute-api.eu-west-1.amazonaws.com/dev/ric-get?id=75&pps=999';
 
 
   const response = http.get(url);

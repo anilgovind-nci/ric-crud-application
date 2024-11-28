@@ -1,0 +1,199 @@
+✗ POST request status is 200
+      ↳  0% — ✓ 0 / ✗ 55
+     ✓ GET request status is 200
+     ✓ PUT request status is 200
+     ✓ DELETE request status is 200
+
+     checks.........................: 68.57% 120 out of 175
+     data_received..................: 1.2 MB 4.9 kB/s
+     data_sent......................: 122 kB 509 B/s
+     http_req_blocked...............: avg=61.93ms  min=44.92ms  med=60.83ms  max=89.68ms p(90)=72.71ms  p(95)=75.81ms 
+     http_req_connecting............: avg=26.83ms  min=15.12ms  med=26.33ms  max=37.89ms p(90)=33.65ms  p(95)=34.96ms 
+     http_req_duration..............: avg=162.82ms min=79.55ms  med=103.05ms max=1.88s   p(90)=228.46ms p(95)=261.98ms
+       { expected_response:true }...: avg=162.82ms min=79.55ms  med=103.05ms max=1.88s   p(90)=228.46ms p(95)=261.98ms
+     http_req_failed................: 0.00%  0 out of 175
+     http_req_receiving.............: avg=337.06µs min=19µs     med=108µs    max=10.38ms p(90)=428.6µs  p(95)=1.25ms  
+     http_req_sending...............: avg=188.12µs min=32µs     med=98µs     max=4.26ms  p(90)=304.39µs p(95)=396.6µs 
+     http_req_tls_handshaking.......: avg=34.43ms  min=22.31ms  med=33.28ms  max=55.65ms p(90)=44.06ms  p(95)=47.19ms 
+     http_req_waiting...............: avg=162.29ms min=78.66ms  med=102.41ms max=1.88s   p(90)=228.12ms p(95)=261.75ms
+     http_reqs......................: 175    0.728713/s
+     iteration_duration.............: avg=227.12ms min=137.67ms med=171.33ms max=1.94s   p(90)=297.81ms p(95)=326.96ms
+     iterations.....................: 175    0.728713/s
+     vus............................: 0      min=0          max=1  
+     vus_max........................: 175    min=175        max=175
+
+[36mINFO[0m[0000] 2024-11-27T16:01:48.705Z INFO POST Response Time: 173.770 ms and Status: 201 
+[36mINFO[0m[0005] 2024-11-27T16:01:53.755Z INFO GET Response Time: 259.131 ms and Status: 200 
+[36mINFO[0m[0010] 2024-11-27T16:01:58.709Z INFO PUT Response Time: 199.067 ms and Status: 200 
+[36mINFO[0m[0015] 2024-11-27T16:02:03.687Z INFO DELETE Response Time: 189.477 ms and Status: 200 
+[36mINFO[0m[0025] 2024-11-27T16:02:13.716Z INFO POST Response Time: 212.120 ms and Status: 201 
+[36mINFO[0m[0026] 2024-11-27T16:02:15.149Z INFO POST Response Time: 1647.012 ms and Status: 201 
+[36mINFO[0m[0030] 2024-11-27T16:02:18.631Z INFO GET Response Time: 143.666 ms and Status: 200 
+[36mINFO[0m[0032] 2024-11-27T16:02:20.380Z INFO GET Response Time: 1888.551 ms and Status: 200 
+[36mINFO[0m[0035] 2024-11-27T16:02:23.663Z INFO PUT Response Time: 156.084 ms and Status: 200 
+[36mINFO[0m[0036] 2024-11-27T16:02:24.975Z INFO PUT Response Time: 1470.135 ms and Status: 200 
+[36mINFO[0m[0040] 2024-11-27T16:02:28.652Z INFO DELETE Response Time: 161.422 ms and Status: 200 
+[36mINFO[0m[0050] 2024-11-27T16:02:38.597Z INFO POST Response Time: 102.295 ms and Status: 201 
+[36mINFO[0m[0050] 2024-11-27T16:02:38.639Z INFO POST Response Time: 144.145 ms and Status: 201 
+[36mINFO[0m[0050] 2024-11-27T16:02:38.640Z INFO POST Response Time: 145.121 ms and Status: 201 
+[36mINFO[0m[0055] 2024-11-27T16:02:43.580Z INFO GET Response Time: 90.757 ms and Status: 200 
+[36mINFO[0m[0055] 2024-11-27T16:02:43.621Z INFO GET Response Time: 134.000 ms and Status: 200 
+[36mINFO[0m[0055] 2024-11-27T16:02:43.627Z INFO GET Response Time: 142.636 ms and Status: 200 
+[36mINFO[0m[0060] 2024-11-27T16:02:48.632Z INFO PUT Response Time: 132.940 ms and Status: 200 
+[36mINFO[0m[0060] 2024-11-27T16:02:48.652Z INFO PUT Response Time: 168.915 ms and Status: 200 
+[36mINFO[0m[0060] 2024-11-27T16:02:48.663Z INFO PUT Response Time: 171.954 ms and Status: 200 
+[36mINFO[0m[0066] 2024-11-27T16:02:54.975Z INFO DELETE Response Time: 1490.019 ms and Status: 200 
+[36mINFO[0m[0075] 2024-11-27T16:03:03.584Z INFO POST Response Time: 91.579 ms and Status: 201 
+[36mINFO[0m[0075] 2024-11-27T16:03:03.638Z INFO POST Response Time: 144.541 ms and Status: 201 
+[36mINFO[0m[0075] 2024-11-27T16:03:03.697Z INFO POST Response Time: 201.914 ms and Status: 201 
+[36mINFO[0m[0075] 2024-11-27T16:03:03.730Z INFO POST Response Time: 230.305 ms and Status: 201 
+[36mINFO[0m[0080] 2024-11-27T16:03:08.583Z INFO GET Response Time: 95.189 ms and Status: 200 
+[36mINFO[0m[0080] 2024-11-27T16:03:08.621Z INFO GET Response Time: 130.794 ms and Status: 200 
+[36mINFO[0m[0080] 2024-11-27T16:03:08.662Z INFO GET Response Time: 175.195 ms and Status: 200 
+[36mINFO[0m[0080] 2024-11-27T16:03:08.779Z INFO GET Response Time: 290.298 ms and Status: 200 
+[36mINFO[0m[0085] 2024-11-27T16:03:13.571Z INFO PUT Response Time: 86.023 ms and Status: 200 
+[36mINFO[0m[0085] 2024-11-27T16:03:13.611Z INFO PUT Response Time: 119.938 ms and Status: 200 
+[36mINFO[0m[0085] 2024-11-27T16:03:13.710Z INFO PUT Response Time: 217.471 ms and Status: 200 
+[36mINFO[0m[0085] 2024-11-27T16:03:13.737Z INFO PUT Response Time: 244.205 ms and Status: 200 
+[36mINFO[0m[0090] 2024-11-27T16:03:18.692Z INFO DELETE Response Time: 186.335 ms and Status: 200 
+[36mINFO[0m[0100] 2024-11-27T16:03:28.577Z INFO POST Response Time: 85.848 ms and Status: 201 
+[36mINFO[0m[0100] 2024-11-27T16:03:28.578Z INFO POST Response Time: 88.859 ms and Status: 201 
+[36mINFO[0m[0100] 2024-11-27T16:03:28.579Z INFO POST Response Time: 90.512 ms and Status: 201 
+[36mINFO[0m[0100] 2024-11-27T16:03:28.615Z INFO POST Response Time: 128.981 ms and Status: 201 
+[36mINFO[0m[0100] 2024-11-27T16:03:28.707Z INFO POST Response Time: 216.358 ms and Status: 201 
+[36mINFO[0m[0105] 2024-11-27T16:03:33.591Z INFO GET Response Time: 92.084 ms and Status: 200 
+[36mINFO[0m[0105] 2024-11-27T16:03:33.598Z INFO GET Response Time: 96.292 ms and Status: 200 
+[36mINFO[0m[0105] 2024-11-27T16:03:33.598Z INFO GET Response Time: 91.964 ms and Status: 200 
+[36mINFO[0m[0105] 2024-11-27T16:03:33.639Z INFO GET Response Time: 134.383 ms and Status: 200 
+[36mINFO[0m[0105] 2024-11-27T16:03:33.745Z INFO GET Response Time: 236.034 ms and Status: 200 
+[36mINFO[0m[0110] 2024-11-27T16:03:38.583Z INFO PUT Response Time: 89.006 ms and Status: 200 
+[36mINFO[0m[0110] 2024-11-27T16:03:38.585Z INFO PUT Response Time: 88.650 ms and Status: 200 
+[36mINFO[0m[0110] 2024-11-27T16:03:38.590Z INFO PUT Response Time: 96.933 ms and Status: 200 
+[36mINFO[0m[0110] 2024-11-27T16:03:38.633Z INFO PUT Response Time: 137.811 ms and Status: 200 
+[36mINFO[0m[0110] 2024-11-27T16:03:38.759Z INFO PUT Response Time: 261.702 ms and Status: 200 
+[36mINFO[0m[0115] 2024-11-27T16:03:43.684Z INFO DELETE Response Time: 189.929 ms and Status: 200 
+[36mINFO[0m[0125] 2024-11-27T16:03:53.570Z INFO POST Response Time: 91.080 ms and Status: 201 
+[36mINFO[0m[0125] 2024-11-27T16:03:53.574Z INFO POST Response Time: 81.544 ms and Status: 201 
+[36mINFO[0m[0125] 2024-11-27T16:03:53.575Z INFO POST Response Time: 85.091 ms and Status: 201 
+[36mINFO[0m[0125] 2024-11-27T16:03:53.586Z INFO POST Response Time: 93.414 ms and Status: 201 
+[36mINFO[0m[0125] 2024-11-27T16:03:53.616Z INFO POST Response Time: 121.754 ms and Status: 201 
+[36mINFO[0m[0125] 2024-11-27T16:03:53.720Z INFO POST Response Time: 224.908 ms and Status: 201 
+[36mINFO[0m[0130] 2024-11-27T16:03:58.604Z INFO GET Response Time: 92.302 ms and Status: 200 
+[36mINFO[0m[0130] 2024-11-27T16:03:58.605Z INFO GET Response Time: 91.971 ms and Status: 200 
+[36mINFO[0m[0130] 2024-11-27T16:03:58.606Z INFO GET Response Time: 91.588 ms and Status: 200 
+[36mINFO[0m[0130] 2024-11-27T16:03:58.609Z INFO GET Response Time: 95.282 ms and Status: 200 
+[36mINFO[0m[0130] 2024-11-27T16:03:58.648Z INFO GET Response Time: 130.318 ms and Status: 200 
+[36mINFO[0m[0130] 2024-11-27T16:03:58.733Z INFO GET Response Time: 216.460 ms and Status: 200 
+[36mINFO[0m[0135] 2024-11-27T16:04:03.588Z INFO PUT Response Time: 92.693 ms and Status: 200 
+[36mINFO[0m[0135] 2024-11-27T16:04:03.588Z INFO PUT Response Time: 88.627 ms and Status: 200 
+[36mINFO[0m[0135] 2024-11-27T16:04:03.591Z INFO PUT Response Time: 90.791 ms and Status: 200 
+[36mINFO[0m[0135] 2024-11-27T16:04:03.604Z INFO PUT Response Time: 96.476 ms and Status: 200 
+[36mINFO[0m[0135] 2024-11-27T16:04:03.631Z INFO PUT Response Time: 127.418 ms and Status: 200 
+[36mINFO[0m[0135] 2024-11-27T16:04:03.768Z INFO PUT Response Time: 262.633 ms and Status: 200 
+[36mINFO[0m[0140] 2024-11-27T16:04:08.606Z INFO DELETE Response Time: 105.420 ms and Status: 200 
+[36mINFO[0m[0150] 2024-11-27T16:04:18.574Z INFO POST Response Time: 81.277 ms and Status: 201 
+[36mINFO[0m[0150] 2024-11-27T16:04:18.580Z INFO POST Response Time: 90.289 ms and Status: 201 
+[36mINFO[0m[0150] 2024-11-27T16:04:18.596Z INFO POST Response Time: 99.809 ms and Status: 201 
+[36mINFO[0m[0150] 2024-11-27T16:04:18.614Z INFO POST Response Time: 112.421 ms and Status: 201 
+[36mINFO[0m[0150] 2024-11-27T16:04:18.624Z INFO POST Response Time: 124.974 ms and Status: 201 
+[36mINFO[0m[0150] 2024-11-27T16:04:18.634Z INFO POST Response Time: 148.275 ms and Status: 201 
+[36mINFO[0m[0150] 2024-11-27T16:04:18.726Z INFO POST Response Time: 227.010 ms and Status: 201 
+[36mINFO[0m[0155] 2024-11-27T16:04:23.584Z INFO GET Response Time: 86.406 ms and Status: 200 
+[36mINFO[0m[0155] 2024-11-27T16:04:23.587Z INFO GET Response Time: 86.214 ms and Status: 200 
+[36mINFO[0m[0155] 2024-11-27T16:04:23.592Z INFO GET Response Time: 92.401 ms and Status: 200 
+[36mINFO[0m[0155] 2024-11-27T16:04:23.601Z INFO GET Response Time: 112.206 ms and Status: 200 
+[36mINFO[0m[0155] 2024-11-27T16:04:23.605Z INFO GET Response Time: 107.402 ms and Status: 200 
+[36mINFO[0m[0155] 2024-11-27T16:04:23.618Z INFO GET Response Time: 118.900 ms and Status: 200 
+[36mINFO[0m[0155] 2024-11-27T16:04:23.710Z INFO GET Response Time: 208.177 ms and Status: 200 
+[36mINFO[0m[0160] 2024-11-27T16:04:28.581Z INFO PUT Response Time: 89.056 ms and Status: 200 
+[36mINFO[0m[0160] 2024-11-27T16:04:28.583Z INFO PUT Response Time: 86.951 ms and Status: 200 
+[36mINFO[0m[0160] 2024-11-27T16:04:28.588Z INFO PUT Response Time: 103.058 ms and Status: 200 
+[36mINFO[0m[0160] 2024-11-27T16:04:28.588Z INFO PUT Response Time: 93.716 ms and Status: 200 
+[36mINFO[0m[0160] 2024-11-27T16:04:28.612Z INFO PUT Response Time: 123.267 ms and Status: 200 
+[36mINFO[0m[0160] 2024-11-27T16:04:28.622Z INFO PUT Response Time: 121.801 ms and Status: 200 
+[36mINFO[0m[0160] 2024-11-27T16:04:28.741Z INFO PUT Response Time: 242.444 ms and Status: 200 
+[36mINFO[0m[0165] 2024-11-27T16:04:33.597Z INFO DELETE Response Time: 108.539 ms and Status: 200 
+[36mINFO[0m[0175] 2024-11-27T16:04:43.574Z INFO POST Response Time: 88.986 ms and Status: 201 
+[36mINFO[0m[0175] 2024-11-27T16:04:43.574Z INFO POST Response Time: 84.914 ms and Status: 201 
+[36mINFO[0m[0175] 2024-11-27T16:04:43.576Z INFO POST Response Time: 88.616 ms and Status: 201 
+[36mINFO[0m[0175] 2024-11-27T16:04:43.577Z INFO POST Response Time: 96.319 ms and Status: 201 
+[36mINFO[0m[0175] 2024-11-27T16:04:43.580Z INFO POST Response Time: 91.623 ms and Status: 201 
+[36mINFO[0m[0175] 2024-11-27T16:04:43.613Z INFO POST Response Time: 127.361 ms and Status: 201 
+[36mINFO[0m[0175] 2024-11-27T16:04:43.617Z INFO POST Response Time: 126.246 ms and Status: 201 
+[36mINFO[0m[0175] 2024-11-27T16:04:43.760Z INFO POST Response Time: 270.254 ms and Status: 201 
+[36mINFO[0m[0180] 2024-11-27T16:04:48.582Z INFO GET Response Time: 99.942 ms and Status: 200 
+[36mINFO[0m[0180] 2024-11-27T16:04:48.582Z INFO GET Response Time: 86.409 ms and Status: 200 
+[36mINFO[0m[0180] 2024-11-27T16:04:48.587Z INFO GET Response Time: 83.202 ms and Status: 200 
+[36mINFO[0m[0180] 2024-11-27T16:04:48.603Z INFO GET Response Time: 102.654 ms and Status: 200 
+[36mINFO[0m[0180] 2024-11-27T16:04:48.613Z INFO GET Response Time: 109.533 ms and Status: 200 
+[36mINFO[0m[0180] 2024-11-27T16:04:48.630Z INFO GET Response Time: 131.401 ms and Status: 200 
+[36mINFO[0m[0180] 2024-11-27T16:04:48.642Z INFO GET Response Time: 139.190 ms and Status: 200 
+[36mINFO[0m[0180] 2024-11-27T16:04:48.741Z INFO GET Response Time: 243.030 ms and Status: 200 
+[36mINFO[0m[0185] 2024-11-27T16:04:53.571Z INFO PUT Response Time: 82.879 ms and Status: 200 
+[36mINFO[0m[0185] 2024-11-27T16:04:53.575Z INFO PUT Response Time: 85.096 ms and Status: 200 
+[36mINFO[0m[0185] 2024-11-27T16:04:53.575Z INFO PUT Response Time: 93.339 ms and Status: 200 
+[36mINFO[0m[0185] 2024-11-27T16:04:53.579Z INFO PUT Response Time: 88.283 ms and Status: 200 
+[36mINFO[0m[0185] 2024-11-27T16:04:53.579Z INFO PUT Response Time: 94.473 ms and Status: 200 
+[36mINFO[0m[0185] 2024-11-27T16:04:53.579Z INFO PUT Response Time: 92.510 ms and Status: 200 
+[36mINFO[0m[0185] 2024-11-27T16:04:53.606Z INFO PUT Response Time: 118.040 ms and Status: 200 
+[36mINFO[0m[0185] 2024-11-27T16:04:53.699Z INFO PUT Response Time: 210.138 ms and Status: 200 
+[36mINFO[0m[0190] 2024-11-27T16:04:58.574Z INFO DELETE Response Time: 84.022 ms and Status: 200 
+[36mINFO[0m[0200] 2024-11-27T16:05:08.595Z INFO POST Response Time: 100.815 ms and Status: 201 
+[36mINFO[0m[0200] 2024-11-27T16:05:08.597Z INFO POST Response Time: 87.088 ms and Status: 201 
+[36mINFO[0m[0200] 2024-11-27T16:05:08.602Z INFO POST Response Time: 103.977 ms and Status: 201 
+[36mINFO[0m[0200] 2024-11-27T16:05:08.602Z INFO POST Response Time: 96.683 ms and Status: 201 
+[36mINFO[0m[0200] 2024-11-27T16:05:08.602Z INFO POST Response Time: 94.709 ms and Status: 201 
+[36mINFO[0m[0200] 2024-11-27T16:05:08.642Z INFO POST Response Time: 127.650 ms and Status: 201 
+[36mINFO[0m[0200] 2024-11-27T16:05:08.650Z INFO POST Response Time: 149.355 ms and Status: 201 
+[36mINFO[0m[0200] 2024-11-27T16:05:08.674Z INFO POST Response Time: 170.856 ms and Status: 201 
+[36mINFO[0m[0200] 2024-11-27T16:05:08.793Z INFO POST Response Time: 274.088 ms and Status: 201 
+[36mINFO[0m[0205] 2024-11-27T16:05:13.570Z INFO GET Response Time: 84.771 ms and Status: 200 
+[36mINFO[0m[0205] 2024-11-27T16:05:13.576Z INFO GET Response Time: 88.873 ms and Status: 200 
+[36mINFO[0m[0205] 2024-11-27T16:05:13.578Z INFO GET Response Time: 95.403 ms and Status: 200 
+[36mINFO[0m[0205] 2024-11-27T16:05:13.583Z INFO GET Response Time: 95.267 ms and Status: 200 
+[36mINFO[0m[0205] 2024-11-27T16:05:13.588Z INFO GET Response Time: 99.586 ms and Status: 200 
+[36mINFO[0m[0205] 2024-11-27T16:05:13.588Z INFO GET Response Time: 97.857 ms and Status: 200 
+[36mINFO[0m[0205] 2024-11-27T16:05:13.613Z INFO GET Response Time: 126.928 ms and Status: 200 
+[36mINFO[0m[0205] 2024-11-27T16:05:13.626Z INFO GET Response Time: 133.903 ms and Status: 200 
+[36mINFO[0m[0205] 2024-11-27T16:05:13.747Z INFO GET Response Time: 257.731 ms and Status: 200 
+[36mINFO[0m[0210] 2024-11-27T16:05:18.593Z INFO PUT Response Time: 93.291 ms and Status: 200 
+[36mINFO[0m[0210] 2024-11-27T16:05:18.594Z INFO PUT Response Time: 87.512 ms and Status: 200 
+[36mINFO[0m[0210] 2024-11-27T16:05:18.594Z INFO PUT Response Time: 84.692 ms and Status: 200 
+[36mINFO[0m[0210] 2024-11-27T16:05:18.595Z INFO PUT Response Time: 88.851 ms and Status: 200 
+[36mINFO[0m[0210] 2024-11-27T16:05:18.597Z INFO PUT Response Time: 88.264 ms and Status: 200 
+[36mINFO[0m[0210] 2024-11-27T16:05:18.602Z INFO PUT Response Time: 94.649 ms and Status: 200 
+[36mINFO[0m[0210] 2024-11-27T16:05:18.629Z INFO PUT Response Time: 117.389 ms and Status: 200 
+[36mINFO[0m[0210] 2024-11-27T16:05:18.661Z INFO PUT Response Time: 151.556 ms and Status: 200 
+[36mINFO[0m[0210] 2024-11-27T16:05:18.729Z INFO PUT Response Time: 217.961 ms and Status: 200 
+[36mINFO[0m[0215] 2024-11-27T16:05:23.571Z INFO DELETE Response Time: 87.783 ms and Status: 200 
+[36mINFO[0m[0225] 2024-11-27T16:05:33.595Z INFO POST Response Time: 88.562 ms and Status: 201 
+[36mINFO[0m[0225] 2024-11-27T16:05:33.594Z INFO POST Response Time: 85.307 ms and Status: 201 
+[36mINFO[0m[0225] 2024-11-27T16:05:33.594Z INFO POST Response Time: 86.401 ms and Status: 201 
+[36mINFO[0m[0225] 2024-11-27T16:05:33.595Z INFO POST Response Time: 87.693 ms and Status: 201 
+[36mINFO[0m[0225] 2024-11-27T16:05:33.596Z INFO POST Response Time: 86.602 ms and Status: 201 
+[36mINFO[0m[0225] 2024-11-27T16:05:33.596Z INFO POST Response Time: 92.634 ms and Status: 201 
+[36mINFO[0m[0225] 2024-11-27T16:05:33.598Z INFO POST Response Time: 85.163 ms and Status: 201 
+[36mINFO[0m[0225] 2024-11-27T16:05:33.644Z INFO POST Response Time: 124.321 ms and Status: 201 
+[36mINFO[0m[0225] 2024-11-27T16:05:33.673Z INFO POST Response Time: 162.387 ms and Status: 201 
+[36mINFO[0m[0225] 2024-11-27T16:05:33.791Z INFO POST Response Time: 279.233 ms and Status: 201 
+[36mINFO[0m[0230] 2024-11-27T16:05:38.575Z INFO GET Response Time: 97.795 ms and Status: 200 
+[36mINFO[0m[0230] 2024-11-27T16:05:38.576Z INFO GET Response Time: 86.984 ms and Status: 200 
+[36mINFO[0m[0230] 2024-11-27T16:05:38.594Z INFO GET Response Time: 101.139 ms and Status: 200 
+[36mINFO[0m[0230] 2024-11-27T16:05:38.595Z INFO GET Response Time: 96.046 ms and Status: 200 
+[36mINFO[0m[0230] 2024-11-27T16:05:38.595Z INFO GET Response Time: 111.180 ms and Status: 200 
+[36mINFO[0m[0230] 2024-11-27T16:05:38.595Z INFO GET Response Time: 98.359 ms and Status: 200 
+[36mINFO[0m[0230] 2024-11-27T16:05:38.620Z INFO GET Response Time: 133.344 ms and Status: 200 
+[36mINFO[0m[0230] 2024-11-27T16:05:38.620Z INFO GET Response Time: 138.627 ms and Status: 200 
+[36mINFO[0m[0230] 2024-11-27T16:05:38.680Z INFO GET Response Time: 188.575 ms and Status: 200 
+[36mINFO[0m[0230] 2024-11-27T16:05:38.711Z INFO GET Response Time: 215.889 ms and Status: 200 
+[36mINFO[0m[0235] 2024-11-27T16:05:43.567Z INFO PUT Response Time: 79.552 ms and Status: 200 
+[36mINFO[0m[0235] 2024-11-27T16:05:43.571Z INFO PUT Response Time: 80.594 ms and Status: 200 
+[36mINFO[0m[0235] 2024-11-27T16:05:43.573Z INFO PUT Response Time: 89.216 ms and Status: 200 
+[36mINFO[0m[0235] 2024-11-27T16:05:43.578Z INFO PUT Response Time: 83.649 ms and Status: 200 
+[36mINFO[0m[0235] 2024-11-27T16:05:43.584Z INFO PUT Response Time: 95.638 ms and Status: 200 
+[36mINFO[0m[0235] 2024-11-27T16:05:43.597Z INFO PUT Response Time: 99.736 ms and Status: 200 
+[36mINFO[0m[0235] 2024-11-27T16:05:43.597Z INFO PUT Response Time: 103.402 ms and Status: 200 
+[36mINFO[0m[0235] 2024-11-27T16:05:43.629Z INFO PUT Response Time: 134.718 ms and Status: 200 
+[36mINFO[0m[0235] 2024-11-27T16:05:43.630Z INFO PUT Response Time: 137.583 ms and Status: 200 
+[36mINFO[0m[0235] 2024-11-27T16:05:43.713Z INFO PUT Response Time: 229.434 ms and Status: 200 
+[36mINFO[0m[0240] 2024-11-27T16:05:48.583Z INFO DELETE Response Time: 91.374 ms and Status: 200 

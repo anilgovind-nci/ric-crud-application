@@ -7,6 +7,9 @@ const { logToCustomLogGroup } = require("./logToCustomCloudWatch");
 const { CloudWatchLogsClient } = require("@aws-sdk/client-cloudwatch-logs");
 const cloudWatchLogsClient = new CloudWatchLogsClient({ region: process.env.AWS_REGION });
 
+require('./delayInitialization');
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 const { randomUUID } = require('crypto');
 // const LOG_GROUP_NAME = "RIC-CRUD-log-group";
 const logGroupName = process.env.CENTRALISED_LOG_GROUP_NAME;
@@ -57,9 +60,10 @@ const validateInput = (data) => {
 
   return errors;
 };
-
 // Lambda handler function
 const handler = async (event, context) => {
+  
+  await delay(500);
   const requestId = context.awsRequestId;
   const startTime = moment().format();
 

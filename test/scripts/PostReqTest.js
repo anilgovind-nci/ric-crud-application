@@ -19,18 +19,26 @@ async function hitEndpointWithDelays(filePath, endpoint) {
             // Fire the request and log response time
             const startTime = Date.now();
 
-            // Asynchronously make a request
+            // Payload for the POST request
+            const payload = {
+                "id": "75" + i,
+                "pps": "999",
+                "position": "Developer Lead" ,
+                "age": "28",
+                "name": "anilgka"
+            };
+
+            // Asynchronously make a POST request
             axios
-                .get(endpoint) // Change method and payload as required
+                .post(endpoint, payload) // Sending POST request with payload
                 .then(response => {
                     const responseTime = Date.now() - startTime;
                     console.log(`Request ${i + 1}: Response time = ${responseTime} ms`);
-                    console.log(response.status)
                 })
                 .catch(error => {
                     const responseTime = Date.now() - startTime;
-                    console.log(error.message)
-                    console.log(`Request ${i + 1}: Error - Response time = ${responseTime} ms`);
+                    console.error(`Request ${i + 1}: Error - Response time = ${responseTime} ms`);
+                    console.error(error.message || error);
                 });
 
             // Sleep for the delay
@@ -38,11 +46,11 @@ async function hitEndpointWithDelays(filePath, endpoint) {
         }
     }
 
-    // console.log('All requests are sent.');
+    console.log('All requests are sent.');
 }
 
 // Example usage:
 const csvFilePath = path.join(__dirname, 'output.csv'); // Path to CSV file
-const apiEndpoint = 'https://vpsllm3pah.execute-api.eu-west-1.amazonaws.com/dev/ric-get?id=75&pps=999'; // Replace with your endpoint
-// const apiEndpoint = 'http://localhost:3000/ric?id=75&pps=999'
+const apiEndpoint = 'http://localhost:3000/test'; // Replace with your endpoint
+// const apiEndpoint = 'https://vpsllm3pah.execute-api.eu-west-1.amazonaws.com/dev/ric-post'
 hitEndpointWithDelays(csvFilePath, apiEndpoint);

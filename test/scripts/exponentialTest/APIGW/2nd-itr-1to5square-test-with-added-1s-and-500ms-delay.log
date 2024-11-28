@@ -1,0 +1,233 @@
+[36mINFO[0m[0000] 2024-11-27T17:29:04.432Z INFO POST Response Time: 706.286 ms and Status: 201 
+[36mINFO[0m[0005] 2024-11-27T17:29:09.452Z INFO GET Response Time: 761.229 ms and Status: 200 
+[36mINFO[0m[0010] 2024-11-27T17:29:14.363Z INFO PUT Response Time: 679.301 ms and Status: 200 
+[36mINFO[0m[0015] 2024-11-27T17:29:19.276Z INFO DELETE Response Time: 596.068 ms and Status: 200 
+[36mINFO[0m[0025] 2024-11-27T17:29:29.313Z INFO POST Response Time: 639.208 ms and Status: 201 
+[36mINFO[0m[0028] 2024-11-27T17:29:31.566Z INFO POST Response Time: 2887.622 ms and Status: 201 
+[36mINFO[0m[0028] 2024-11-27T17:29:31.566Z INFO POST Response Time: 2880.619 ms and Status: 201 
+[36mINFO[0m[0028] 2024-11-27T17:29:31.590Z INFO POST Response Time: 2915.743 ms and Status: 201 
+[36mINFO[0m[0030] 2024-11-27T17:29:34.331Z INFO GET Response Time: 653.573 ms and Status: 200 
+[36mINFO[0m[0033] 2024-11-27T17:29:37.098Z INFO GET Response Time: 3413.722 ms and Status: 200 
+[36mINFO[0m[0033] 2024-11-27T17:29:37.098Z INFO GET Response Time: 3404.174 ms and Status: 200 
+[36mINFO[0m[0033] 2024-11-27T17:29:37.098Z INFO GET Response Time: 3390.997 ms and Status: 200 
+[36mINFO[0m[0035] 2024-11-27T17:29:39.348Z INFO PUT Response Time: 654.724 ms and Status: 200 
+[36mINFO[0m[0038] 2024-11-27T17:29:41.605Z INFO PUT Response Time: 2906.004 ms and Status: 200 
+[36mINFO[0m[0038] 2024-11-27T17:29:41.605Z INFO PUT Response Time: 2911.832 ms and Status: 200 
+[36mINFO[0m[0038] 2024-11-27T17:29:41.615Z INFO PUT Response Time: 2924.814 ms and Status: 200 
+[36mINFO[0m[0040] 2024-11-27T17:29:44.372Z INFO DELETE Response Time: 683.560 ms and Status: 200 
+[36mINFO[0m[0050] 2024-11-27T17:29:54.305Z INFO POST Response Time: 597.614 ms and Status: 201 
+[36mINFO[0m[0050] 2024-11-27T17:29:54.305Z INFO POST Response Time: 600.787 ms and Status: 201 
+[36mINFO[0m[0050] 2024-11-27T17:29:54.305Z INFO POST Response Time: 601.806 ms and Status: 201 
+[36mINFO[0m[0050] 2024-11-27T17:29:54.305Z INFO POST Response Time: 595.823 ms and Status: 201 
+[36mINFO[0m[0052] 2024-11-27T17:29:56.453Z INFO POST Response Time: 2749.895 ms and Status: 201 
+[36mINFO[0m[0052] 2024-11-27T17:29:56.453Z INFO POST Response Time: 2747.239 ms and Status: 201 
+[36mINFO[0m[0052] 2024-11-27T17:29:56.455Z INFO POST Response Time: 2751.820 ms and Status: 201 
+[36mINFO[0m[0052] 2024-11-27T17:29:56.484Z INFO POST Response Time: 2775.405 ms and Status: 201 
+[36mINFO[0m[0052] 2024-11-27T17:29:56.494Z INFO POST Response Time: 2787.471 ms and Status: 201 
+[36mINFO[0m[0055] 2024-11-27T17:29:59.325Z INFO GET Response Time: 621.677 ms and Status: 200 
+[36mINFO[0m[0055] 2024-11-27T17:29:59.326Z INFO GET Response Time: 626.559 ms and Status: 200 
+[36mINFO[0m[0055] 2024-11-27T17:29:59.325Z INFO GET Response Time: 627.154 ms and Status: 200 
+[36mINFO[0m[0055] 2024-11-27T17:29:59.326Z INFO GET Response Time: 624.987 ms and Status: 200 
+[36mINFO[0m[0057] 2024-11-27T17:30:01.366Z INFO GET Response Time: 2663.728 ms and Status: 200 
+[36mINFO[0m[0057] 2024-11-27T17:30:01.366Z INFO GET Response Time: 2666.550 ms and Status: 200 
+[36mINFO[0m[0057] 2024-11-27T17:30:01.366Z INFO GET Response Time: 2661.957 ms and Status: 200 
+[36mINFO[0m[0057] 2024-11-27T17:30:01.367Z INFO GET Response Time: 2664.740 ms and Status: 200 
+[36mINFO[0m[0057] 2024-11-27T17:30:01.436Z INFO GET Response Time: 2740.948 ms and Status: 200 
+[36mINFO[0m[0060] 2024-11-27T17:30:04.277Z INFO PUT Response Time: 587.956 ms and Status: 200 
+[36mINFO[0m[0060] 2024-11-27T17:30:04.282Z INFO PUT Response Time: 596.432 ms and Status: 200 
+[36mINFO[0m[0060] 2024-11-27T17:30:04.282Z INFO PUT Response Time: 595.084 ms and Status: 200 
+[36mINFO[0m[0060] 2024-11-27T17:30:04.282Z INFO PUT Response Time: 607.774 ms and Status: 200 
+[36mINFO[0m[0061] 2024-11-27T17:30:04.845Z INFO PUT Response Time: 591.921 ms and Status: 200 
+[36mINFO[0m[0062] 2024-11-27T17:30:06.425Z INFO PUT Response Time: 2730.167 ms and Status: 200 
+[36mINFO[0m[0062] 2024-11-27T17:30:06.452Z INFO PUT Response Time: 2767.542 ms and Status: 200 
+[36mINFO[0m[0062] 2024-11-27T17:30:06.455Z INFO PUT Response Time: 2761.499 ms and Status: 200 
+[36mINFO[0m[0063] 2024-11-27T17:30:06.793Z INFO PUT Response Time: 2656.425 ms and Status: 200 
+[36mINFO[0m[0065] 2024-11-27T17:30:09.354Z INFO DELETE Response Time: 675.760 ms and Status: 200 
+[36mINFO[0m[0075] 2024-11-27T17:30:18.736Z INFO POST Response Time: 28.139 ms and Status: 500 
+[31mERRO[0m[0075] 2024-11-27T17:30:18.736Z ERROR POST 500 {"message": "Internal server error"} 
+[36mINFO[0m[0075] 2024-11-27T17:30:18.741Z INFO POST Response Time: 35.298 ms and Status: 500 
+[31mERRO[0m[0075] 2024-11-27T17:30:18.741Z ERROR POST 500 {"message": "Internal server error"} 
+[36mINFO[0m[0075] 2024-11-27T17:30:18.741Z INFO POST Response Time: 42.331 ms and Status: 500 
+[31mERRO[0m[0075] 2024-11-27T17:30:18.741Z ERROR POST 500 {"message": "Internal server error"} 
+[36mINFO[0m[0075] 2024-11-27T17:30:18.742Z INFO POST Response Time: 29.076 ms and Status: 500 
+[31mERRO[0m[0075] 2024-11-27T17:30:18.742Z ERROR POST 500 {"message": "Internal server error"} 
+[36mINFO[0m[0075] 2024-11-27T17:30:18.742Z INFO POST Response Time: 38.716 ms and Status: 500 
+[31mERRO[0m[0075] 2024-11-27T17:30:18.742Z ERROR POST 500 {"message": "Internal server error"} 
+[36mINFO[0m[0075] 2024-11-27T17:30:18.742Z INFO POST Response Time: 31.716 ms and Status: 500 
+[31mERRO[0m[0075] 2024-11-27T17:30:18.742Z ERROR POST 500 {"message": "Internal server error"} 
+[36mINFO[0m[0075] 2024-11-27T17:30:19.285Z INFO POST Response Time: 601.404 ms and Status: 201 
+[36mINFO[0m[0075] 2024-11-27T17:30:19.285Z INFO POST Response Time: 596.502 ms and Status: 201 
+[36mINFO[0m[0075] 2024-11-27T17:30:19.285Z INFO POST Response Time: 592.380 ms and Status: 201 
+[36mINFO[0m[0075] 2024-11-27T17:30:19.285Z INFO POST Response Time: 605.588 ms and Status: 201 
+[36mINFO[0m[0075] 2024-11-27T17:30:19.285Z INFO POST Response Time: 599.509 ms and Status: 201 
+[36mINFO[0m[0075] 2024-11-27T17:30:19.294Z INFO POST Response Time: 597.644 ms and Status: 201 
+[36mINFO[0m[0075] 2024-11-27T17:30:19.294Z INFO POST Response Time: 599.746 ms and Status: 201 
+[36mINFO[0m[0075] 2024-11-27T17:30:19.297Z INFO POST Response Time: 596.659 ms and Status: 201 
+[36mINFO[0m[0075] 2024-11-27T17:30:19.312Z INFO POST Response Time: 621.655 ms and Status: 201 
+[36mINFO[0m[0078] 2024-11-27T17:30:21.744Z INFO POST Response Time: 3040.777 ms and Status: 201 
+[36mINFO[0m[0080] 2024-11-27T17:30:23.986Z INFO GET Response Time: 34.627 ms and Status: 500 
+[36mINFO[0m[0080] 2024-11-27T17:30:23.986Z INFO GET Response Time: 29.225 ms and Status: 500 
+[31mERRO[0m[0080] 2024-11-27T17:30:23.986Z ERROR GET 500 {"message": "Internal server error"} 
+[31mERRO[0m[0080] 2024-11-27T17:30:23.986Z ERROR GET 500 {"message": "Internal server error"} 
+[36mINFO[0m[0080] 2024-11-27T17:30:23.986Z INFO GET Response Time: 32.194 ms and Status: 500 
+[31mERRO[0m[0080] 2024-11-27T17:30:23.986Z ERROR GET 500 {"message": "Internal server error"} 
+[36mINFO[0m[0080] 2024-11-27T17:30:23.986Z INFO GET Response Time: 27.445 ms and Status: 500 
+[31mERRO[0m[0080] 2024-11-27T17:30:23.986Z ERROR GET 500 {"message": "Internal server error"} 
+[36mINFO[0m[0080] 2024-11-27T17:30:23.986Z INFO GET Response Time: 30.254 ms and Status: 500 
+[31mERRO[0m[0080] 2024-11-27T17:30:23.986Z ERROR GET 500 {"message": "Internal server error"} 
+[36mINFO[0m[0080] 2024-11-27T17:30:23.988Z INFO GET Response Time: 29.898 ms and Status: 500 
+[31mERRO[0m[0080] 2024-11-27T17:30:23.988Z ERROR GET 500 {"message": "Internal server error"} 
+[36mINFO[0m[0081] 2024-11-27T17:30:24.531Z INFO GET Response Time: 590.857 ms and Status: 200 
+[36mINFO[0m[0081] 2024-11-27T17:30:24.531Z INFO GET Response Time: 591.726 ms and Status: 200 
+[36mINFO[0m[0081] 2024-11-27T17:30:24.532Z INFO GET Response Time: 594.017 ms and Status: 200 
+[36mINFO[0m[0081] 2024-11-27T17:30:24.532Z INFO GET Response Time: 598.705 ms and Status: 200 
+[36mINFO[0m[0081] 2024-11-27T17:30:24.534Z INFO GET Response Time: 587.505 ms and Status: 200 
+[36mINFO[0m[0081] 2024-11-27T17:30:24.534Z INFO GET Response Time: 603.766 ms and Status: 200 
+[36mINFO[0m[0081] 2024-11-27T17:30:24.538Z INFO GET Response Time: 585.542 ms and Status: 200 
+[36mINFO[0m[0081] 2024-11-27T17:30:24.548Z INFO GET Response Time: 617.614 ms and Status: 200 
+[36mINFO[0m[0081] 2024-11-27T17:30:24.589Z INFO GET Response Time: 652.941 ms and Status: 200 
+[36mINFO[0m[0083] 2024-11-27T17:30:26.551Z INFO GET Response Time: 2596.626 ms and Status: 200 
+[36mINFO[0m[0085] 2024-11-27T17:30:28.733Z INFO PUT Response Time: 27.215 ms and Status: 500 
+[31mERRO[0m[0085] 2024-11-27T17:30:28.733Z ERROR PUT 500 {"message": "Internal server error"} 
+[36mINFO[0m[0085] 2024-11-27T17:30:28.737Z INFO PUT Response Time: 35.175 ms and Status: 500 
+[31mERRO[0m[0085] 2024-11-27T17:30:28.737Z ERROR PUT 500 {"message": "Internal server error"} 
+[36mINFO[0m[0085] 2024-11-27T17:30:28.737Z INFO PUT Response Time: 39.191 ms and Status: 500 
+[31mERRO[0m[0085] 2024-11-27T17:30:28.737Z ERROR PUT 500 {"message": "Internal server error"} 
+[36mINFO[0m[0085] 2024-11-27T17:30:28.738Z INFO PUT Response Time: 32.880 ms and Status: 500 
+[31mERRO[0m[0085] 2024-11-27T17:30:28.738Z ERROR PUT 500 {"message": "Internal server error"} 
+[36mINFO[0m[0085] 2024-11-27T17:30:28.744Z INFO PUT Response Time: 41.129 ms and Status: 500 
+[31mERRO[0m[0085] 2024-11-27T17:30:28.744Z ERROR PUT 500 {"message": "Internal server error"} 
+[36mINFO[0m[0085] 2024-11-27T17:30:28.753Z INFO PUT Response Time: 53.272 ms and Status: 500 
+[31mERRO[0m[0085] 2024-11-27T17:30:28.753Z ERROR PUT 500 {"message": "Internal server error"} 
+[36mINFO[0m[0085] 2024-11-27T17:30:29.323Z INFO PUT Response Time: 632.738 ms and Status: 200 
+[36mINFO[0m[0085] 2024-11-27T17:30:29.323Z INFO PUT Response Time: 626.705 ms and Status: 200 
+[36mINFO[0m[0085] 2024-11-27T17:30:29.323Z INFO PUT Response Time: 630.540 ms and Status: 200 
+[36mINFO[0m[0085] 2024-11-27T17:30:29.323Z INFO PUT Response Time: 631.613 ms and Status: 200 
+[36mINFO[0m[0085] 2024-11-27T17:30:29.323Z INFO PUT Response Time: 628.668 ms and Status: 200 
+[36mINFO[0m[0085] 2024-11-27T17:30:29.323Z INFO PUT Response Time: 630.074 ms and Status: 200 
+[36mINFO[0m[0085] 2024-11-27T17:30:29.324Z INFO PUT Response Time: 625.750 ms and Status: 200 
+[36mINFO[0m[0085] 2024-11-27T17:30:29.324Z INFO PUT Response Time: 627.400 ms and Status: 200 
+[36mINFO[0m[0087] 2024-11-27T17:30:31.397Z INFO PUT Response Time: 2696.992 ms and Status: 200 
+[36mINFO[0m[0087] 2024-11-27T17:30:31.508Z INFO PUT Response Time: 2810.684 ms and Status: 200 
+[36mINFO[0m[0090] 2024-11-27T17:30:34.335Z INFO DELETE Response Time: 647.930 ms and Status: 200 
+[36mINFO[0m[0100] 2024-11-27T17:30:43.735Z INFO POST Response Time: 38.157 ms and Status: 500 
+[36mINFO[0m[0100] 2024-11-27T17:30:43.735Z INFO POST Response Time: 29.211 ms and Status: 500 
+[31mERRO[0m[0100] 2024-11-27T17:30:43.735Z ERROR POST 500 {"message": "Internal server error"} 
+[31mERRO[0m[0100] 2024-11-27T17:30:43.735Z ERROR POST 500 {"message": "Internal server error"} 
+[36mINFO[0m[0100] 2024-11-27T17:30:43.737Z INFO POST Response Time: 28.769 ms and Status: 500 
+[31mERRO[0m[0100] 2024-11-27T17:30:43.737Z ERROR POST 500 {"message": "Internal server error"} 
+[36mINFO[0m[0100] 2024-11-27T17:30:43.737Z INFO POST Response Time: 30.285 ms and Status: 500 
+[31mERRO[0m[0100] 2024-11-27T17:30:43.737Z ERROR POST 500 {"message": "Internal server error"} 
+[36mINFO[0m[0100] 2024-11-27T17:30:43.737Z INFO POST Response Time: 29.663 ms and Status: 500 
+[31mERRO[0m[0100] 2024-11-27T17:30:43.737Z ERROR POST 500 {"message": "Internal server error"} 
+[36mINFO[0m[0100] 2024-11-27T17:30:43.737Z INFO POST Response Time: 35.058 ms and Status: 500 
+[36mINFO[0m[0100] 2024-11-27T17:30:43.737Z INFO POST Response Time: 27.114 ms and Status: 500 
+[31mERRO[0m[0100] 2024-11-27T17:30:43.737Z ERROR POST 500 {"message": "Internal server error"} 
+[31mERRO[0m[0100] 2024-11-27T17:30:43.737Z ERROR POST 500 {"message": "Internal server error"} 
+[36mINFO[0m[0100] 2024-11-27T17:30:43.737Z INFO POST Response Time: 40.181 ms and Status: 500 
+[31mERRO[0m[0100] 2024-11-27T17:30:43.737Z ERROR POST 500 {"message": "Internal server error"} 
+[36mINFO[0m[0100] 2024-11-27T17:30:43.747Z INFO POST Response Time: 37.936 ms and Status: 500 
+[31mERRO[0m[0100] 2024-11-27T17:30:43.747Z ERROR POST 500 {"message": "Internal server error"} 
+[36mINFO[0m[0100] 2024-11-27T17:30:43.748Z INFO POST Response Time: 36.085 ms and Status: 500 
+[31mERRO[0m[0100] 2024-11-27T17:30:43.748Z ERROR POST 500 {"message": "Internal server error"} 
+[36mINFO[0m[0100] 2024-11-27T17:30:43.752Z INFO POST Response Time: 34.063 ms and Status: 500 
+[31mERRO[0m[0100] 2024-11-27T17:30:43.752Z ERROR POST 500 {"message": "Internal server error"} 
+[36mINFO[0m[0100] 2024-11-27T17:30:43.752Z INFO POST Response Time: 31.895 ms and Status: 500 
+[31mERRO[0m[0100] 2024-11-27T17:30:43.752Z ERROR POST 500 {"message": "Internal server error"} 
+[36mINFO[0m[0100] 2024-11-27T17:30:43.755Z INFO POST Response Time: 32.311 ms and Status: 500 
+[31mERRO[0m[0100] 2024-11-27T17:30:43.755Z ERROR POST 500 {"message": "Internal server error"} 
+[36mINFO[0m[0100] 2024-11-27T17:30:43.756Z INFO POST Response Time: 34.423 ms and Status: 500 
+[31mERRO[0m[0100] 2024-11-27T17:30:43.756Z ERROR POST 500 {"message": "Internal server error"} 
+[36mINFO[0m[0100] 2024-11-27T17:30:43.759Z INFO POST Response Time: 36.244 ms and Status: 500 
+[31mERRO[0m[0100] 2024-11-27T17:30:43.759Z ERROR POST 500 {"message": "Internal server error"} 
+[36mINFO[0m[0100] 2024-11-27T17:30:44.265Z INFO POST Response Time: 585.206 ms and Status: 201 
+[36mINFO[0m[0100] 2024-11-27T17:30:44.267Z INFO POST Response Time: 585.653 ms and Status: 201 
+[36mINFO[0m[0100] 2024-11-27T17:30:44.274Z INFO POST Response Time: 580.816 ms and Status: 201 
+[36mINFO[0m[0100] 2024-11-27T17:30:44.288Z INFO POST Response Time: 582.830 ms and Status: 201 
+[36mINFO[0m[0100] 2024-11-27T17:30:44.289Z INFO POST Response Time: 589.429 ms and Status: 201 
+[36mINFO[0m[0100] 2024-11-27T17:30:44.289Z INFO POST Response Time: 603.245 ms and Status: 201 
+[36mINFO[0m[0100] 2024-11-27T17:30:44.293Z INFO POST Response Time: 591.424 ms and Status: 201 
+[36mINFO[0m[0100] 2024-11-27T17:30:44.294Z INFO POST Response Time: 590.204 ms and Status: 201 
+[36mINFO[0m[0100] 2024-11-27T17:30:44.293Z INFO POST Response Time: 588.998 ms and Status: 201 
+[36mINFO[0m[0100] 2024-11-27T17:30:44.294Z INFO POST Response Time: 594.251 ms and Status: 201 
+[36mINFO[0m[0105] 2024-11-27T17:30:48.734Z INFO GET Response Time: 31.488 ms and Status: 500 
+[31mERRO[0m[0105] 2024-11-27T17:30:48.734Z ERROR GET 500 {"message": "Internal server error"} 
+[36mINFO[0m[0105] 2024-11-27T17:30:48.734Z INFO GET Response Time: 35.862 ms and Status: 500 
+[31mERRO[0m[0105] 2024-11-27T17:30:48.734Z ERROR GET 500 {"message": "Internal server error"} 
+[36mINFO[0m[0105] 2024-11-27T17:30:48.734Z INFO GET Response Time: 30.399 ms and Status: 500 
+[31mERRO[0m[0105] 2024-11-27T17:30:48.734Z ERROR GET 500 {"message": "Internal server error"} 
+[36mINFO[0m[0105] 2024-11-27T17:30:48.735Z INFO GET Response Time: 27.820 ms and Status: 500 
+[31mERRO[0m[0105] 2024-11-27T17:30:48.735Z ERROR GET 500 {"message": "Internal server error"} 
+[36mINFO[0m[0105] 2024-11-27T17:30:48.735Z INFO GET Response Time: 26.963 ms and Status: 500 
+[31mERRO[0m[0105] 2024-11-27T17:30:48.735Z ERROR GET 500 {"message": "Internal server error"} 
+[36mINFO[0m[0105] 2024-11-27T17:30:48.737Z INFO GET Response Time: 33.661 ms and Status: 500 
+[31mERRO[0m[0105] 2024-11-27T17:30:48.737Z ERROR GET 500 {"message": "Internal server error"} 
+[36mINFO[0m[0105] 2024-11-27T17:30:48.738Z INFO GET Response Time: 31.917 ms and Status: 500 
+[31mERRO[0m[0105] 2024-11-27T17:30:48.738Z ERROR GET 500 {"message": "Internal server error"} 
+[36mINFO[0m[0105] 2024-11-27T17:30:48.738Z INFO GET Response Time: 28.215 ms and Status: 500 
+[31mERRO[0m[0105] 2024-11-27T17:30:48.738Z ERROR GET 500 {"message": "Internal server error"} 
+[36mINFO[0m[0105] 2024-11-27T17:30:48.739Z INFO GET Response Time: 28.400 ms and Status: 500 
+[36mINFO[0m[0105] 2024-11-27T17:30:48.739Z INFO GET Response Time: 34.117 ms and Status: 500 
+[31mERRO[0m[0105] 2024-11-27T17:30:48.739Z ERROR GET 500 {"message": "Internal server error"} 
+[31mERRO[0m[0105] 2024-11-27T17:30:48.739Z ERROR GET 500 {"message": "Internal server error"} 
+[36mINFO[0m[0105] 2024-11-27T17:30:48.742Z INFO GET Response Time: 30.201 ms and Status: 500 
+[31mERRO[0m[0105] 2024-11-27T17:30:48.742Z ERROR GET 500 {"message": "Internal server error"} 
+[36mINFO[0m[0105] 2024-11-27T17:30:48.750Z INFO GET Response Time: 65.263 ms and Status: 500 
+[31mERRO[0m[0105] 2024-11-27T17:30:48.750Z ERROR GET 500 {"message": "Internal server error"} 
+[36mINFO[0m[0105] 2024-11-27T17:30:48.757Z INFO GET Response Time: 50.898 ms and Status: 500 
+[31mERRO[0m[0105] 2024-11-27T17:30:48.757Z ERROR GET 500 {"message": "Internal server error"} 
+[36mINFO[0m[0105] 2024-11-27T17:30:48.757Z INFO GET Response Time: 32.124 ms and Status: 500 
+[36mINFO[0m[0105] 2024-11-27T17:30:48.757Z INFO GET Response Time: 39.859 ms and Status: 500 
+[31mERRO[0m[0105] 2024-11-27T17:30:48.757Z ERROR GET 500 {"message": "Internal server error"} 
+[31mERRO[0m[0105] 2024-11-27T17:30:48.757Z ERROR GET 500 {"message": "Internal server error"} 
+[36mINFO[0m[0105] 2024-11-27T17:30:49.290Z INFO GET Response Time: 589.439 ms and Status: 200 
+[36mINFO[0m[0105] 2024-11-27T17:30:49.291Z INFO GET Response Time: 613.577 ms and Status: 200 
+[36mINFO[0m[0105] 2024-11-27T17:30:49.291Z INFO GET Response Time: 604.140 ms and Status: 200 
+[36mINFO[0m[0105] 2024-11-27T17:30:49.290Z INFO GET Response Time: 610.906 ms and Status: 200 
+[36mINFO[0m[0105] 2024-11-27T17:30:49.291Z INFO GET Response Time: 588.504 ms and Status: 200 
+[36mINFO[0m[0105] 2024-11-27T17:30:49.291Z INFO GET Response Time: 590.058 ms and Status: 200 
+[36mINFO[0m[0105] 2024-11-27T17:30:49.291Z INFO GET Response Time: 592.528 ms and Status: 200 
+[36mINFO[0m[0105] 2024-11-27T17:30:49.291Z INFO GET Response Time: 591.031 ms and Status: 200 
+[36mINFO[0m[0105] 2024-11-27T17:30:49.291Z INFO GET Response Time: 595.776 ms and Status: 200 
+[36mINFO[0m[0105] 2024-11-27T17:30:49.296Z INFO GET Response Time: 603.888 ms and Status: 200 
+[36mINFO[0m[0110] 2024-11-27T17:30:53.729Z INFO PUT Response Time: 31.354 ms and Status: 500 
+[36mINFO[0m[0110] 2024-11-27T17:30:53.729Z INFO PUT Response Time: 34.457 ms and Status: 500 
+[31mERRO[0m[0110] 2024-11-27T17:30:53.729Z ERROR PUT 500 {"message": "Internal server error"} 
+[31mERRO[0m[0110] 2024-11-27T17:30:53.729Z ERROR PUT 500 {"message": "Internal server error"} 
+[36mINFO[0m[0110] 2024-11-27T17:30:53.729Z INFO PUT Response Time: 28.373 ms and Status: 500 
+[31mERRO[0m[0110] 2024-11-27T17:30:53.729Z ERROR PUT 500 {"message": "Internal server error"} 
+[36mINFO[0m[0110] 2024-11-27T17:30:53.733Z INFO PUT Response Time: 34.193 ms and Status: 500 
+[31mERRO[0m[0110] 2024-11-27T17:30:53.733Z ERROR PUT 500 {"message": "Internal server error"} 
+[36mINFO[0m[0110] 2024-11-27T17:30:53.733Z INFO PUT Response Time: 37.163 ms and Status: 500 
+[36mINFO[0m[0110] 2024-11-27T17:30:53.733Z INFO PUT Response Time: 31.270 ms and Status: 500 
+[31mERRO[0m[0110] 2024-11-27T17:30:53.733Z ERROR PUT 500 {"message": "Internal server error"} 
+[31mERRO[0m[0110] 2024-11-27T17:30:53.733Z ERROR PUT 500 {"message": "Internal server error"} 
+[36mINFO[0m[0110] 2024-11-27T17:30:53.733Z INFO PUT Response Time: 28.321 ms and Status: 500 
+[31mERRO[0m[0110] 2024-11-27T17:30:53.733Z ERROR PUT 500 {"message": "Internal server error"} 
+[36mINFO[0m[0110] 2024-11-27T17:30:53.733Z INFO PUT Response Time: 29.958 ms and Status: 500 
+[31mERRO[0m[0110] 2024-11-27T17:30:53.733Z ERROR PUT 500 {"message": "Internal server error"} 
+[36mINFO[0m[0110] 2024-11-27T17:30:53.736Z INFO PUT Response Time: 29.168 ms and Status: 500 
+[31mERRO[0m[0110] 2024-11-27T17:30:53.736Z ERROR PUT 500 {"message": "Internal server error"} 
+[36mINFO[0m[0110] 2024-11-27T17:30:53.737Z INFO PUT Response Time: 28.639 ms and Status: 500 
+[31mERRO[0m[0110] 2024-11-27T17:30:53.737Z ERROR PUT 500 {"message": "Internal server error"} 
+[36mINFO[0m[0110] 2024-11-27T17:30:53.744Z INFO PUT Response Time: 33.127 ms and Status: 500 
+[36mINFO[0m[0110] 2024-11-27T17:30:53.744Z INFO PUT Response Time: 29.158 ms and Status: 500 
+[31mERRO[0m[0110] 2024-11-27T17:30:53.744Z ERROR PUT 500 {"message": "Internal server error"} 
+[31mERRO[0m[0110] 2024-11-27T17:30:53.744Z ERROR PUT 500 {"message": "Internal server error"} 
+[36mINFO[0m[0110] 2024-11-27T17:30:53.744Z INFO PUT Response Time: 34.520 ms and Status: 500 
+[31mERRO[0m[0110] 2024-11-27T17:30:53.744Z ERROR PUT 500 {"message": "Internal server error"} 
+[36mINFO[0m[0110] 2024-11-27T17:30:53.745Z INFO PUT Response Time: 32.947 ms and Status: 500 
+[31mERRO[0m[0110] 2024-11-27T17:30:53.745Z ERROR PUT 500 {"message": "Internal server error"} 
+[36mINFO[0m[0110] 2024-11-27T17:30:53.749Z INFO PUT Response Time: 34.777 ms and Status: 500 
+[31mERRO[0m[0110] 2024-11-27T17:30:53.749Z ERROR PUT 500 {"message": "Internal server error"} 
+[36mINFO[0m[0110] 2024-11-27T17:30:54.272Z INFO PUT Response Time: 580.823 ms and Status: 200 
+[36mINFO[0m[0110] 2024-11-27T17:30:54.272Z INFO PUT Response Time: 590.231 ms and Status: 200 
+[36mINFO[0m[0110] 2024-11-27T17:30:54.272Z INFO PUT Response Time: 598.009 ms and Status: 200 
+[36mINFO[0m[0110] 2024-11-27T17:30:54.277Z INFO PUT Response Time: 592.964 ms and Status: 200 
+[36mINFO[0m[0110] 2024-11-27T17:30:54.280Z INFO PUT Response Time: 594.161 ms and Status: 200 
+[36mINFO[0m[0110] 2024-11-27T17:30:54.280Z INFO PUT Response Time: 587.377 ms and Status: 200 
+[36mINFO[0m[0110] 2024-11-27T17:30:54.280Z INFO PUT Response Time: 602.663 ms and Status: 200 
+[36mINFO[0m[0110] 2024-11-27T17:30:54.283Z INFO PUT Response Time: 593.390 ms and Status: 200 
+[36mINFO[0m[0110] 2024-11-27T17:30:54.288Z INFO PUT Response Time: 608.613 ms and Status: 200 
+[36mINFO[0m[0110] 2024-11-27T17:30:54.339Z INFO PUT Response Time: 651.486 ms and Status: 200 
+[36mINFO[0m[0115] 2024-11-27T17:30:59.401Z INFO DELETE Response Time: 714.615 ms and Status: 200 
