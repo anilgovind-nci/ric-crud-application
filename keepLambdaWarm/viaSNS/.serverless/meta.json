@@ -1,0 +1,1612 @@
+{
+  "/Users/anilgovindka/CollageDays/Thesis/ric-crud-application/keepLambdaWarm/viaSNS": {
+    "versionSfCore": null,
+    "versionFramework": "4.4.13",
+    "isWithinCompose": false,
+    "isCompose": false,
+    "composeOrgName": null,
+    "composeResolverProviders": {
+      "default-aws-credential-resolver": "<REDACTED>",
+      "sls": {
+        "instance": {
+          "credentials": "<REDACTED>",
+          "serviceConfigFile": {
+            "service": "ric-sns-lambda",
+            "org": "x23176458",
+            "app": "lambdas",
+            "provider": {
+              "name": "aws",
+              "runtime": "nodejs18.x",
+              "region": "eu-west-1",
+              "timeout": 30,
+              "iam": {
+                "role": {
+                  "statements": [
+                    {
+                      "Effect": "Allow",
+                      "Action": [
+                        "sns:Publish"
+                      ],
+                      "Resource": [
+                        {
+                          "Ref": "SNSTopic"
+                        }
+                      ]
+                    },
+                    {
+                      "Effect": "Allow",
+                      "Action": [
+                        "dynamodb:*",
+                        "logs:*",
+                        "lambda:GetLayerVersion"
+                      ],
+                      "Resource": "arn:aws:dynamodb:us-east-1:123456789012:table/RIC-EMPLOYEEE-TABLE"
+                    }
+                  ]
+                }
+              },
+              "logs": {
+                "restApi": true,
+                "httpApi": true,
+                "lambda": true
+              },
+              "stage": "dev",
+              "versionFunctions": true,
+              "compiledCloudFormationTemplate": {
+                "AWSTemplateFormatVersion": "2010-09-09",
+                "Description": "The AWS CloudFormation template for this Serverless application",
+                "Resources": {
+                  "SelfInvokingLambdaToPostMessageToSNSLogGroup": {
+                    "Type": "AWS::Logs::LogGroup",
+                    "Properties": {
+                      "LogGroupName": "/aws/lambda/ric-sns-lambda-dev-selfInvokingLambdaToPostMessageToSNS"
+                    }
+                  },
+                  "SnsInvokingGetLambdaLogGroup": {
+                    "Type": "AWS::Logs::LogGroup",
+                    "Properties": {
+                      "LogGroupName": "/aws/lambda/ric-sns-lambda-dev-snsInvokingGetLambda"
+                    }
+                  },
+                  "SnsInvokingPostLambdaLogGroup": {
+                    "Type": "AWS::Logs::LogGroup",
+                    "Properties": {
+                      "LogGroupName": "/aws/lambda/ric-sns-lambda-dev-snsInvokingPostLambda"
+                    }
+                  },
+                  "SnsInvokingPutLambdaLogGroup": {
+                    "Type": "AWS::Logs::LogGroup",
+                    "Properties": {
+                      "LogGroupName": "/aws/lambda/ric-sns-lambda-dev-snsInvokingPutLambda"
+                    }
+                  },
+                  "SnsInvokingDeleteLambdaLogGroup": {
+                    "Type": "AWS::Logs::LogGroup",
+                    "Properties": {
+                      "LogGroupName": "/aws/lambda/ric-sns-lambda-dev-snsInvokingDeleteLambda"
+                    }
+                  },
+                  "IamRoleLambdaExecution": {
+                    "Type": "AWS::IAM::Role",
+                    "Properties": {
+                      "AssumeRolePolicyDocument": {
+                        "Version": "2012-10-17",
+                        "Statement": [
+                          {
+                            "Effect": "Allow",
+                            "Principal": {
+                              "Service": [
+                                "lambda.amazonaws.com"
+                              ]
+                            },
+                            "Action": [
+                              "sts:AssumeRole"
+                            ]
+                          }
+                        ]
+                      },
+                      "Policies": [
+                        {
+                          "PolicyName": {
+                            "Fn::Join": [
+                              "-",
+                              [
+                                "ric-sns-lambda",
+                                "dev",
+                                "lambda"
+                              ]
+                            ]
+                          },
+                          "PolicyDocument": {
+                            "Version": "2012-10-17",
+                            "Statement": [
+                              {
+                                "Effect": "Allow",
+                                "Action": [
+                                  "logs:CreateLogStream",
+                                  "logs:CreateLogGroup",
+                                  "logs:TagResource"
+                                ],
+                                "Resource": [
+                                  {
+                                    "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/ric-sns-lambda-dev*:*"
+                                  }
+                                ]
+                              },
+                              {
+                                "Effect": "Allow",
+                                "Action": [
+                                  "logs:PutLogEvents"
+                                ],
+                                "Resource": [
+                                  {
+                                    "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/ric-sns-lambda-dev*:*:*"
+                                  }
+                                ]
+                              },
+                              {
+                                "Effect": "Allow",
+                                "Action": [
+                                  "sns:Publish"
+                                ],
+                                "Resource": [
+                                  {
+                                    "Ref": "SNSTopic"
+                                  }
+                                ]
+                              },
+                              {
+                                "Effect": "Allow",
+                                "Action": [
+                                  "dynamodb:*",
+                                  "logs:*",
+                                  "lambda:GetLayerVersion"
+                                ],
+                                "Resource": "arn:aws:dynamodb:us-east-1:123456789012:table/RIC-EMPLOYEEE-TABLE"
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "Path": "/",
+                      "RoleName": {
+                        "Fn::Join": [
+                          "-",
+                          [
+                            "ric-sns-lambda",
+                            "dev",
+                            {
+                              "Ref": "AWS::Region"
+                            },
+                            "lambdaRole"
+                          ]
+                        ]
+                      }
+                    }
+                  },
+                  "SelfInvokingLambdaToPostMessageToSNSLambdaFunction": {
+                    "Type": "AWS::Lambda::Function",
+                    "Properties": {
+                      "Code": {
+                        "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
+                        "S3Key": "serverless/ric-sns-lambda/dev/1732883971588-2024-11-29T12:39:31.588Z/ric-sns-lambda.zip"
+                      },
+                      "Handler": "./selfInvokingLambdaToPostMessageToSNS.handler",
+                      "Runtime": "nodejs18.x",
+                      "FunctionName": "ric-sns-lambda-dev-selfInvokingLambdaToPostMessageToSNS",
+                      "MemorySize": 1024,
+                      "Timeout": 30,
+                      "Environment": {
+                        "Variables": {
+                          "SNS_TOPIC_ARN": {
+                            "Ref": "SNSTopic"
+                          }
+                        }
+                      },
+                      "Role": {
+                        "Fn::GetAtt": [
+                          "IamRoleLambdaExecution",
+                          "Arn"
+                        ]
+                      }
+                    },
+                    "DependsOn": [
+                      "SelfInvokingLambdaToPostMessageToSNSLogGroup"
+                    ]
+                  },
+                  "SnsInvokingGetLambdaLambdaFunction": {
+                    "Type": "AWS::Lambda::Function",
+                    "Properties": {
+                      "Code": {
+                        "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
+                        "S3Key": "serverless/ric-sns-lambda/dev/1732883971588-2024-11-29T12:39:31.588Z/ric-sns-lambda.zip"
+                      },
+                      "Handler": "./snsInvokingGetLambda.handler",
+                      "Runtime": "nodejs18.x",
+                      "FunctionName": "ric-sns-lambda-dev-snsInvokingGetLambda",
+                      "MemorySize": 1024,
+                      "Timeout": 30,
+                      "Environment": {
+                        "Variables": {
+                          "TABLE_NAME": "RIC-EMPLOYEEE-TABLE"
+                        }
+                      },
+                      "Role": {
+                        "Fn::GetAtt": [
+                          "IamRoleLambdaExecution",
+                          "Arn"
+                        ]
+                      },
+                      "Layers": [
+                        "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13"
+                      ]
+                    },
+                    "DependsOn": [
+                      "SnsInvokingGetLambdaLogGroup"
+                    ]
+                  },
+                  "SnsInvokingPostLambdaLambdaFunction": {
+                    "Type": "AWS::Lambda::Function",
+                    "Properties": {
+                      "Code": {
+                        "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
+                        "S3Key": "serverless/ric-sns-lambda/dev/1732883971588-2024-11-29T12:39:31.588Z/ric-sns-lambda.zip"
+                      },
+                      "Handler": "./snsInvokingPostLambda.handler",
+                      "Runtime": "nodejs18.x",
+                      "FunctionName": "ric-sns-lambda-dev-snsInvokingPostLambda",
+                      "MemorySize": 1024,
+                      "Timeout": 30,
+                      "Environment": {
+                        "Variables": {
+                          "TABLE_NAME": "RIC-EMPLOYEEE-TABLE"
+                        }
+                      },
+                      "Role": {
+                        "Fn::GetAtt": [
+                          "IamRoleLambdaExecution",
+                          "Arn"
+                        ]
+                      },
+                      "Layers": [
+                        "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13"
+                      ]
+                    },
+                    "DependsOn": [
+                      "SnsInvokingPostLambdaLogGroup"
+                    ]
+                  },
+                  "SnsInvokingPutLambdaLambdaFunction": {
+                    "Type": "AWS::Lambda::Function",
+                    "Properties": {
+                      "Code": {
+                        "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
+                        "S3Key": "serverless/ric-sns-lambda/dev/1732883971588-2024-11-29T12:39:31.588Z/ric-sns-lambda.zip"
+                      },
+                      "Handler": "./snsInvokingPutLambda.handler",
+                      "Runtime": "nodejs18.x",
+                      "FunctionName": "ric-sns-lambda-dev-snsInvokingPutLambda",
+                      "MemorySize": 1024,
+                      "Timeout": 30,
+                      "Environment": {
+                        "Variables": {
+                          "TABLE_NAME": "RIC-EMPLOYEEE-TABLE"
+                        }
+                      },
+                      "Role": {
+                        "Fn::GetAtt": [
+                          "IamRoleLambdaExecution",
+                          "Arn"
+                        ]
+                      },
+                      "Layers": [
+                        "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13"
+                      ]
+                    },
+                    "DependsOn": [
+                      "SnsInvokingPutLambdaLogGroup"
+                    ]
+                  },
+                  "SnsInvokingDeleteLambdaLambdaFunction": {
+                    "Type": "AWS::Lambda::Function",
+                    "Properties": {
+                      "Code": {
+                        "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
+                        "S3Key": "serverless/ric-sns-lambda/dev/1732883971588-2024-11-29T12:39:31.588Z/ric-sns-lambda.zip"
+                      },
+                      "Handler": "./snsInvokingDeleteLambda.handler",
+                      "Runtime": "nodejs18.x",
+                      "FunctionName": "ric-sns-lambda-dev-snsInvokingDeleteLambda",
+                      "MemorySize": 1024,
+                      "Timeout": 30,
+                      "Environment": {
+                        "Variables": {
+                          "TABLE_NAME": "RIC-EMPLOYEEE-TABLE"
+                        }
+                      },
+                      "Role": {
+                        "Fn::GetAtt": [
+                          "IamRoleLambdaExecution",
+                          "Arn"
+                        ]
+                      },
+                      "Layers": [
+                        "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13"
+                      ]
+                    },
+                    "DependsOn": [
+                      "SnsInvokingDeleteLambdaLogGroup"
+                    ]
+                  },
+                  "SelfInvokingLambdaToPostMessageToSNSLambdaVersionolCoCihbc5mPJSiZhVIP0FmMPrdhx4Tg93OSneWnjk": {
+                    "Type": "AWS::Lambda::Version",
+                    "DeletionPolicy": "Retain",
+                    "Properties": {
+                      "FunctionName": {
+                        "Ref": "SelfInvokingLambdaToPostMessageToSNSLambdaFunction"
+                      },
+                      "CodeSha256": "pjb1mlHNf2MIcKFxrtLe2o4wBWCzVtwGBBI2EWVtt1E="
+                    }
+                  },
+                  "SnsInvokingGetLambdaLambdaVersionlEwo8quyR0gUa7kiCuBuFQ6sczgVxzoy6fL78m2a8I": {
+                    "Type": "AWS::Lambda::Version",
+                    "DeletionPolicy": "Retain",
+                    "Properties": {
+                      "FunctionName": {
+                        "Ref": "SnsInvokingGetLambdaLambdaFunction"
+                      },
+                      "CodeSha256": "pjb1mlHNf2MIcKFxrtLe2o4wBWCzVtwGBBI2EWVtt1E="
+                    }
+                  },
+                  "SnsInvokingPostLambdaLambdaVersionAZr5G9JdNLLEl9sFihte5jMyB4PmaKe39j8CVaf6E": {
+                    "Type": "AWS::Lambda::Version",
+                    "DeletionPolicy": "Retain",
+                    "Properties": {
+                      "FunctionName": {
+                        "Ref": "SnsInvokingPostLambdaLambdaFunction"
+                      },
+                      "CodeSha256": "pjb1mlHNf2MIcKFxrtLe2o4wBWCzVtwGBBI2EWVtt1E="
+                    }
+                  },
+                  "SnsInvokingPutLambdaLambdaVersionhGdES9KLsPjivf5K0ZYIyX6AgHBuHGjAaI6Usvuc8": {
+                    "Type": "AWS::Lambda::Version",
+                    "DeletionPolicy": "Retain",
+                    "Properties": {
+                      "FunctionName": {
+                        "Ref": "SnsInvokingPutLambdaLambdaFunction"
+                      },
+                      "CodeSha256": "pjb1mlHNf2MIcKFxrtLe2o4wBWCzVtwGBBI2EWVtt1E="
+                    }
+                  },
+                  "SnsInvokingDeleteLambdaLambdaVersionBLVP91YAxFyJXsVcFtQDEGFQsrz1X0TwLmpHJonA": {
+                    "Type": "AWS::Lambda::Version",
+                    "DeletionPolicy": "Retain",
+                    "Properties": {
+                      "FunctionName": {
+                        "Ref": "SnsInvokingDeleteLambdaLambdaFunction"
+                      },
+                      "CodeSha256": "pjb1mlHNf2MIcKFxrtLe2o4wBWCzVtwGBBI2EWVtt1E="
+                    }
+                  },
+                  "SelfInvokingLambdaToPostMessageToSNSEventsRuleSchedule1": {
+                    "Type": "AWS::Events::Rule",
+                    "Properties": {
+                      "ScheduleExpression": "rate(5 minutes)",
+                      "State": "ENABLED",
+                      "Targets": [
+                        {
+                          "Arn": {
+                            "Fn::GetAtt": [
+                              "SelfInvokingLambdaToPostMessageToSNSLambdaFunction",
+                              "Arn"
+                            ]
+                          },
+                          "Id": "selfInvokingLambdaToPostMessageToSNSSchedule"
+                        }
+                      ]
+                    }
+                  },
+                  "SelfInvokingLambdaToPostMessageToSNSLambdaPermissionEventsRuleSchedule1": {
+                    "Type": "AWS::Lambda::Permission",
+                    "Properties": {
+                      "FunctionName": {
+                        "Fn::GetAtt": [
+                          "SelfInvokingLambdaToPostMessageToSNSLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "Action": "lambda:InvokeFunction",
+                      "Principal": "events.amazonaws.com",
+                      "SourceArn": {
+                        "Fn::GetAtt": [
+                          "SelfInvokingLambdaToPostMessageToSNSEventsRuleSchedule1",
+                          "Arn"
+                        ]
+                      }
+                    }
+                  },
+                  "SnsInvokingGetLambdaSnsSubscriptionRICSNSTOTRIGGERLAMBDAS": {
+                    "Type": "AWS::SNS::Subscription",
+                    "Properties": {
+                      "TopicArn": {
+                        "Ref": "SNSTopic"
+                      },
+                      "Protocol": "lambda",
+                      "Endpoint": {
+                        "Fn::GetAtt": [
+                          "SnsInvokingGetLambdaLambdaFunction",
+                          "Arn"
+                        ]
+                      }
+                    }
+                  },
+                  "SnsInvokingGetLambdaLambdaPermissionRICSNSTOTRIGGERLAMBDASSNS": {
+                    "Type": "AWS::Lambda::Permission",
+                    "Properties": {
+                      "FunctionName": {
+                        "Fn::GetAtt": [
+                          "SnsInvokingGetLambdaLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "Action": "lambda:InvokeFunction",
+                      "Principal": "sns.amazonaws.com",
+                      "SourceArn": {
+                        "Ref": "SNSTopic"
+                      }
+                    }
+                  },
+                  "SnsInvokingPostLambdaSnsSubscriptionRICSNSTOTRIGGERLAMBDAS": {
+                    "Type": "AWS::SNS::Subscription",
+                    "Properties": {
+                      "TopicArn": {
+                        "Ref": "SNSTopic"
+                      },
+                      "Protocol": "lambda",
+                      "Endpoint": {
+                        "Fn::GetAtt": [
+                          "SnsInvokingPostLambdaLambdaFunction",
+                          "Arn"
+                        ]
+                      }
+                    }
+                  },
+                  "SnsInvokingPostLambdaLambdaPermissionRICSNSTOTRIGGERLAMBDASSNS": {
+                    "Type": "AWS::Lambda::Permission",
+                    "Properties": {
+                      "FunctionName": {
+                        "Fn::GetAtt": [
+                          "SnsInvokingPostLambdaLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "Action": "lambda:InvokeFunction",
+                      "Principal": "sns.amazonaws.com",
+                      "SourceArn": {
+                        "Ref": "SNSTopic"
+                      }
+                    }
+                  },
+                  "SnsInvokingPutLambdaSnsSubscriptionRICSNSTOTRIGGERLAMBDAS": {
+                    "Type": "AWS::SNS::Subscription",
+                    "Properties": {
+                      "TopicArn": {
+                        "Ref": "SNSTopic"
+                      },
+                      "Protocol": "lambda",
+                      "Endpoint": {
+                        "Fn::GetAtt": [
+                          "SnsInvokingPutLambdaLambdaFunction",
+                          "Arn"
+                        ]
+                      }
+                    }
+                  },
+                  "SnsInvokingPutLambdaLambdaPermissionRICSNSTOTRIGGERLAMBDASSNS": {
+                    "Type": "AWS::Lambda::Permission",
+                    "Properties": {
+                      "FunctionName": {
+                        "Fn::GetAtt": [
+                          "SnsInvokingPutLambdaLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "Action": "lambda:InvokeFunction",
+                      "Principal": "sns.amazonaws.com",
+                      "SourceArn": {
+                        "Ref": "SNSTopic"
+                      }
+                    }
+                  },
+                  "SnsInvokingDeleteLambdaSnsSubscriptionRICSNSTOTRIGGERLAMBDAS": {
+                    "Type": "AWS::SNS::Subscription",
+                    "Properties": {
+                      "TopicArn": {
+                        "Ref": "SNSTopic"
+                      },
+                      "Protocol": "lambda",
+                      "Endpoint": {
+                        "Fn::GetAtt": [
+                          "SnsInvokingDeleteLambdaLambdaFunction",
+                          "Arn"
+                        ]
+                      }
+                    }
+                  },
+                  "SnsInvokingDeleteLambdaLambdaPermissionRICSNSTOTRIGGERLAMBDASSNS": {
+                    "Type": "AWS::Lambda::Permission",
+                    "Properties": {
+                      "FunctionName": {
+                        "Fn::GetAtt": [
+                          "SnsInvokingDeleteLambdaLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "Action": "lambda:InvokeFunction",
+                      "Principal": "sns.amazonaws.com",
+                      "SourceArn": {
+                        "Ref": "SNSTopic"
+                      }
+                    }
+                  },
+                  "SNSTopic": {
+                    "Type": "AWS::SNS::Topic",
+                    "Properties": {
+                      "TopicName": "RIC-SNS-TO-TRIGGER-LAMBDAS"
+                    }
+                  }
+                },
+                "Outputs": {
+                  "ServerlessDeploymentBucketName": {
+                    "Value": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
+                    "Export": {
+                      "Name": "sls-ric-sns-lambda-dev-ServerlessDeploymentBucketName"
+                    }
+                  },
+                  "SelfInvokingLambdaToPostMessageToSNSLambdaFunctionQualifiedArn": {
+                    "Description": "Current Lambda function version",
+                    "Value": {
+                      "Ref": "SelfInvokingLambdaToPostMessageToSNSLambdaVersionolCoCihbc5mPJSiZhVIP0FmMPrdhx4Tg93OSneWnjk"
+                    },
+                    "Export": {
+                      "Name": "sls-ric-sns-lambda-dev-SelfInvokingLambdaToPostMessageToSNSLambdaFunctionQualifiedArn"
+                    }
+                  },
+                  "SnsInvokingGetLambdaLambdaFunctionQualifiedArn": {
+                    "Description": "Current Lambda function version",
+                    "Value": {
+                      "Ref": "SnsInvokingGetLambdaLambdaVersionlEwo8quyR0gUa7kiCuBuFQ6sczgVxzoy6fL78m2a8I"
+                    },
+                    "Export": {
+                      "Name": "sls-ric-sns-lambda-dev-SnsInvokingGetLambdaLambdaFunctionQualifiedArn"
+                    }
+                  },
+                  "SnsInvokingPostLambdaLambdaFunctionQualifiedArn": {
+                    "Description": "Current Lambda function version",
+                    "Value": {
+                      "Ref": "SnsInvokingPostLambdaLambdaVersionAZr5G9JdNLLEl9sFihte5jMyB4PmaKe39j8CVaf6E"
+                    },
+                    "Export": {
+                      "Name": "sls-ric-sns-lambda-dev-SnsInvokingPostLambdaLambdaFunctionQualifiedArn"
+                    }
+                  },
+                  "SnsInvokingPutLambdaLambdaFunctionQualifiedArn": {
+                    "Description": "Current Lambda function version",
+                    "Value": {
+                      "Ref": "SnsInvokingPutLambdaLambdaVersionhGdES9KLsPjivf5K0ZYIyX6AgHBuHGjAaI6Usvuc8"
+                    },
+                    "Export": {
+                      "Name": "sls-ric-sns-lambda-dev-SnsInvokingPutLambdaLambdaFunctionQualifiedArn"
+                    }
+                  },
+                  "SnsInvokingDeleteLambdaLambdaFunctionQualifiedArn": {
+                    "Description": "Current Lambda function version",
+                    "Value": {
+                      "Ref": "SnsInvokingDeleteLambdaLambdaVersionBLVP91YAxFyJXsVcFtQDEGFQsrz1X0TwLmpHJonA"
+                    },
+                    "Export": {
+                      "Name": "sls-ric-sns-lambda-dev-SnsInvokingDeleteLambdaLambdaFunctionQualifiedArn"
+                    }
+                  }
+                }
+              },
+              "vpc": {}
+            },
+            "functions": {
+              "selfInvokingLambdaToPostMessageToSNS": {
+                "handler": "./selfInvokingLambdaToPostMessageToSNS.handler",
+                "environment": {
+                  "SNS_TOPIC_ARN": {
+                    "Ref": "SNSTopic"
+                  }
+                },
+                "events": [
+                  {
+                    "schedule": {
+                      "rate": [
+                        "rate(5 minutes)"
+                      ],
+                      "enabled": true
+                    }
+                  }
+                ],
+                "name": "ric-sns-lambda-dev-selfInvokingLambdaToPostMessageToSNS",
+                "package": {},
+                "memory": 1024,
+                "timeout": 30,
+                "runtime": "nodejs18.x",
+                "vpc": {},
+                "versionLogicalId": "SelfInvokingLambdaToPostMessageToSNSLambdaVersionolCoCihbc5mPJSiZhVIP0FmMPrdhx4Tg93OSneWnjk"
+              },
+              "snsInvokingGetLambda": {
+                "handler": "./snsInvokingGetLambda.handler",
+                "environment": {
+                  "TABLE_NAME": "RIC-EMPLOYEEE-TABLE"
+                },
+                "layers": [
+                  "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13"
+                ],
+                "events": [
+                  {
+                    "sns": {
+                      "arn": {
+                        "Ref": "SNSTopic"
+                      },
+                      "topicName": "RIC-SNS-TO-TRIGGER-LAMBDAS"
+                    }
+                  }
+                ],
+                "name": "ric-sns-lambda-dev-snsInvokingGetLambda",
+                "package": {},
+                "memory": 1024,
+                "timeout": 30,
+                "runtime": "nodejs18.x",
+                "vpc": {},
+                "versionLogicalId": "SnsInvokingGetLambdaLambdaVersionlEwo8quyR0gUa7kiCuBuFQ6sczgVxzoy6fL78m2a8I"
+              },
+              "snsInvokingPostLambda": {
+                "handler": "./snsInvokingPostLambda.handler",
+                "environment": {
+                  "TABLE_NAME": "RIC-EMPLOYEEE-TABLE"
+                },
+                "layers": [
+                  "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13"
+                ],
+                "events": [
+                  {
+                    "sns": {
+                      "arn": {
+                        "Ref": "SNSTopic"
+                      },
+                      "topicName": "RIC-SNS-TO-TRIGGER-LAMBDAS"
+                    }
+                  }
+                ],
+                "name": "ric-sns-lambda-dev-snsInvokingPostLambda",
+                "package": {},
+                "memory": 1024,
+                "timeout": 30,
+                "runtime": "nodejs18.x",
+                "vpc": {},
+                "versionLogicalId": "SnsInvokingPostLambdaLambdaVersionAZr5G9JdNLLEl9sFihte5jMyB4PmaKe39j8CVaf6E"
+              },
+              "snsInvokingPutLambda": {
+                "handler": "./snsInvokingPutLambda.handler",
+                "environment": {
+                  "TABLE_NAME": "RIC-EMPLOYEEE-TABLE"
+                },
+                "layers": [
+                  "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13"
+                ],
+                "events": [
+                  {
+                    "sns": {
+                      "arn": {
+                        "Ref": "SNSTopic"
+                      },
+                      "topicName": "RIC-SNS-TO-TRIGGER-LAMBDAS"
+                    }
+                  }
+                ],
+                "name": "ric-sns-lambda-dev-snsInvokingPutLambda",
+                "package": {},
+                "memory": 1024,
+                "timeout": 30,
+                "runtime": "nodejs18.x",
+                "vpc": {},
+                "versionLogicalId": "SnsInvokingPutLambdaLambdaVersionhGdES9KLsPjivf5K0ZYIyX6AgHBuHGjAaI6Usvuc8"
+              },
+              "snsInvokingDeleteLambda": {
+                "handler": "./snsInvokingDeleteLambda.handler",
+                "environment": {
+                  "TABLE_NAME": "RIC-EMPLOYEEE-TABLE"
+                },
+                "layers": [
+                  "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13"
+                ],
+                "events": [
+                  {
+                    "sns": {
+                      "arn": {
+                        "Ref": "SNSTopic"
+                      },
+                      "topicName": "RIC-SNS-TO-TRIGGER-LAMBDAS"
+                    }
+                  }
+                ],
+                "name": "ric-sns-lambda-dev-snsInvokingDeleteLambda",
+                "package": {},
+                "memory": 1024,
+                "timeout": 30,
+                "runtime": "nodejs18.x",
+                "vpc": {},
+                "versionLogicalId": "SnsInvokingDeleteLambdaLambdaVersionBLVP91YAxFyJXsVcFtQDEGFQsrz1X0TwLmpHJonA"
+              }
+            },
+            "resources": {
+              "Resources": {
+                "SNSTopic": {
+                  "Type": "AWS::SNS::Topic",
+                  "Properties": {
+                    "TopicName": "RIC-SNS-TO-TRIGGER-LAMBDAS"
+                  }
+                }
+              },
+              "Outputs": {}
+            },
+            "custom": {
+              "dotenv": {
+                "logging": false
+              }
+            }
+          },
+          "configFileDirPath": "/Users/anilgovindka/CollageDays/Thesis/ric-crud-application/keepLambdaWarm/viaSNS",
+          "config": {
+            "type": "sls"
+          },
+          "options": {},
+          "stage": "dev",
+          "dashboard": null,
+          "logger": {
+            "namespace": "s:core:resolver:sls",
+            "prefix": null,
+            "prefixColor": null
+          },
+          "_credentialsPromise": "<REDACTED>"
+        },
+        "resolvers": {}
+      }
+    },
+    "composeServiceName": null,
+    "servicePath": "/Users/anilgovindka/CollageDays/Thesis/ric-crud-application/keepLambdaWarm/viaSNS",
+    "serviceConfigFileName": "serverless.yml",
+    "service": {
+      "service": "ric-sns-lambda",
+      "org": "x23176458",
+      "app": "lambdas",
+      "provider": {
+        "name": "aws",
+        "runtime": "nodejs18.x",
+        "region": "eu-west-1",
+        "timeout": 30,
+        "iam": {
+          "role": {
+            "statements": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sns:Publish"
+                ],
+                "Resource": [
+                  {
+                    "Ref": "SNSTopic"
+                  }
+                ]
+              },
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "dynamodb:*",
+                  "logs:*",
+                  "lambda:GetLayerVersion"
+                ],
+                "Resource": "arn:aws:dynamodb:us-east-1:123456789012:table/RIC-EMPLOYEEE-TABLE"
+              }
+            ]
+          }
+        },
+        "logs": {
+          "restApi": true,
+          "httpApi": true,
+          "lambda": true
+        },
+        "stage": "dev",
+        "versionFunctions": true,
+        "compiledCloudFormationTemplate": {
+          "AWSTemplateFormatVersion": "2010-09-09",
+          "Description": "The AWS CloudFormation template for this Serverless application",
+          "Resources": {
+            "SelfInvokingLambdaToPostMessageToSNSLogGroup": {
+              "Type": "AWS::Logs::LogGroup",
+              "Properties": {
+                "LogGroupName": "/aws/lambda/ric-sns-lambda-dev-selfInvokingLambdaToPostMessageToSNS"
+              }
+            },
+            "SnsInvokingGetLambdaLogGroup": {
+              "Type": "AWS::Logs::LogGroup",
+              "Properties": {
+                "LogGroupName": "/aws/lambda/ric-sns-lambda-dev-snsInvokingGetLambda"
+              }
+            },
+            "SnsInvokingPostLambdaLogGroup": {
+              "Type": "AWS::Logs::LogGroup",
+              "Properties": {
+                "LogGroupName": "/aws/lambda/ric-sns-lambda-dev-snsInvokingPostLambda"
+              }
+            },
+            "SnsInvokingPutLambdaLogGroup": {
+              "Type": "AWS::Logs::LogGroup",
+              "Properties": {
+                "LogGroupName": "/aws/lambda/ric-sns-lambda-dev-snsInvokingPutLambda"
+              }
+            },
+            "SnsInvokingDeleteLambdaLogGroup": {
+              "Type": "AWS::Logs::LogGroup",
+              "Properties": {
+                "LogGroupName": "/aws/lambda/ric-sns-lambda-dev-snsInvokingDeleteLambda"
+              }
+            },
+            "IamRoleLambdaExecution": {
+              "Type": "AWS::IAM::Role",
+              "Properties": {
+                "AssumeRolePolicyDocument": {
+                  "Version": "2012-10-17",
+                  "Statement": [
+                    {
+                      "Effect": "Allow",
+                      "Principal": {
+                        "Service": [
+                          "lambda.amazonaws.com"
+                        ]
+                      },
+                      "Action": [
+                        "sts:AssumeRole"
+                      ]
+                    }
+                  ]
+                },
+                "Policies": [
+                  {
+                    "PolicyName": {
+                      "Fn::Join": [
+                        "-",
+                        [
+                          "ric-sns-lambda",
+                          "dev",
+                          "lambda"
+                        ]
+                      ]
+                    },
+                    "PolicyDocument": {
+                      "Version": "2012-10-17",
+                      "Statement": [
+                        {
+                          "Effect": "Allow",
+                          "Action": [
+                            "logs:CreateLogStream",
+                            "logs:CreateLogGroup",
+                            "logs:TagResource"
+                          ],
+                          "Resource": [
+                            {
+                              "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/ric-sns-lambda-dev*:*"
+                            }
+                          ]
+                        },
+                        {
+                          "Effect": "Allow",
+                          "Action": [
+                            "logs:PutLogEvents"
+                          ],
+                          "Resource": [
+                            {
+                              "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/ric-sns-lambda-dev*:*:*"
+                            }
+                          ]
+                        },
+                        {
+                          "Effect": "Allow",
+                          "Action": [
+                            "sns:Publish"
+                          ],
+                          "Resource": [
+                            {
+                              "Ref": "SNSTopic"
+                            }
+                          ]
+                        },
+                        {
+                          "Effect": "Allow",
+                          "Action": [
+                            "dynamodb:*",
+                            "logs:*",
+                            "lambda:GetLayerVersion"
+                          ],
+                          "Resource": "arn:aws:dynamodb:us-east-1:123456789012:table/RIC-EMPLOYEEE-TABLE"
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "Path": "/",
+                "RoleName": {
+                  "Fn::Join": [
+                    "-",
+                    [
+                      "ric-sns-lambda",
+                      "dev",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      "lambdaRole"
+                    ]
+                  ]
+                }
+              }
+            },
+            "SelfInvokingLambdaToPostMessageToSNSLambdaFunction": {
+              "Type": "AWS::Lambda::Function",
+              "Properties": {
+                "Code": {
+                  "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
+                  "S3Key": "serverless/ric-sns-lambda/dev/1732883971588-2024-11-29T12:39:31.588Z/ric-sns-lambda.zip"
+                },
+                "Handler": "./selfInvokingLambdaToPostMessageToSNS.handler",
+                "Runtime": "nodejs18.x",
+                "FunctionName": "ric-sns-lambda-dev-selfInvokingLambdaToPostMessageToSNS",
+                "MemorySize": 1024,
+                "Timeout": 30,
+                "Environment": {
+                  "Variables": {
+                    "SNS_TOPIC_ARN": {
+                      "Ref": "SNSTopic"
+                    }
+                  }
+                },
+                "Role": {
+                  "Fn::GetAtt": [
+                    "IamRoleLambdaExecution",
+                    "Arn"
+                  ]
+                }
+              },
+              "DependsOn": [
+                "SelfInvokingLambdaToPostMessageToSNSLogGroup"
+              ]
+            },
+            "SnsInvokingGetLambdaLambdaFunction": {
+              "Type": "AWS::Lambda::Function",
+              "Properties": {
+                "Code": {
+                  "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
+                  "S3Key": "serverless/ric-sns-lambda/dev/1732883971588-2024-11-29T12:39:31.588Z/ric-sns-lambda.zip"
+                },
+                "Handler": "./snsInvokingGetLambda.handler",
+                "Runtime": "nodejs18.x",
+                "FunctionName": "ric-sns-lambda-dev-snsInvokingGetLambda",
+                "MemorySize": 1024,
+                "Timeout": 30,
+                "Environment": {
+                  "Variables": {
+                    "TABLE_NAME": "RIC-EMPLOYEEE-TABLE"
+                  }
+                },
+                "Role": {
+                  "Fn::GetAtt": [
+                    "IamRoleLambdaExecution",
+                    "Arn"
+                  ]
+                },
+                "Layers": [
+                  "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13"
+                ]
+              },
+              "DependsOn": [
+                "SnsInvokingGetLambdaLogGroup"
+              ]
+            },
+            "SnsInvokingPostLambdaLambdaFunction": {
+              "Type": "AWS::Lambda::Function",
+              "Properties": {
+                "Code": {
+                  "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
+                  "S3Key": "serverless/ric-sns-lambda/dev/1732883971588-2024-11-29T12:39:31.588Z/ric-sns-lambda.zip"
+                },
+                "Handler": "./snsInvokingPostLambda.handler",
+                "Runtime": "nodejs18.x",
+                "FunctionName": "ric-sns-lambda-dev-snsInvokingPostLambda",
+                "MemorySize": 1024,
+                "Timeout": 30,
+                "Environment": {
+                  "Variables": {
+                    "TABLE_NAME": "RIC-EMPLOYEEE-TABLE"
+                  }
+                },
+                "Role": {
+                  "Fn::GetAtt": [
+                    "IamRoleLambdaExecution",
+                    "Arn"
+                  ]
+                },
+                "Layers": [
+                  "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13"
+                ]
+              },
+              "DependsOn": [
+                "SnsInvokingPostLambdaLogGroup"
+              ]
+            },
+            "SnsInvokingPutLambdaLambdaFunction": {
+              "Type": "AWS::Lambda::Function",
+              "Properties": {
+                "Code": {
+                  "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
+                  "S3Key": "serverless/ric-sns-lambda/dev/1732883971588-2024-11-29T12:39:31.588Z/ric-sns-lambda.zip"
+                },
+                "Handler": "./snsInvokingPutLambda.handler",
+                "Runtime": "nodejs18.x",
+                "FunctionName": "ric-sns-lambda-dev-snsInvokingPutLambda",
+                "MemorySize": 1024,
+                "Timeout": 30,
+                "Environment": {
+                  "Variables": {
+                    "TABLE_NAME": "RIC-EMPLOYEEE-TABLE"
+                  }
+                },
+                "Role": {
+                  "Fn::GetAtt": [
+                    "IamRoleLambdaExecution",
+                    "Arn"
+                  ]
+                },
+                "Layers": [
+                  "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13"
+                ]
+              },
+              "DependsOn": [
+                "SnsInvokingPutLambdaLogGroup"
+              ]
+            },
+            "SnsInvokingDeleteLambdaLambdaFunction": {
+              "Type": "AWS::Lambda::Function",
+              "Properties": {
+                "Code": {
+                  "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
+                  "S3Key": "serverless/ric-sns-lambda/dev/1732883971588-2024-11-29T12:39:31.588Z/ric-sns-lambda.zip"
+                },
+                "Handler": "./snsInvokingDeleteLambda.handler",
+                "Runtime": "nodejs18.x",
+                "FunctionName": "ric-sns-lambda-dev-snsInvokingDeleteLambda",
+                "MemorySize": 1024,
+                "Timeout": 30,
+                "Environment": {
+                  "Variables": {
+                    "TABLE_NAME": "RIC-EMPLOYEEE-TABLE"
+                  }
+                },
+                "Role": {
+                  "Fn::GetAtt": [
+                    "IamRoleLambdaExecution",
+                    "Arn"
+                  ]
+                },
+                "Layers": [
+                  "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13"
+                ]
+              },
+              "DependsOn": [
+                "SnsInvokingDeleteLambdaLogGroup"
+              ]
+            },
+            "SelfInvokingLambdaToPostMessageToSNSLambdaVersionolCoCihbc5mPJSiZhVIP0FmMPrdhx4Tg93OSneWnjk": {
+              "Type": "AWS::Lambda::Version",
+              "DeletionPolicy": "Retain",
+              "Properties": {
+                "FunctionName": {
+                  "Ref": "SelfInvokingLambdaToPostMessageToSNSLambdaFunction"
+                },
+                "CodeSha256": "pjb1mlHNf2MIcKFxrtLe2o4wBWCzVtwGBBI2EWVtt1E="
+              }
+            },
+            "SnsInvokingGetLambdaLambdaVersionlEwo8quyR0gUa7kiCuBuFQ6sczgVxzoy6fL78m2a8I": {
+              "Type": "AWS::Lambda::Version",
+              "DeletionPolicy": "Retain",
+              "Properties": {
+                "FunctionName": {
+                  "Ref": "SnsInvokingGetLambdaLambdaFunction"
+                },
+                "CodeSha256": "pjb1mlHNf2MIcKFxrtLe2o4wBWCzVtwGBBI2EWVtt1E="
+              }
+            },
+            "SnsInvokingPostLambdaLambdaVersionAZr5G9JdNLLEl9sFihte5jMyB4PmaKe39j8CVaf6E": {
+              "Type": "AWS::Lambda::Version",
+              "DeletionPolicy": "Retain",
+              "Properties": {
+                "FunctionName": {
+                  "Ref": "SnsInvokingPostLambdaLambdaFunction"
+                },
+                "CodeSha256": "pjb1mlHNf2MIcKFxrtLe2o4wBWCzVtwGBBI2EWVtt1E="
+              }
+            },
+            "SnsInvokingPutLambdaLambdaVersionhGdES9KLsPjivf5K0ZYIyX6AgHBuHGjAaI6Usvuc8": {
+              "Type": "AWS::Lambda::Version",
+              "DeletionPolicy": "Retain",
+              "Properties": {
+                "FunctionName": {
+                  "Ref": "SnsInvokingPutLambdaLambdaFunction"
+                },
+                "CodeSha256": "pjb1mlHNf2MIcKFxrtLe2o4wBWCzVtwGBBI2EWVtt1E="
+              }
+            },
+            "SnsInvokingDeleteLambdaLambdaVersionBLVP91YAxFyJXsVcFtQDEGFQsrz1X0TwLmpHJonA": {
+              "Type": "AWS::Lambda::Version",
+              "DeletionPolicy": "Retain",
+              "Properties": {
+                "FunctionName": {
+                  "Ref": "SnsInvokingDeleteLambdaLambdaFunction"
+                },
+                "CodeSha256": "pjb1mlHNf2MIcKFxrtLe2o4wBWCzVtwGBBI2EWVtt1E="
+              }
+            },
+            "SelfInvokingLambdaToPostMessageToSNSEventsRuleSchedule1": {
+              "Type": "AWS::Events::Rule",
+              "Properties": {
+                "ScheduleExpression": "rate(5 minutes)",
+                "State": "ENABLED",
+                "Targets": [
+                  {
+                    "Arn": {
+                      "Fn::GetAtt": [
+                        "SelfInvokingLambdaToPostMessageToSNSLambdaFunction",
+                        "Arn"
+                      ]
+                    },
+                    "Id": "selfInvokingLambdaToPostMessageToSNSSchedule"
+                  }
+                ]
+              }
+            },
+            "SelfInvokingLambdaToPostMessageToSNSLambdaPermissionEventsRuleSchedule1": {
+              "Type": "AWS::Lambda::Permission",
+              "Properties": {
+                "FunctionName": {
+                  "Fn::GetAtt": [
+                    "SelfInvokingLambdaToPostMessageToSNSLambdaFunction",
+                    "Arn"
+                  ]
+                },
+                "Action": "lambda:InvokeFunction",
+                "Principal": "events.amazonaws.com",
+                "SourceArn": {
+                  "Fn::GetAtt": [
+                    "SelfInvokingLambdaToPostMessageToSNSEventsRuleSchedule1",
+                    "Arn"
+                  ]
+                }
+              }
+            },
+            "SnsInvokingGetLambdaSnsSubscriptionRICSNSTOTRIGGERLAMBDAS": {
+              "Type": "AWS::SNS::Subscription",
+              "Properties": {
+                "TopicArn": {
+                  "Ref": "SNSTopic"
+                },
+                "Protocol": "lambda",
+                "Endpoint": {
+                  "Fn::GetAtt": [
+                    "SnsInvokingGetLambdaLambdaFunction",
+                    "Arn"
+                  ]
+                }
+              }
+            },
+            "SnsInvokingGetLambdaLambdaPermissionRICSNSTOTRIGGERLAMBDASSNS": {
+              "Type": "AWS::Lambda::Permission",
+              "Properties": {
+                "FunctionName": {
+                  "Fn::GetAtt": [
+                    "SnsInvokingGetLambdaLambdaFunction",
+                    "Arn"
+                  ]
+                },
+                "Action": "lambda:InvokeFunction",
+                "Principal": "sns.amazonaws.com",
+                "SourceArn": {
+                  "Ref": "SNSTopic"
+                }
+              }
+            },
+            "SnsInvokingPostLambdaSnsSubscriptionRICSNSTOTRIGGERLAMBDAS": {
+              "Type": "AWS::SNS::Subscription",
+              "Properties": {
+                "TopicArn": {
+                  "Ref": "SNSTopic"
+                },
+                "Protocol": "lambda",
+                "Endpoint": {
+                  "Fn::GetAtt": [
+                    "SnsInvokingPostLambdaLambdaFunction",
+                    "Arn"
+                  ]
+                }
+              }
+            },
+            "SnsInvokingPostLambdaLambdaPermissionRICSNSTOTRIGGERLAMBDASSNS": {
+              "Type": "AWS::Lambda::Permission",
+              "Properties": {
+                "FunctionName": {
+                  "Fn::GetAtt": [
+                    "SnsInvokingPostLambdaLambdaFunction",
+                    "Arn"
+                  ]
+                },
+                "Action": "lambda:InvokeFunction",
+                "Principal": "sns.amazonaws.com",
+                "SourceArn": {
+                  "Ref": "SNSTopic"
+                }
+              }
+            },
+            "SnsInvokingPutLambdaSnsSubscriptionRICSNSTOTRIGGERLAMBDAS": {
+              "Type": "AWS::SNS::Subscription",
+              "Properties": {
+                "TopicArn": {
+                  "Ref": "SNSTopic"
+                },
+                "Protocol": "lambda",
+                "Endpoint": {
+                  "Fn::GetAtt": [
+                    "SnsInvokingPutLambdaLambdaFunction",
+                    "Arn"
+                  ]
+                }
+              }
+            },
+            "SnsInvokingPutLambdaLambdaPermissionRICSNSTOTRIGGERLAMBDASSNS": {
+              "Type": "AWS::Lambda::Permission",
+              "Properties": {
+                "FunctionName": {
+                  "Fn::GetAtt": [
+                    "SnsInvokingPutLambdaLambdaFunction",
+                    "Arn"
+                  ]
+                },
+                "Action": "lambda:InvokeFunction",
+                "Principal": "sns.amazonaws.com",
+                "SourceArn": {
+                  "Ref": "SNSTopic"
+                }
+              }
+            },
+            "SnsInvokingDeleteLambdaSnsSubscriptionRICSNSTOTRIGGERLAMBDAS": {
+              "Type": "AWS::SNS::Subscription",
+              "Properties": {
+                "TopicArn": {
+                  "Ref": "SNSTopic"
+                },
+                "Protocol": "lambda",
+                "Endpoint": {
+                  "Fn::GetAtt": [
+                    "SnsInvokingDeleteLambdaLambdaFunction",
+                    "Arn"
+                  ]
+                }
+              }
+            },
+            "SnsInvokingDeleteLambdaLambdaPermissionRICSNSTOTRIGGERLAMBDASSNS": {
+              "Type": "AWS::Lambda::Permission",
+              "Properties": {
+                "FunctionName": {
+                  "Fn::GetAtt": [
+                    "SnsInvokingDeleteLambdaLambdaFunction",
+                    "Arn"
+                  ]
+                },
+                "Action": "lambda:InvokeFunction",
+                "Principal": "sns.amazonaws.com",
+                "SourceArn": {
+                  "Ref": "SNSTopic"
+                }
+              }
+            },
+            "SNSTopic": {
+              "Type": "AWS::SNS::Topic",
+              "Properties": {
+                "TopicName": "RIC-SNS-TO-TRIGGER-LAMBDAS"
+              }
+            }
+          },
+          "Outputs": {
+            "ServerlessDeploymentBucketName": {
+              "Value": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
+              "Export": {
+                "Name": "sls-ric-sns-lambda-dev-ServerlessDeploymentBucketName"
+              }
+            },
+            "SelfInvokingLambdaToPostMessageToSNSLambdaFunctionQualifiedArn": {
+              "Description": "Current Lambda function version",
+              "Value": {
+                "Ref": "SelfInvokingLambdaToPostMessageToSNSLambdaVersionolCoCihbc5mPJSiZhVIP0FmMPrdhx4Tg93OSneWnjk"
+              },
+              "Export": {
+                "Name": "sls-ric-sns-lambda-dev-SelfInvokingLambdaToPostMessageToSNSLambdaFunctionQualifiedArn"
+              }
+            },
+            "SnsInvokingGetLambdaLambdaFunctionQualifiedArn": {
+              "Description": "Current Lambda function version",
+              "Value": {
+                "Ref": "SnsInvokingGetLambdaLambdaVersionlEwo8quyR0gUa7kiCuBuFQ6sczgVxzoy6fL78m2a8I"
+              },
+              "Export": {
+                "Name": "sls-ric-sns-lambda-dev-SnsInvokingGetLambdaLambdaFunctionQualifiedArn"
+              }
+            },
+            "SnsInvokingPostLambdaLambdaFunctionQualifiedArn": {
+              "Description": "Current Lambda function version",
+              "Value": {
+                "Ref": "SnsInvokingPostLambdaLambdaVersionAZr5G9JdNLLEl9sFihte5jMyB4PmaKe39j8CVaf6E"
+              },
+              "Export": {
+                "Name": "sls-ric-sns-lambda-dev-SnsInvokingPostLambdaLambdaFunctionQualifiedArn"
+              }
+            },
+            "SnsInvokingPutLambdaLambdaFunctionQualifiedArn": {
+              "Description": "Current Lambda function version",
+              "Value": {
+                "Ref": "SnsInvokingPutLambdaLambdaVersionhGdES9KLsPjivf5K0ZYIyX6AgHBuHGjAaI6Usvuc8"
+              },
+              "Export": {
+                "Name": "sls-ric-sns-lambda-dev-SnsInvokingPutLambdaLambdaFunctionQualifiedArn"
+              }
+            },
+            "SnsInvokingDeleteLambdaLambdaFunctionQualifiedArn": {
+              "Description": "Current Lambda function version",
+              "Value": {
+                "Ref": "SnsInvokingDeleteLambdaLambdaVersionBLVP91YAxFyJXsVcFtQDEGFQsrz1X0TwLmpHJonA"
+              },
+              "Export": {
+                "Name": "sls-ric-sns-lambda-dev-SnsInvokingDeleteLambdaLambdaFunctionQualifiedArn"
+              }
+            }
+          }
+        },
+        "vpc": {}
+      },
+      "functions": {
+        "selfInvokingLambdaToPostMessageToSNS": {
+          "handler": "./selfInvokingLambdaToPostMessageToSNS.handler",
+          "environment": {
+            "SNS_TOPIC_ARN": {
+              "Ref": "SNSTopic"
+            }
+          },
+          "events": [
+            {
+              "schedule": {
+                "rate": [
+                  "rate(5 minutes)"
+                ],
+                "enabled": true
+              }
+            }
+          ],
+          "name": "ric-sns-lambda-dev-selfInvokingLambdaToPostMessageToSNS",
+          "package": {},
+          "memory": 1024,
+          "timeout": 30,
+          "runtime": "nodejs18.x",
+          "vpc": {},
+          "versionLogicalId": "SelfInvokingLambdaToPostMessageToSNSLambdaVersionolCoCihbc5mPJSiZhVIP0FmMPrdhx4Tg93OSneWnjk"
+        },
+        "snsInvokingGetLambda": {
+          "handler": "./snsInvokingGetLambda.handler",
+          "environment": {
+            "TABLE_NAME": "RIC-EMPLOYEEE-TABLE"
+          },
+          "layers": [
+            "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13"
+          ],
+          "events": [
+            {
+              "sns": {
+                "arn": {
+                  "Ref": "SNSTopic"
+                },
+                "topicName": "RIC-SNS-TO-TRIGGER-LAMBDAS"
+              }
+            }
+          ],
+          "name": "ric-sns-lambda-dev-snsInvokingGetLambda",
+          "package": {},
+          "memory": 1024,
+          "timeout": 30,
+          "runtime": "nodejs18.x",
+          "vpc": {},
+          "versionLogicalId": "SnsInvokingGetLambdaLambdaVersionlEwo8quyR0gUa7kiCuBuFQ6sczgVxzoy6fL78m2a8I"
+        },
+        "snsInvokingPostLambda": {
+          "handler": "./snsInvokingPostLambda.handler",
+          "environment": {
+            "TABLE_NAME": "RIC-EMPLOYEEE-TABLE"
+          },
+          "layers": [
+            "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13"
+          ],
+          "events": [
+            {
+              "sns": {
+                "arn": {
+                  "Ref": "SNSTopic"
+                },
+                "topicName": "RIC-SNS-TO-TRIGGER-LAMBDAS"
+              }
+            }
+          ],
+          "name": "ric-sns-lambda-dev-snsInvokingPostLambda",
+          "package": {},
+          "memory": 1024,
+          "timeout": 30,
+          "runtime": "nodejs18.x",
+          "vpc": {},
+          "versionLogicalId": "SnsInvokingPostLambdaLambdaVersionAZr5G9JdNLLEl9sFihte5jMyB4PmaKe39j8CVaf6E"
+        },
+        "snsInvokingPutLambda": {
+          "handler": "./snsInvokingPutLambda.handler",
+          "environment": {
+            "TABLE_NAME": "RIC-EMPLOYEEE-TABLE"
+          },
+          "layers": [
+            "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13"
+          ],
+          "events": [
+            {
+              "sns": {
+                "arn": {
+                  "Ref": "SNSTopic"
+                },
+                "topicName": "RIC-SNS-TO-TRIGGER-LAMBDAS"
+              }
+            }
+          ],
+          "name": "ric-sns-lambda-dev-snsInvokingPutLambda",
+          "package": {},
+          "memory": 1024,
+          "timeout": 30,
+          "runtime": "nodejs18.x",
+          "vpc": {},
+          "versionLogicalId": "SnsInvokingPutLambdaLambdaVersionhGdES9KLsPjivf5K0ZYIyX6AgHBuHGjAaI6Usvuc8"
+        },
+        "snsInvokingDeleteLambda": {
+          "handler": "./snsInvokingDeleteLambda.handler",
+          "environment": {
+            "TABLE_NAME": "RIC-EMPLOYEEE-TABLE"
+          },
+          "layers": [
+            "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13"
+          ],
+          "events": [
+            {
+              "sns": {
+                "arn": {
+                  "Ref": "SNSTopic"
+                },
+                "topicName": "RIC-SNS-TO-TRIGGER-LAMBDAS"
+              }
+            }
+          ],
+          "name": "ric-sns-lambda-dev-snsInvokingDeleteLambda",
+          "package": {},
+          "memory": 1024,
+          "timeout": 30,
+          "runtime": "nodejs18.x",
+          "vpc": {},
+          "versionLogicalId": "SnsInvokingDeleteLambdaLambdaVersionBLVP91YAxFyJXsVcFtQDEGFQsrz1X0TwLmpHJonA"
+        }
+      },
+      "resources": {
+        "Resources": {
+          "SNSTopic": {
+            "Type": "AWS::SNS::Topic",
+            "Properties": {
+              "TopicName": "RIC-SNS-TO-TRIGGER-LAMBDAS"
+            }
+          }
+        },
+        "Outputs": {}
+      },
+      "custom": {
+        "dotenv": {
+          "logging": false
+        }
+      }
+    },
+    "serviceRawFile": "service: ric-sns-lambda\n\norg: x23176458\napp: lambdas\nprovider:\n  name: aws\n  runtime: nodejs18.x\n  region: eu-west-1\n  timeout: 30\n  iam:\n    role:\n      statements:\n        - Effect: Allow\n          Action:\n            - sns:Publish\n          Resource:\n            - !Ref SNSTopic\n        - Effect: Allow\n          Action:\n            - \"dynamodb:*\"\n            - \"logs:*\"\n            - lambda:GetLayerVersion\n          Resource:\n            - arn:aws:dynamodb:us-east-1:123456789012:table/RIC-EMPLOYEEE-TABLE\n  logs:\n    restApi: true\n    httpApi: true\n    lambda: true\n\nfunctions:\n  selfInvokingLambdaToPostMessageToSNS:\n    handler: ./selfInvokingLambdaToPostMessageToSNS.handler\n    environment:\n      SNS_TOPIC_ARN: !Ref SNSTopic\n    events:\n      - schedule:\n          rate: rate(5 minutes)\n          enabled: true\n\n  snsInvokingGetLambda:\n    handler: ./snsInvokingGetLambda.handler\n    environment:\n      TABLE_NAME: RIC-EMPLOYEEE-TABLE\n    layers:\n      - arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13\n    events:\n      - sns:\n          arn: !Ref SNSTopic\n          topicName: RIC-SNS-TO-TRIGGER-LAMBDAS\n\n  snsInvokingPostLambda:\n    handler: ./snsInvokingPostLambda.handler\n    environment:\n      TABLE_NAME: RIC-EMPLOYEEE-TABLE\n    layers:\n      - arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13\n    events:\n      - sns:\n          arn: !Ref SNSTopic\n          topicName: RIC-SNS-TO-TRIGGER-LAMBDAS\n\n  snsInvokingPutLambda:\n    handler: ./snsInvokingPutLambda.handler\n    environment:\n      TABLE_NAME: RIC-EMPLOYEEE-TABLE\n    layers:\n      - arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13\n    events:\n      - sns:\n          arn: !Ref SNSTopic\n          topicName: RIC-SNS-TO-TRIGGER-LAMBDAS\n\n  snsInvokingDeleteLambda:\n    handler: ./snsInvokingDeleteLambda.handler\n    environment:\n      TABLE_NAME: RIC-EMPLOYEEE-TABLE\n    layers:\n      - arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13\n    events:\n      - sns:\n          arn: !Ref SNSTopic\n          topicName: RIC-SNS-TO-TRIGGER-LAMBDAS\n\nresources:\n  Resources:\n    SNSTopic:\n      Type: AWS::SNS::Topic\n      Properties:\n        TopicName: RIC-SNS-TO-TRIGGER-LAMBDAS\n\ncustom:\n  dotenv:\n    logging: false\n",
+    "command": [
+      "deploy"
+    ],
+    "options": {},
+    "error": null,
+    "params": {},
+    "machineId": "804b105b0d67d7cfefd255ac5a208823",
+    "stage": "dev",
+    "accessKeyV2": "<REDACTED>",
+    "accessKeyV1": "<REDACTED>",
+    "orgId": "090b084b-ba6a-42dd-b7e5-1be967ea7f51",
+    "orgName": "x23176458",
+    "userId": "XdxKKCdVJr17w6SZhj",
+    "dashboard": {
+      "isEnabledForService": true,
+      "requiredAuthentication": false,
+      "orgFeaturesInUse": {
+        "providers": false,
+        "monitoring": false
+      },
+      "orgObservabilityIntegrations": null,
+      "serviceAppId": "y9YyTDlK4ZQyYChjHN",
+      "serviceProvider": null,
+      "instanceParameters": null
+    },
+    "userName": "x23176458",
+    "subscription": null,
+    "userEmail": "x23176458@student.ncirl.ie",
+    "serviceProviderAwsRegion": "eu-west-1",
+    "serviceProviderAwsCredentials": "<REDACTED>",
+    "serviceProviderAwsAccountId": "557690584148",
+    "projectType": "traditional",
+    "versionSf": "4.4.13",
+    "serviceProviderAwsCfStackName": "ric-sns-lambda-dev",
+    "integrations": {},
+    "serviceUniqueId": "arn:aws:cloudformation:eu-west-1:557690584148:stack/ric-sns-lambda-dev/7b6ec920-ae41-11ef-aca3-0240b0653cdf",
+    "serviceProviderAwsCfStackId": "arn:aws:cloudformation:eu-west-1:557690584148:stack/ric-sns-lambda-dev/7b6ec920-ae41-11ef-aca3-0240b0653cdf",
+    "serviceProviderAwsCfStackCreated": "2024-11-29T11:02:53.971Z",
+    "serviceProviderAwsCfStackUpdated": "2024-11-29T12:39:33.882Z",
+    "serviceProviderAwsCfStackStatus": "UPDATE_COMPLETE",
+    "serviceProviderAwsCfStackOutputs": [
+      {
+        "OutputKey": "SelfInvokingLambdaToPostMessageToSNSLambdaFunctionQualifiedArn",
+        "OutputValue": "arn:aws:lambda:eu-west-1:557690584148:function:ric-sns-lambda-dev-selfInvokingLambdaToPostMessageToSNS:11",
+        "Description": "Current Lambda function version",
+        "ExportName": "sls-ric-sns-lambda-dev-SelfInvokingLambdaToPostMessageToSNSLambdaFunctionQualifiedArn"
+      },
+      {
+        "OutputKey": "SnsInvokingGetLambdaLambdaFunctionQualifiedArn",
+        "OutputValue": "arn:aws:lambda:eu-west-1:557690584148:function:ric-sns-lambda-dev-snsInvokingGetLambda:11",
+        "Description": "Current Lambda function version",
+        "ExportName": "sls-ric-sns-lambda-dev-SnsInvokingGetLambdaLambdaFunctionQualifiedArn"
+      },
+      {
+        "OutputKey": "SnsInvokingPutLambdaLambdaFunctionQualifiedArn",
+        "OutputValue": "arn:aws:lambda:eu-west-1:557690584148:function:ric-sns-lambda-dev-snsInvokingPutLambda:11",
+        "Description": "Current Lambda function version",
+        "ExportName": "sls-ric-sns-lambda-dev-SnsInvokingPutLambdaLambdaFunctionQualifiedArn"
+      },
+      {
+        "OutputKey": "SnsInvokingPostLambdaLambdaFunctionQualifiedArn",
+        "OutputValue": "arn:aws:lambda:eu-west-1:557690584148:function:ric-sns-lambda-dev-snsInvokingPostLambda:11",
+        "Description": "Current Lambda function version",
+        "ExportName": "sls-ric-sns-lambda-dev-SnsInvokingPostLambdaLambdaFunctionQualifiedArn"
+      },
+      {
+        "OutputKey": "ServerlessDeploymentBucketName",
+        "OutputValue": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
+        "ExportName": "sls-ric-sns-lambda-dev-ServerlessDeploymentBucketName"
+      },
+      {
+        "OutputKey": "SnsInvokingDeleteLambdaLambdaFunctionQualifiedArn",
+        "OutputValue": "arn:aws:lambda:eu-west-1:557690584148:function:ric-sns-lambda-dev-snsInvokingDeleteLambda:11",
+        "Description": "Current Lambda function version",
+        "ExportName": "sls-ric-sns-lambda-dev-SnsInvokingDeleteLambdaLambdaFunctionQualifiedArn"
+      }
+    ]
+  }
+}

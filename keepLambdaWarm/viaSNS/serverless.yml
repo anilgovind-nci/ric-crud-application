@@ -1,0 +1,93 @@
+service: ric-sns-lambda
+
+org: x23176458
+app: lambdas
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: eu-west-1
+  timeout: 30
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - sns:Publish
+          Resource:
+            - !Ref SNSTopic
+        - Effect: Allow
+          Action:
+            - "dynamodb:*"
+            - "logs:*"
+            - lambda:GetLayerVersion
+          Resource:
+            - arn:aws:dynamodb:us-east-1:123456789012:table/RIC-EMPLOYEEE-TABLE
+  logs:
+    restApi: true
+    httpApi: true
+    lambda: true
+
+functions:
+  selfInvokingLambdaToPostMessageToSNS:
+    handler: ./selfInvokingLambdaToPostMessageToSNS.handler
+    environment:
+      SNS_TOPIC_ARN: !Ref SNSTopic
+    events:
+      - schedule:
+          rate: rate(5 minutes)
+          enabled: true
+
+  snsInvokingGetLambda:
+    handler: ./snsInvokingGetLambda.handler
+    environment:
+      TABLE_NAME: RIC-EMPLOYEEE-TABLE
+    layers:
+      - arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13
+    events:
+      - sns:
+          arn: !Ref SNSTopic
+          topicName: RIC-SNS-TO-TRIGGER-LAMBDAS
+
+  snsInvokingPostLambda:
+    handler: ./snsInvokingPostLambda.handler
+    environment:
+      TABLE_NAME: RIC-EMPLOYEEE-TABLE
+    layers:
+      - arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13
+    events:
+      - sns:
+          arn: !Ref SNSTopic
+          topicName: RIC-SNS-TO-TRIGGER-LAMBDAS
+
+  snsInvokingPutLambda:
+    handler: ./snsInvokingPutLambda.handler
+    environment:
+      TABLE_NAME: RIC-EMPLOYEEE-TABLE
+    layers:
+      - arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13
+    events:
+      - sns:
+          arn: !Ref SNSTopic
+          topicName: RIC-SNS-TO-TRIGGER-LAMBDAS
+
+  snsInvokingDeleteLambda:
+    handler: ./snsInvokingDeleteLambda.handler
+    environment:
+      TABLE_NAME: RIC-EMPLOYEEE-TABLE
+    layers:
+      - arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13
+    events:
+      - sns:
+          arn: !Ref SNSTopic
+          topicName: RIC-SNS-TO-TRIGGER-LAMBDAS
+
+resources:
+  Resources:
+    SNSTopic:
+      Type: AWS::SNS::Topic
+      Properties:
+        TopicName: RIC-SNS-TO-TRIGGER-LAMBDAS
+
+custom:
+  dotenv:
+    logging: false

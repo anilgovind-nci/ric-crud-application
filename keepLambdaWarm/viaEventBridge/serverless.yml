@@ -1,0 +1,55 @@
+service: ric-self-invoking-lambda
+
+org: x23176458
+app: lambdas
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: eu-west-1
+  timeout: 30
+
+functions:
+  autoInvokingGetLambda:
+    handler: autoInvokingGetLambda.handler
+    events:
+      - eventBridge:
+          schedule: rate(5 minutes)
+          input:
+            isRequestForKeepLambdaAlive: true
+    environment:
+      TABLE_NAME: "RIC-EMPLOYEEE-TABLE"
+    layers:
+      - arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13
+  autoInvokingPostLambda:
+    handler: autoInvokingPostLambda.handler
+    events:
+      - eventBridge:
+          schedule: rate(5 minutes)
+          input:
+            isRequestForKeepLambdaAlive: true
+    environment:
+      TABLE_NAME: "RIC-EMPLOYEEE-TABLE"
+    layers:
+      - arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13
+  autoInvokingPutLambda:
+    handler: autoInvokingPutLambda.handler
+    events:
+      - eventBridge:
+          schedule: rate(5 minutes)
+          input:
+            isRequestForKeepLambdaAlive: true
+    environment:
+      TABLE_NAME: "RIC-EMPLOYEEE-TABLE"
+    layers:
+      - arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13
+  autoInvokingDeleteLambda:
+    handler: autoInvokingDeleteLambda.handler
+    events:
+      - eventBridge:
+          schedule: rate(5 minutes)
+          input:
+            isRequestForKeepLambdaAlive: true
+    environment:
+      TABLE_NAME: "RIC-EMPLOYEEE-TABLE"
+    layers:
+      - arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13

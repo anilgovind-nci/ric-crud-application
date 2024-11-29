@@ -1,0 +1,556 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "The AWS CloudFormation template for this Serverless application",
+  "Resources": {
+    "AutoInvokingGetLambdaLogGroup": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": "/aws/lambda/ric-self-invoking-lambda-dev-autoInvokingGetLambda"
+      }
+    },
+    "AutoInvokingPostLambdaLogGroup": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": "/aws/lambda/ric-self-invoking-lambda-dev-autoInvokingPostLambda"
+      }
+    },
+    "AutoInvokingPutLambdaLogGroup": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": "/aws/lambda/ric-self-invoking-lambda-dev-autoInvokingPutLambda"
+      }
+    },
+    "AutoInvokingDeleteLambdaLogGroup": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": "/aws/lambda/ric-self-invoking-lambda-dev-autoInvokingDeleteLambda"
+      }
+    },
+    "IamRoleLambdaExecution": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "Service": [
+                  "lambda.amazonaws.com"
+                ]
+              },
+              "Action": [
+                "sts:AssumeRole"
+              ]
+            }
+          ]
+        },
+        "Policies": [
+          {
+            "PolicyName": {
+              "Fn::Join": [
+                "-",
+                [
+                  "ric-self-invoking-lambda",
+                  "dev",
+                  "lambda"
+                ]
+              ]
+            },
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "logs:CreateLogStream",
+                    "logs:CreateLogGroup",
+                    "logs:TagResource"
+                  ],
+                  "Resource": [
+                    {
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/ric-self-invoking-lambda-dev*:*"
+                    }
+                  ]
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "logs:PutLogEvents"
+                  ],
+                  "Resource": [
+                    {
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/ric-self-invoking-lambda-dev*:*:*"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "Path": "/",
+        "RoleName": {
+          "Fn::Join": [
+            "-",
+            [
+              "ric-self-invoking-lambda",
+              "dev",
+              {
+                "Ref": "AWS::Region"
+              },
+              "lambdaRole"
+            ]
+          ]
+        }
+      }
+    },
+    "AutoInvokingGetLambdaLambdaFunction": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
+          "S3Key": "serverless/ric-self-invoking-lambda/dev/1732889210557-2024-11-29T14:06:50.557Z/ric-self-invoking-lambda.zip"
+        },
+        "Handler": "autoInvokingGetLambda.handler",
+        "Runtime": "nodejs18.x",
+        "FunctionName": "ric-self-invoking-lambda-dev-autoInvokingGetLambda",
+        "MemorySize": 1024,
+        "Timeout": 30,
+        "Environment": {
+          "Variables": {
+            "TABLE_NAME": "RIC-EMPLOYEEE-TABLE"
+          }
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "IamRoleLambdaExecution",
+            "Arn"
+          ]
+        },
+        "Layers": [
+          "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13"
+        ]
+      },
+      "DependsOn": [
+        "AutoInvokingGetLambdaLogGroup"
+      ]
+    },
+    "AutoInvokingPostLambdaLambdaFunction": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
+          "S3Key": "serverless/ric-self-invoking-lambda/dev/1732889210557-2024-11-29T14:06:50.557Z/ric-self-invoking-lambda.zip"
+        },
+        "Handler": "autoInvokingPostLambda.handler",
+        "Runtime": "nodejs18.x",
+        "FunctionName": "ric-self-invoking-lambda-dev-autoInvokingPostLambda",
+        "MemorySize": 1024,
+        "Timeout": 30,
+        "Environment": {
+          "Variables": {
+            "TABLE_NAME": "RIC-EMPLOYEEE-TABLE"
+          }
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "IamRoleLambdaExecution",
+            "Arn"
+          ]
+        },
+        "Layers": [
+          "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13"
+        ]
+      },
+      "DependsOn": [
+        "AutoInvokingPostLambdaLogGroup"
+      ]
+    },
+    "AutoInvokingPutLambdaLambdaFunction": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
+          "S3Key": "serverless/ric-self-invoking-lambda/dev/1732889210557-2024-11-29T14:06:50.557Z/ric-self-invoking-lambda.zip"
+        },
+        "Handler": "autoInvokingPutLambda.handler",
+        "Runtime": "nodejs18.x",
+        "FunctionName": "ric-self-invoking-lambda-dev-autoInvokingPutLambda",
+        "MemorySize": 1024,
+        "Timeout": 30,
+        "Environment": {
+          "Variables": {
+            "TABLE_NAME": "RIC-EMPLOYEEE-TABLE"
+          }
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "IamRoleLambdaExecution",
+            "Arn"
+          ]
+        },
+        "Layers": [
+          "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13"
+        ]
+      },
+      "DependsOn": [
+        "AutoInvokingPutLambdaLogGroup"
+      ]
+    },
+    "AutoInvokingDeleteLambdaLambdaFunction": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
+          "S3Key": "serverless/ric-self-invoking-lambda/dev/1732889210557-2024-11-29T14:06:50.557Z/ric-self-invoking-lambda.zip"
+        },
+        "Handler": "autoInvokingDeleteLambda.handler",
+        "Runtime": "nodejs18.x",
+        "FunctionName": "ric-self-invoking-lambda-dev-autoInvokingDeleteLambda",
+        "MemorySize": 1024,
+        "Timeout": 30,
+        "Environment": {
+          "Variables": {
+            "TABLE_NAME": "RIC-EMPLOYEEE-TABLE"
+          }
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "IamRoleLambdaExecution",
+            "Arn"
+          ]
+        },
+        "Layers": [
+          "arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13"
+        ]
+      },
+      "DependsOn": [
+        "AutoInvokingDeleteLambdaLogGroup"
+      ]
+    },
+    "AutoInvokingGetLambdaLambdaVersionc5yanFpSrFBqMl7XtF8SOLhPCpLaV7nF5QMzVk8Y": {
+      "Type": "AWS::Lambda::Version",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "AutoInvokingGetLambdaLambdaFunction"
+        },
+        "CodeSha256": "q/HM91Sk4+gcrnUFGKxrodHT6KNQE2MTnCTanXnnu98="
+      }
+    },
+    "AutoInvokingPostLambdaLambdaVersiondBs0fyAGMADmzgQx3ouVv1sTEGLO7TifO5xZWk2FFM": {
+      "Type": "AWS::Lambda::Version",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "AutoInvokingPostLambdaLambdaFunction"
+        },
+        "CodeSha256": "q/HM91Sk4+gcrnUFGKxrodHT6KNQE2MTnCTanXnnu98="
+      }
+    },
+    "AutoInvokingPutLambdaLambdaVersionAw41inuS1h7nYchAPtseF4x0Ocb9OvhXE468LL4mzs": {
+      "Type": "AWS::Lambda::Version",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "AutoInvokingPutLambdaLambdaFunction"
+        },
+        "CodeSha256": "q/HM91Sk4+gcrnUFGKxrodHT6KNQE2MTnCTanXnnu98="
+      }
+    },
+    "AutoInvokingDeleteLambdaLambdaVersionXqNZF0PDzMrJ4KLOY25AweO4XFQm3fZTzz5DX6mLw": {
+      "Type": "AWS::Lambda::Version",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "AutoInvokingDeleteLambdaLambdaFunction"
+        },
+        "CodeSha256": "q/HM91Sk4+gcrnUFGKxrodHT6KNQE2MTnCTanXnnu98="
+      }
+    },
+    "RicselfinvokinglambdadevautoInvokingGetLambdarule1EventBridgeRule": {
+      "Type": "AWS::Events::Rule",
+      "Properties": {
+        "Name": "ric-self-invoking-lambda-dev-autoInvokingGetLambda-rule-1",
+        "ScheduleExpression": "rate(5 minutes)",
+        "State": "ENABLED",
+        "Targets": [
+          {
+            "Arn": {
+              "Fn::GetAtt": [
+                "AutoInvokingGetLambdaLambdaFunction",
+                "Arn"
+              ]
+            },
+            "Id": "ric-self-invoking-lambda-dev-autoInvokingGetLambda-rule-1-target",
+            "Input": "{\"isRequestForKeepLambdaAlive\":true}"
+          }
+        ]
+      }
+    },
+    "AutoInvokingGetLambdaEventBridgeLambdaPermission1": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "AutoInvokingGetLambdaLambdaFunction",
+            "Arn"
+          ]
+        },
+        "Principal": "events.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            ":",
+            [
+              "arn",
+              {
+                "Ref": "AWS::Partition"
+              },
+              "events",
+              {
+                "Ref": "AWS::Region"
+              },
+              {
+                "Ref": "AWS::AccountId"
+              },
+              {
+                "Fn::Join": [
+                  "/",
+                  [
+                    "rule",
+                    "ric-self-invoking-lambda-dev-autoInvokingGetLambda-rule-1"
+                  ]
+                ]
+              }
+            ]
+          ]
+        }
+      }
+    },
+    "RicselfinvokinglambdadevautoInvokingPostLambdarule1EventBridgeRule": {
+      "Type": "AWS::Events::Rule",
+      "Properties": {
+        "Name": "ric-self-invoking-lambda-dev-autoInvokingPostLambda-rule-1",
+        "ScheduleExpression": "rate(5 minutes)",
+        "State": "ENABLED",
+        "Targets": [
+          {
+            "Arn": {
+              "Fn::GetAtt": [
+                "AutoInvokingPostLambdaLambdaFunction",
+                "Arn"
+              ]
+            },
+            "Id": "ric-self-invoking-lambda-64546929552fdb57d691286e0555eaac-target",
+            "Input": "{\"isRequestForKeepLambdaAlive\":true}"
+          }
+        ]
+      }
+    },
+    "AutoInvokingPostLambdaEventBridgeLambdaPermission1": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "AutoInvokingPostLambdaLambdaFunction",
+            "Arn"
+          ]
+        },
+        "Principal": "events.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            ":",
+            [
+              "arn",
+              {
+                "Ref": "AWS::Partition"
+              },
+              "events",
+              {
+                "Ref": "AWS::Region"
+              },
+              {
+                "Ref": "AWS::AccountId"
+              },
+              {
+                "Fn::Join": [
+                  "/",
+                  [
+                    "rule",
+                    "ric-self-invoking-lambda-dev-autoInvokingPostLambda-rule-1"
+                  ]
+                ]
+              }
+            ]
+          ]
+        }
+      }
+    },
+    "RicselfinvokinglambdadevautoInvokingPutLambdarule1EventBridgeRule": {
+      "Type": "AWS::Events::Rule",
+      "Properties": {
+        "Name": "ric-self-invoking-lambda-dev-autoInvokingPutLambda-rule-1",
+        "ScheduleExpression": "rate(5 minutes)",
+        "State": "ENABLED",
+        "Targets": [
+          {
+            "Arn": {
+              "Fn::GetAtt": [
+                "AutoInvokingPutLambdaLambdaFunction",
+                "Arn"
+              ]
+            },
+            "Id": "ric-self-invoking-lambda-dev-autoInvokingPutLambda-rule-1-target",
+            "Input": "{\"isRequestForKeepLambdaAlive\":true}"
+          }
+        ]
+      }
+    },
+    "AutoInvokingPutLambdaEventBridgeLambdaPermission1": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "AutoInvokingPutLambdaLambdaFunction",
+            "Arn"
+          ]
+        },
+        "Principal": "events.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            ":",
+            [
+              "arn",
+              {
+                "Ref": "AWS::Partition"
+              },
+              "events",
+              {
+                "Ref": "AWS::Region"
+              },
+              {
+                "Ref": "AWS::AccountId"
+              },
+              {
+                "Fn::Join": [
+                  "/",
+                  [
+                    "rule",
+                    "ric-self-invoking-lambda-dev-autoInvokingPutLambda-rule-1"
+                  ]
+                ]
+              }
+            ]
+          ]
+        }
+      }
+    },
+    "RicselfinvokinglambdadevautoInvokingDeleteLambdarule1EventBridgeRule": {
+      "Type": "AWS::Events::Rule",
+      "Properties": {
+        "Name": "ric-self-invoking-lambda-dev-autoInvokingDeleteLambda-rule-1",
+        "ScheduleExpression": "rate(5 minutes)",
+        "State": "ENABLED",
+        "Targets": [
+          {
+            "Arn": {
+              "Fn::GetAtt": [
+                "AutoInvokingDeleteLambdaLambdaFunction",
+                "Arn"
+              ]
+            },
+            "Id": "ric-self-invoking-lambda-5107ae374e335de2f312909462756fad-target",
+            "Input": "{\"isRequestForKeepLambdaAlive\":true}"
+          }
+        ]
+      }
+    },
+    "AutoInvokingDeleteLambdaEventBridgeLambdaPermission1": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "AutoInvokingDeleteLambdaLambdaFunction",
+            "Arn"
+          ]
+        },
+        "Principal": "events.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            ":",
+            [
+              "arn",
+              {
+                "Ref": "AWS::Partition"
+              },
+              "events",
+              {
+                "Ref": "AWS::Region"
+              },
+              {
+                "Ref": "AWS::AccountId"
+              },
+              {
+                "Fn::Join": [
+                  "/",
+                  [
+                    "rule",
+                    "ric-self-invoking-lambda-dev-autoInvokingDeleteLambda-rule-1"
+                  ]
+                ]
+              }
+            ]
+          ]
+        }
+      }
+    }
+  },
+  "Outputs": {
+    "ServerlessDeploymentBucketName": {
+      "Value": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
+      "Export": {
+        "Name": "sls-ric-self-invoking-lambda-dev-ServerlessDeploymentBucketName"
+      }
+    },
+    "AutoInvokingGetLambdaLambdaFunctionQualifiedArn": {
+      "Description": "Current Lambda function version",
+      "Value": {
+        "Ref": "AutoInvokingGetLambdaLambdaVersionc5yanFpSrFBqMl7XtF8SOLhPCpLaV7nF5QMzVk8Y"
+      },
+      "Export": {
+        "Name": "sls-ric-self-invoking-lambda-dev-AutoInvokingGetLambdaLambdaFunctionQualifiedArn"
+      }
+    },
+    "AutoInvokingPostLambdaLambdaFunctionQualifiedArn": {
+      "Description": "Current Lambda function version",
+      "Value": {
+        "Ref": "AutoInvokingPostLambdaLambdaVersiondBs0fyAGMADmzgQx3ouVv1sTEGLO7TifO5xZWk2FFM"
+      },
+      "Export": {
+        "Name": "sls-ric-self-invoking-lambda-dev-AutoInvokingPostLambdaLambdaFunctionQualifiedArn"
+      }
+    },
+    "AutoInvokingPutLambdaLambdaFunctionQualifiedArn": {
+      "Description": "Current Lambda function version",
+      "Value": {
+        "Ref": "AutoInvokingPutLambdaLambdaVersionAw41inuS1h7nYchAPtseF4x0Ocb9OvhXE468LL4mzs"
+      },
+      "Export": {
+        "Name": "sls-ric-self-invoking-lambda-dev-AutoInvokingPutLambdaLambdaFunctionQualifiedArn"
+      }
+    },
+    "AutoInvokingDeleteLambdaLambdaFunctionQualifiedArn": {
+      "Description": "Current Lambda function version",
+      "Value": {
+        "Ref": "AutoInvokingDeleteLambdaLambdaVersionXqNZF0PDzMrJ4KLOY25AweO4XFQm3fZTzz5DX6mLw"
+      },
+      "Export": {
+        "Name": "sls-ric-self-invoking-lambda-dev-AutoInvokingDeleteLambdaLambdaFunctionQualifiedArn"
+      }
+    }
+  }
+}
