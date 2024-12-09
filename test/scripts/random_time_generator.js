@@ -33,7 +33,7 @@ function saveToCsv(data, filePath) {
 
 // Example usage:
 const timeInSeconds = 5; // Total time in seconds
-const invocations = 20;    // Number of invocations
+const invocations = 15;    // Number of invocations
 const result = generateRandomMilliseconds(timeInSeconds, invocations);
 
 // Specify the output file path

@@ -4,15 +4,16 @@ const { DynamoDBDocumentClient, GetCommand } = require("@aws-sdk/lib-dynamodb");
 const { CloudWatchLogsClient } = require("@aws-sdk/client-cloudwatch-logs");
 const moment = require("moment");
 const validator = require("validator");
-const { logToCustomLogGroup } = require('./logToCustomCloudWatch'); // Import functions
-// Import delay initialization (This will block execution for the first invocation)
-require('./delayInitialization'); // This will block the execution and simulate cold start delay
+const { logToCustomLogGroup } = require('./logToCustomCloudWatch'); 
+//The below line is the custom code for adding artificial delay to the lambda cold start.
+require('./delayInitialization');
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 // Create clients for DynamoDB and CloudWatch Logs
 const client = new DynamoDBClient({ region: process.env.AWS_REGION });
 const dynamoDBClient = DynamoDBDocumentClient.from(client);
 const cloudWatchLogsClient = new CloudWatchLogsClient({ region: process.env.AWS_REGION });
 const logGroupName = process.env.CENTRALISED_LOG_GROUP_NAME;
+
 
 // const LOG_GROUP_NAME = "RIC-CRUD-log-group";
 const lambdaExecutionEnvironment = randomUUID(); // Unique ID for each Lambda invocation
@@ -32,8 +33,7 @@ const validateQueryParams = (params) => {
 };
 // Lambda handler function
 const handler = async (event, context) => {
-  
-  await delay(500);
+  // await delay(500);
   const requestId = context.awsRequestId;
   const startTime = moment().format();
 

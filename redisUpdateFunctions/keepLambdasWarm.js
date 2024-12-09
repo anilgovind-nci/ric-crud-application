@@ -8,7 +8,7 @@ const lambdaClient = new LambdaClient();
 
 exports.handler = async (event) => {
     try {
-        const { timeRange = '20m' } = event;
+        const { timeRange = '2m' } = event;
         const endTime = Date.now();
         const startTime = calculateStartTime(timeRange, endTime);
         const lambdaNames = logGroups.map(group => group.name.split('/').pop());

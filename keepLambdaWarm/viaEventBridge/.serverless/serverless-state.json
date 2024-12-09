@@ -122,7 +122,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
-                "S3Key": "serverless/ric-self-invoking-lambda/dev/1732889210557-2024-11-29T14:06:50.557Z/ric-self-invoking-lambda.zip"
+                "S3Key": "serverless/ric-self-invoking-lambda/dev/1733343532190-2024-12-04T20:18:52.190Z/ric-self-invoking-lambda.zip"
               },
               "Handler": "autoInvokingGetLambda.handler",
               "Runtime": "nodejs18.x",
@@ -153,7 +153,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
-                "S3Key": "serverless/ric-self-invoking-lambda/dev/1732889210557-2024-11-29T14:06:50.557Z/ric-self-invoking-lambda.zip"
+                "S3Key": "serverless/ric-self-invoking-lambda/dev/1733343532190-2024-12-04T20:18:52.190Z/ric-self-invoking-lambda.zip"
               },
               "Handler": "autoInvokingPostLambda.handler",
               "Runtime": "nodejs18.x",
@@ -184,7 +184,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
-                "S3Key": "serverless/ric-self-invoking-lambda/dev/1732889210557-2024-11-29T14:06:50.557Z/ric-self-invoking-lambda.zip"
+                "S3Key": "serverless/ric-self-invoking-lambda/dev/1733343532190-2024-12-04T20:18:52.190Z/ric-self-invoking-lambda.zip"
               },
               "Handler": "autoInvokingPutLambda.handler",
               "Runtime": "nodejs18.x",
@@ -215,7 +215,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
-                "S3Key": "serverless/ric-self-invoking-lambda/dev/1732889210557-2024-11-29T14:06:50.557Z/ric-self-invoking-lambda.zip"
+                "S3Key": "serverless/ric-self-invoking-lambda/dev/1733343532190-2024-12-04T20:18:52.190Z/ric-self-invoking-lambda.zip"
               },
               "Handler": "autoInvokingDeleteLambda.handler",
               "Runtime": "nodejs18.x",
@@ -285,8 +285,8 @@
             "Type": "AWS::Events::Rule",
             "Properties": {
               "Name": "ric-self-invoking-lambda-dev-autoInvokingGetLambda-rule-1",
-              "ScheduleExpression": "rate(5 minutes)",
-              "State": "ENABLED",
+              "ScheduleExpression": "rate(3 minutes)",
+              "State": "DISABLED",
               "Targets": [
                 {
                   "Arn": {
@@ -342,8 +342,8 @@
             "Type": "AWS::Events::Rule",
             "Properties": {
               "Name": "ric-self-invoking-lambda-dev-autoInvokingPostLambda-rule-1",
-              "ScheduleExpression": "rate(5 minutes)",
-              "State": "ENABLED",
+              "ScheduleExpression": "rate(3 minutes)",
+              "State": "DISABLED",
               "Targets": [
                 {
                   "Arn": {
@@ -399,8 +399,8 @@
             "Type": "AWS::Events::Rule",
             "Properties": {
               "Name": "ric-self-invoking-lambda-dev-autoInvokingPutLambda-rule-1",
-              "ScheduleExpression": "rate(5 minutes)",
-              "State": "ENABLED",
+              "ScheduleExpression": "rate(3 minutes)",
+              "State": "DISABLED",
               "Targets": [
                 {
                   "Arn": {
@@ -456,8 +456,8 @@
             "Type": "AWS::Events::Rule",
             "Properties": {
               "Name": "ric-self-invoking-lambda-dev-autoInvokingDeleteLambda-rule-1",
-              "ScheduleExpression": "rate(5 minutes)",
-              "State": "ENABLED",
+              "ScheduleExpression": "rate(3 minutes)",
+              "State": "DISABLED",
               "Targets": [
                 {
                   "Arn": {
@@ -564,7 +564,8 @@
         "events": [
           {
             "eventBridge": {
-              "schedule": "rate(5 minutes)",
+              "schedule": "rate(3 minutes)",
+              "enabled": false,
               "input": {
                 "isRequestForKeepLambdaAlive": true
               }
@@ -590,7 +591,8 @@
         "events": [
           {
             "eventBridge": {
-              "schedule": "rate(5 minutes)",
+              "schedule": "rate(3 minutes)",
+              "enabled": false,
               "input": {
                 "isRequestForKeepLambdaAlive": true
               }
@@ -616,7 +618,8 @@
         "events": [
           {
             "eventBridge": {
-              "schedule": "rate(5 minutes)",
+              "schedule": "rate(3 minutes)",
+              "enabled": false,
               "input": {
                 "isRequestForKeepLambdaAlive": true
               }
@@ -642,7 +645,8 @@
         "events": [
           {
             "eventBridge": {
-              "schedule": "rate(5 minutes)",
+              "schedule": "rate(3 minutes)",
+              "enabled": false,
               "input": {
                 "isRequestForKeepLambdaAlive": true
               }
@@ -685,7 +689,7 @@
     "artifact": "/Users/anilgovindka/CollageDays/Thesis/ric-crud-application/keepLambdaWarm/viaEventBridge/.serverless/ric-self-invoking-lambda.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/ric-self-invoking-lambda/dev/1732889210557-2024-11-29T14:06:50.557Z",
+    "artifactDirectoryName": "serverless/ric-self-invoking-lambda/dev/1733343532190-2024-12-04T20:18:52.190Z",
     "artifact": "ric-self-invoking-lambda.zip"
   }
 }

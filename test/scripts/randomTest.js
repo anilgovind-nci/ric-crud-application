@@ -28,6 +28,7 @@ async function hitEndpointWithDelays(filePath, endpoint) {
                     console.log(response.status)
                 })
                 .catch(error => {
+                    // console.log(error);
                     const responseTime = Date.now() - startTime;
                     console.log(error.message)
                     console.log(`Request ${i + 1}: Error - Response time = ${responseTime} ms`);

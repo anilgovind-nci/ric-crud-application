@@ -135,7 +135,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
-          "S3Key": "serverless/ric-sns-lambda/dev/1732883971588-2024-11-29T12:39:31.588Z/ric-sns-lambda.zip"
+          "S3Key": "serverless/ric-sns-lambda/dev/1733343428189-2024-12-04T20:17:08.189Z/ric-sns-lambda.zip"
         },
         "Handler": "./selfInvokingLambdaToPostMessageToSNS.handler",
         "Runtime": "nodejs18.x",
@@ -165,7 +165,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
-          "S3Key": "serverless/ric-sns-lambda/dev/1732883971588-2024-11-29T12:39:31.588Z/ric-sns-lambda.zip"
+          "S3Key": "serverless/ric-sns-lambda/dev/1733343428189-2024-12-04T20:17:08.189Z/ric-sns-lambda.zip"
         },
         "Handler": "./snsInvokingGetLambda.handler",
         "Runtime": "nodejs18.x",
@@ -196,7 +196,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
-          "S3Key": "serverless/ric-sns-lambda/dev/1732883971588-2024-11-29T12:39:31.588Z/ric-sns-lambda.zip"
+          "S3Key": "serverless/ric-sns-lambda/dev/1733343428189-2024-12-04T20:17:08.189Z/ric-sns-lambda.zip"
         },
         "Handler": "./snsInvokingPostLambda.handler",
         "Runtime": "nodejs18.x",
@@ -227,7 +227,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
-          "S3Key": "serverless/ric-sns-lambda/dev/1732883971588-2024-11-29T12:39:31.588Z/ric-sns-lambda.zip"
+          "S3Key": "serverless/ric-sns-lambda/dev/1733343428189-2024-12-04T20:17:08.189Z/ric-sns-lambda.zip"
         },
         "Handler": "./snsInvokingPutLambda.handler",
         "Runtime": "nodejs18.x",
@@ -258,7 +258,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
-          "S3Key": "serverless/ric-sns-lambda/dev/1732883971588-2024-11-29T12:39:31.588Z/ric-sns-lambda.zip"
+          "S3Key": "serverless/ric-sns-lambda/dev/1733343428189-2024-12-04T20:17:08.189Z/ric-sns-lambda.zip"
         },
         "Handler": "./snsInvokingDeleteLambda.handler",
         "Runtime": "nodejs18.x",
@@ -337,8 +337,8 @@
     "SelfInvokingLambdaToPostMessageToSNSEventsRuleSchedule1": {
       "Type": "AWS::Events::Rule",
       "Properties": {
-        "ScheduleExpression": "rate(5 minutes)",
-        "State": "ENABLED",
+        "ScheduleExpression": "rate(3 minutes)",
+        "State": "DISABLED",
         "Targets": [
           {
             "Arn": {

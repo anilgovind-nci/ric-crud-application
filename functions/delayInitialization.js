@@ -14,6 +14,7 @@ const simulateColdStart = () => {
     initialized = true; // Flag to prevent further delays
   }
 };
+
 // Call simulateColdStart immediately on module load
 simulateColdStart();
 module.exports = { delay }; // Exporting just in case we need it

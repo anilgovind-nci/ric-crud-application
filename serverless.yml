@@ -1,4 +1,3 @@
-# "org" ensures this Service is used with the correct Serverless Framework Access Key.
 org: x23176458
 app: lambdas
 service: ric-crud-application
@@ -6,7 +5,7 @@ service: ric-crud-application
 provider:
   name: aws
   runtime: nodejs18.x
-  region: eu-west-1  # Ensure this matches the region of your layer
+  region: eu-west-1
   iamRoleStatements:
     - Effect: "Allow"
       Action:
@@ -15,10 +14,18 @@ provider:
         - "secretsmanager:GetSecretValue"
         - lambda:GetLayerVersion
       Resource: "*"
+  logs:
+    restApi:
+      accessLogging: true
+      format: '{"requestId":"$context.requestId","ip":"$context.identity.sourceIp","caller":"$context.identity.caller","user":"$context.identity.user","requestTime":"$context.requestTime","httpMethod":"$context.httpMethod","resourcePath":"$context.resourcePath","status":"$context.status","protocol":"$context.protocol","responseLength":"$context.responseLength"}'
+      level: INFO  # Choose from INFO | ERROR
+      executionLogging: true
+      fullExecutionData: true
+      roleManagedExternally: false
 
 functions:
   ricGet:
-    handler: functions/ric-get.handler # Adjust the path based on your file structure
+    handler: functions/ric-get.handler
     environment:
       CENTRALISED_LOG_GROUP_NAME: 'RIC-CRUD-log-group'
     layers:
@@ -28,7 +35,7 @@ functions:
           path: ric-get
           method: get
   ricPost:
-    handler: functions/ric-post.handler # Adjust the path based on your file structure
+    handler: functions/ric-post.handler
     environment:
       CENTRALISED_LOG_GROUP_NAME: 'RIC-CRUD-log-group'
     layers:
@@ -38,7 +45,7 @@ functions:
           path: ric-post
           method: post
   ricDelete:
-    handler: functions/ric-delete.handler # Adjust the path based on your file structure
+    handler: functions/ric-delete.handler
     environment:
       CENTRALISED_LOG_GROUP_NAME: 'RIC-CRUD-log-group'
     layers:
@@ -48,7 +55,7 @@ functions:
           path: ric-delete
           method: delete
   ricPut:
-    handler: functions/ric-put.handler # Adjust the path based on your file structure
+    handler: functions/ric-put.handler
     environment:
       CENTRALISED_LOG_GROUP_NAME: 'RIC-CRUD-log-group'
     layers:

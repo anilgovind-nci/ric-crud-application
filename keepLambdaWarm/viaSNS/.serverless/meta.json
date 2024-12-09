@@ -1,7 +1,7 @@
 {
   "/Users/anilgovindka/CollageDays/Thesis/ric-crud-application/keepLambdaWarm/viaSNS": {
     "versionSfCore": null,
-    "versionFramework": "4.4.13",
+    "versionFramework": "4.4.14",
     "isWithinCompose": false,
     "isCompose": false,
     "composeOrgName": null,
@@ -189,7 +189,7 @@
                     "Properties": {
                       "Code": {
                         "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
-                        "S3Key": "serverless/ric-sns-lambda/dev/1732883971588-2024-11-29T12:39:31.588Z/ric-sns-lambda.zip"
+                        "S3Key": "serverless/ric-sns-lambda/dev/1733343428189-2024-12-04T20:17:08.189Z/ric-sns-lambda.zip"
                       },
                       "Handler": "./selfInvokingLambdaToPostMessageToSNS.handler",
                       "Runtime": "nodejs18.x",
@@ -219,7 +219,7 @@
                     "Properties": {
                       "Code": {
                         "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
-                        "S3Key": "serverless/ric-sns-lambda/dev/1732883971588-2024-11-29T12:39:31.588Z/ric-sns-lambda.zip"
+                        "S3Key": "serverless/ric-sns-lambda/dev/1733343428189-2024-12-04T20:17:08.189Z/ric-sns-lambda.zip"
                       },
                       "Handler": "./snsInvokingGetLambda.handler",
                       "Runtime": "nodejs18.x",
@@ -250,7 +250,7 @@
                     "Properties": {
                       "Code": {
                         "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
-                        "S3Key": "serverless/ric-sns-lambda/dev/1732883971588-2024-11-29T12:39:31.588Z/ric-sns-lambda.zip"
+                        "S3Key": "serverless/ric-sns-lambda/dev/1733343428189-2024-12-04T20:17:08.189Z/ric-sns-lambda.zip"
                       },
                       "Handler": "./snsInvokingPostLambda.handler",
                       "Runtime": "nodejs18.x",
@@ -281,7 +281,7 @@
                     "Properties": {
                       "Code": {
                         "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
-                        "S3Key": "serverless/ric-sns-lambda/dev/1732883971588-2024-11-29T12:39:31.588Z/ric-sns-lambda.zip"
+                        "S3Key": "serverless/ric-sns-lambda/dev/1733343428189-2024-12-04T20:17:08.189Z/ric-sns-lambda.zip"
                       },
                       "Handler": "./snsInvokingPutLambda.handler",
                       "Runtime": "nodejs18.x",
@@ -312,7 +312,7 @@
                     "Properties": {
                       "Code": {
                         "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
-                        "S3Key": "serverless/ric-sns-lambda/dev/1732883971588-2024-11-29T12:39:31.588Z/ric-sns-lambda.zip"
+                        "S3Key": "serverless/ric-sns-lambda/dev/1733343428189-2024-12-04T20:17:08.189Z/ric-sns-lambda.zip"
                       },
                       "Handler": "./snsInvokingDeleteLambda.handler",
                       "Runtime": "nodejs18.x",
@@ -391,8 +391,8 @@
                   "SelfInvokingLambdaToPostMessageToSNSEventsRuleSchedule1": {
                     "Type": "AWS::Events::Rule",
                     "Properties": {
-                      "ScheduleExpression": "rate(5 minutes)",
-                      "State": "ENABLED",
+                      "ScheduleExpression": "rate(3 minutes)",
+                      "State": "DISABLED",
                       "Targets": [
                         {
                           "Arn": {
@@ -624,9 +624,9 @@
                   {
                     "schedule": {
                       "rate": [
-                        "rate(5 minutes)"
+                        "rate(3 minutes)"
                       ],
-                      "enabled": true
+                      "enabled": false
                     }
                   }
                 ],
@@ -959,7 +959,7 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
-                  "S3Key": "serverless/ric-sns-lambda/dev/1732883971588-2024-11-29T12:39:31.588Z/ric-sns-lambda.zip"
+                  "S3Key": "serverless/ric-sns-lambda/dev/1733343428189-2024-12-04T20:17:08.189Z/ric-sns-lambda.zip"
                 },
                 "Handler": "./selfInvokingLambdaToPostMessageToSNS.handler",
                 "Runtime": "nodejs18.x",
@@ -989,7 +989,7 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
-                  "S3Key": "serverless/ric-sns-lambda/dev/1732883971588-2024-11-29T12:39:31.588Z/ric-sns-lambda.zip"
+                  "S3Key": "serverless/ric-sns-lambda/dev/1733343428189-2024-12-04T20:17:08.189Z/ric-sns-lambda.zip"
                 },
                 "Handler": "./snsInvokingGetLambda.handler",
                 "Runtime": "nodejs18.x",
@@ -1020,7 +1020,7 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
-                  "S3Key": "serverless/ric-sns-lambda/dev/1732883971588-2024-11-29T12:39:31.588Z/ric-sns-lambda.zip"
+                  "S3Key": "serverless/ric-sns-lambda/dev/1733343428189-2024-12-04T20:17:08.189Z/ric-sns-lambda.zip"
                 },
                 "Handler": "./snsInvokingPostLambda.handler",
                 "Runtime": "nodejs18.x",
@@ -1051,7 +1051,7 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
-                  "S3Key": "serverless/ric-sns-lambda/dev/1732883971588-2024-11-29T12:39:31.588Z/ric-sns-lambda.zip"
+                  "S3Key": "serverless/ric-sns-lambda/dev/1733343428189-2024-12-04T20:17:08.189Z/ric-sns-lambda.zip"
                 },
                 "Handler": "./snsInvokingPutLambda.handler",
                 "Runtime": "nodejs18.x",
@@ -1082,7 +1082,7 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
-                  "S3Key": "serverless/ric-sns-lambda/dev/1732883971588-2024-11-29T12:39:31.588Z/ric-sns-lambda.zip"
+                  "S3Key": "serverless/ric-sns-lambda/dev/1733343428189-2024-12-04T20:17:08.189Z/ric-sns-lambda.zip"
                 },
                 "Handler": "./snsInvokingDeleteLambda.handler",
                 "Runtime": "nodejs18.x",
@@ -1161,8 +1161,8 @@
             "SelfInvokingLambdaToPostMessageToSNSEventsRuleSchedule1": {
               "Type": "AWS::Events::Rule",
               "Properties": {
-                "ScheduleExpression": "rate(5 minutes)",
-                "State": "ENABLED",
+                "ScheduleExpression": "rate(3 minutes)",
+                "State": "DISABLED",
                 "Targets": [
                   {
                     "Arn": {
@@ -1394,9 +1394,9 @@
             {
               "schedule": {
                 "rate": [
-                  "rate(5 minutes)"
+                  "rate(3 minutes)"
                 ],
-                "enabled": true
+                "enabled": false
               }
             }
           ],
@@ -1530,14 +1530,14 @@
         }
       }
     },
-    "serviceRawFile": "service: ric-sns-lambda\n\norg: x23176458\napp: lambdas\nprovider:\n  name: aws\n  runtime: nodejs18.x\n  region: eu-west-1\n  timeout: 30\n  iam:\n    role:\n      statements:\n        - Effect: Allow\n          Action:\n            - sns:Publish\n          Resource:\n            - !Ref SNSTopic\n        - Effect: Allow\n          Action:\n            - \"dynamodb:*\"\n            - \"logs:*\"\n            - lambda:GetLayerVersion\n          Resource:\n            - arn:aws:dynamodb:us-east-1:123456789012:table/RIC-EMPLOYEEE-TABLE\n  logs:\n    restApi: true\n    httpApi: true\n    lambda: true\n\nfunctions:\n  selfInvokingLambdaToPostMessageToSNS:\n    handler: ./selfInvokingLambdaToPostMessageToSNS.handler\n    environment:\n      SNS_TOPIC_ARN: !Ref SNSTopic\n    events:\n      - schedule:\n          rate: rate(5 minutes)\n          enabled: true\n\n  snsInvokingGetLambda:\n    handler: ./snsInvokingGetLambda.handler\n    environment:\n      TABLE_NAME: RIC-EMPLOYEEE-TABLE\n    layers:\n      - arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13\n    events:\n      - sns:\n          arn: !Ref SNSTopic\n          topicName: RIC-SNS-TO-TRIGGER-LAMBDAS\n\n  snsInvokingPostLambda:\n    handler: ./snsInvokingPostLambda.handler\n    environment:\n      TABLE_NAME: RIC-EMPLOYEEE-TABLE\n    layers:\n      - arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13\n    events:\n      - sns:\n          arn: !Ref SNSTopic\n          topicName: RIC-SNS-TO-TRIGGER-LAMBDAS\n\n  snsInvokingPutLambda:\n    handler: ./snsInvokingPutLambda.handler\n    environment:\n      TABLE_NAME: RIC-EMPLOYEEE-TABLE\n    layers:\n      - arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13\n    events:\n      - sns:\n          arn: !Ref SNSTopic\n          topicName: RIC-SNS-TO-TRIGGER-LAMBDAS\n\n  snsInvokingDeleteLambda:\n    handler: ./snsInvokingDeleteLambda.handler\n    environment:\n      TABLE_NAME: RIC-EMPLOYEEE-TABLE\n    layers:\n      - arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13\n    events:\n      - sns:\n          arn: !Ref SNSTopic\n          topicName: RIC-SNS-TO-TRIGGER-LAMBDAS\n\nresources:\n  Resources:\n    SNSTopic:\n      Type: AWS::SNS::Topic\n      Properties:\n        TopicName: RIC-SNS-TO-TRIGGER-LAMBDAS\n\ncustom:\n  dotenv:\n    logging: false\n",
+    "serviceRawFile": "service: ric-sns-lambda\n\norg: x23176458\napp: lambdas\nprovider:\n  name: aws\n  runtime: nodejs18.x\n  region: eu-west-1\n  timeout: 30\n  iam:\n    role:\n      statements:\n        - Effect: Allow\n          Action:\n            - sns:Publish\n          Resource:\n            - !Ref SNSTopic\n        - Effect: Allow\n          Action:\n            - \"dynamodb:*\"\n            - \"logs:*\"\n            - lambda:GetLayerVersion\n          Resource:\n            - arn:aws:dynamodb:us-east-1:123456789012:table/RIC-EMPLOYEEE-TABLE\n  logs:\n    restApi: true\n    httpApi: true\n    lambda: true\n\nfunctions:\n  selfInvokingLambdaToPostMessageToSNS:\n    handler: ./selfInvokingLambdaToPostMessageToSNS.handler\n    environment:\n      SNS_TOPIC_ARN: !Ref SNSTopic\n    events:\n      - schedule:\n          rate: rate(3 minutes)\n          enabled: false\n\n  snsInvokingGetLambda:\n    handler: ./snsInvokingGetLambda.handler\n    environment:\n      TABLE_NAME: RIC-EMPLOYEEE-TABLE\n    layers:\n      - arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13\n    events:\n      - sns:\n          arn: !Ref SNSTopic\n          topicName: RIC-SNS-TO-TRIGGER-LAMBDAS\n\n  snsInvokingPostLambda:\n    handler: ./snsInvokingPostLambda.handler\n    environment:\n      TABLE_NAME: RIC-EMPLOYEEE-TABLE\n    layers:\n      - arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13\n    events:\n      - sns:\n          arn: !Ref SNSTopic\n          topicName: RIC-SNS-TO-TRIGGER-LAMBDAS\n\n  snsInvokingPutLambda:\n    handler: ./snsInvokingPutLambda.handler\n    environment:\n      TABLE_NAME: RIC-EMPLOYEEE-TABLE\n    layers:\n      - arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13\n    events:\n      - sns:\n          arn: !Ref SNSTopic\n          topicName: RIC-SNS-TO-TRIGGER-LAMBDAS\n\n  snsInvokingDeleteLambda:\n    handler: ./snsInvokingDeleteLambda.handler\n    environment:\n      TABLE_NAME: RIC-EMPLOYEEE-TABLE\n    layers:\n      - arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13\n    events:\n      - sns:\n          arn: !Ref SNSTopic\n          topicName: RIC-SNS-TO-TRIGGER-LAMBDAS\n\nresources:\n  Resources:\n    SNSTopic:\n      Type: AWS::SNS::Topic\n      Properties:\n        TopicName: RIC-SNS-TO-TRIGGER-LAMBDAS\n\ncustom:\n  dotenv:\n    logging: false\n",
     "command": [
       "deploy"
     ],
     "options": {},
     "error": null,
     "params": {},
-    "machineId": "804b105b0d67d7cfefd255ac5a208823",
+    "machineId": "9874c5a76f7c849173020c26e20eb269",
     "stage": "dev",
     "accessKeyV2": "<REDACTED>",
     "accessKeyV1": "<REDACTED>",
@@ -1563,13 +1563,13 @@
     "serviceProviderAwsCredentials": "<REDACTED>",
     "serviceProviderAwsAccountId": "557690584148",
     "projectType": "traditional",
-    "versionSf": "4.4.13",
+    "versionSf": "4.4.14",
     "serviceProviderAwsCfStackName": "ric-sns-lambda-dev",
     "integrations": {},
     "serviceUniqueId": "arn:aws:cloudformation:eu-west-1:557690584148:stack/ric-sns-lambda-dev/7b6ec920-ae41-11ef-aca3-0240b0653cdf",
     "serviceProviderAwsCfStackId": "arn:aws:cloudformation:eu-west-1:557690584148:stack/ric-sns-lambda-dev/7b6ec920-ae41-11ef-aca3-0240b0653cdf",
     "serviceProviderAwsCfStackCreated": "2024-11-29T11:02:53.971Z",
-    "serviceProviderAwsCfStackUpdated": "2024-11-29T12:39:33.882Z",
+    "serviceProviderAwsCfStackUpdated": "2024-12-04T20:17:09.810Z",
     "serviceProviderAwsCfStackStatus": "UPDATE_COMPLETE",
     "serviceProviderAwsCfStackOutputs": [
       {

@@ -1,0 +1,39 @@
+[2024-12-09T14:52:37.459Z] Processing firstInvoke with 5 delays...
+[2024-12-09T14:52:37.460Z] Starting GET requests...
+[2024-12-09T14:52:37.460Z] Waiting for 15 minutes before the next group...
+[2024-12-09T14:52:37.956Z] Request 4: Response time = 218 ms, Status = 200
+[2024-12-09T14:52:38.013Z] Request 2: Response time = 159 ms, Status = 200
+[2024-12-09T14:52:38.349Z] Request 5: Response time = 107 ms, Status = 200
+[2024-12-09T14:52:39.263Z] Request 1: Response time = 104 ms, Status = 200
+[2024-12-09T14:52:39.420Z] Request 3: Response time = 105 ms, Status = 200
+[2024-12-09T15:07:37.446Z] Processing secondInvoke with 10 delays...
+[2024-12-09T15:07:37.452Z] Starting GET requests...
+[2024-12-09T15:07:37.454Z] Waiting for 15 minutes before the next group...
+[2024-12-09T15:07:37.707Z] Request 1: Response time = 211 ms, Status = 200
+[2024-12-09T15:07:37.780Z] Request 5: Response time = 225 ms, Status = 200
+[2024-12-09T15:07:37.830Z] Request 9: Response time = 193 ms, Status = 200
+[2024-12-09T15:07:37.899Z] Request 7: Response time = 104 ms, Status = 200
+[2024-12-09T15:07:38.063Z] Request 6: Response time = 92 ms, Status = 200
+[2024-12-09T15:07:38.182Z] Request 10: Response time = 110 ms, Status = 200
+[2024-12-09T15:07:38.262Z] Request 3: Response time = 176 ms, Status = 200
+[2024-12-09T15:07:38.387Z] Request 4: Response time = 145 ms, Status = 200
+[2024-12-09T15:07:38.442Z] Request 2: Response time = 103 ms, Status = 200
+[2024-12-09T15:07:38.509Z] Request 8: Response time = 162 ms, Status = 200
+[2024-12-09T15:22:37.430Z] Processing ThirdInvoke with 15 delays...
+[2024-12-09T15:22:37.435Z] Starting GET requests...
+[2024-12-09T15:22:37.436Z] All GET requests completed.
+[2024-12-09T15:22:37.656Z] Request 15: Response time = 181 ms, Status = 200
+[2024-12-09T15:22:37.720Z] Request 1: Response time = 200 ms, Status = 200
+[2024-12-09T15:22:37.771Z] Request 14: Response time = 201 ms, Status = 200
+[2024-12-09T15:22:37.849Z] Request 8: Response time = 358 ms, Status = 200
+[2024-12-09T15:22:37.909Z] Request 12: Response time = 347 ms, Status = 200
+[2024-12-09T15:22:37.990Z] Request 13: Response time = 176 ms, Status = 200
+[2024-12-09T15:22:38.022Z] Request 5: Response time = 160 ms, Status = 200
+[2024-12-09T15:22:38.092Z] Request 4: Response time = 208 ms, Status = 200
+[2024-12-09T15:22:38.124Z] Request 3: Response time = 247 ms, Status = 200
+[2024-12-09T15:22:38.191Z] Request 9: Response time = 312 ms, Status = 200
+[2024-12-09T15:22:38.264Z] Request 11: Response time = 473 ms, Status = 200
+[2024-12-09T15:22:38.300Z] Request 6: Response time = 505 ms, Status = 200
+[2024-12-09T15:22:38.369Z] Request 2: Response time = 378 ms, Status = 200
+[2024-12-09T15:22:38.416Z] Request 10: Response time = 386 ms, Status = 200
+[2024-12-09T15:22:38.468Z] Request 7: Response time = 448 ms, Status = 200

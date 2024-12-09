@@ -34,8 +34,8 @@ functions:
       SNS_TOPIC_ARN: !Ref SNSTopic
     events:
       - schedule:
-          rate: rate(5 minutes)
-          enabled: true
+          rate: rate(3 minutes)
+          enabled: false
 
   snsInvokingGetLambda:
     handler: ./snsInvokingGetLambda.handler

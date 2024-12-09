@@ -32,7 +32,6 @@ const logger = winston.createLogger({
   ),
   transports: [new winston.transports.Console()],
 });
-
 // Validate input data
 const validateUpdateData = (data) => {
   const errors = [];
@@ -50,7 +49,7 @@ const validateUpdateData = (data) => {
 // Lambda handler
 const handler = async (event, context) => {
   
-  await delay(500);
+  // await delay(500);
   const requestId = context.awsRequestId;
   const startTime = moment().format();
 

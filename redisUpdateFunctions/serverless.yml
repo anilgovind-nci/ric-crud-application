@@ -52,8 +52,8 @@ functions:
       CENTRALISED_LOG_GROUP_NAME: 'RIC-CRUD-log-group'
     events:
       - schedule:
-          rate: rate(15 minutes) # Runs every 15 minutes
-          enabled: true # Ensures the rule is active
+          rate: rate(3 minutes) # Runs every 15 minutes
+          enabled: false # Ensures the rule is active
 
 resources:
   Resources:

@@ -1,3 +1,7 @@
+// This code is a copy of Post function that used as part of CRUD functions.
+// The file can be seen at functions/ric-post.
+// This File have Minute changes to work in the SNS invocation.
+// Proper Comments and explanation of code can be obtained from functions/ric-post.
 const { DynamoDBClient, PutItemCommand } = require("@aws-sdk/client-dynamodb");
 const winston = require("winston");
 const moment = require("moment");
@@ -45,6 +49,7 @@ const validateInput = (data) => {
 };
 
 exports.handler = async (event, context) => {
+  // The below If loop is for detecting the invocation request from lambda warming architecture
   if (event.Records && event.Records[0] && event.Records[0].Sns) {
     if (JSON.parse(event.Records[0].Sns.Message).isRequestForKeepLambdaAlive) {
       console.log("This is a keep-alive request.");
