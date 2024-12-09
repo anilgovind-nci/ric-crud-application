@@ -1,22 +1,28 @@
+// aws-sdk libraries importing.
 const { DynamoDBClient } = require("@aws-sdk/client-dynamodb");
 const { DynamoDBDocumentClient, PutCommand } = require("@aws-sdk/lib-dynamodb");
+const { CloudWatchLogsClient } = require("@aws-sdk/client-cloudwatch-logs");
+
+// packages importing from layer.
 const winston = require("winston");
 const moment = require("moment");
 const validator = require("validator");
-const { logToCustomLogGroup } = require("./logToCustomCloudWatch");
-const { CloudWatchLogsClient } = require("@aws-sdk/client-cloudwatch-logs");
-const cloudWatchLogsClient = new CloudWatchLogsClient({ region: process.env.AWS_REGION });
 
+const { logToCustomLogGroup } = require("./logToCustomCloudWatch");
+
+const cloudWatchLogsClient = new CloudWatchLogsClient({ region: process.env.AWS_REGION });
+//The below line is the custom code for adding artificial delay to the lambda cold start.
 require('./delayInitialization');
-const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const { randomUUID } = require('crypto');
 // const LOG_GROUP_NAME = "RIC-CRUD-log-group";
 const logGroupName = process.env.CENTRALISED_LOG_GROUP_NAME;
-const lambdaExecutionEnvironment = randomUUID(); // Unique ID for each Lambda invocation
-const logStreamName = `RIC-POST-Stream-${lambdaExecutionEnvironment}`; // Unique stream name
+// Unique ID for each Lambda invocation. This need to distinguish the execution environment.
+const lambdaExecutionEnvironment = randomUUID();
+// configuring centralised log group stream.
+const logStreamName = `RIC-POST-Stream-${lambdaExecutionEnvironment}`;
 
-// Set up Winston logger
+// Set up Winston logger for logging
 const logger = winston.createLogger({
   level: "info",
   format: winston.format.combine(
@@ -30,11 +36,11 @@ const logger = winston.createLogger({
   transports: [new winston.transports.Console()],
 });
 
-// Create DynamoDB client and document client
+// Create client for DynamoDB and CloudWatch Logs
 const client = new DynamoDBClient({ region: process.env.AWS_REGION });
 const dynamoDBClient = DynamoDBDocumentClient.from(client);
 
-// Function to validate input
+// The validateQueryParams function is for validating the incoming request parameters.
 const validateInput = (data) => {
   const errors = [];
 
@@ -60,20 +66,21 @@ const validateInput = (data) => {
 
   return errors;
 };
-// Lambda handler function
+// Lambda handler function. This code block will be invoked by events. Every code written above 
+// have to be executed before to start this execution.
 const handler = async (event, context) => {
 
-  // await delay(500);
   const requestId = context.awsRequestId;
   const startTime = moment().format();
 
-// Send custom log to the log group
-const customLogEvent = {
+  // Create the custom log event object
+  const customLogEvent = {
   requestId,
   invocationTime: startTime,
   method:"POST",
   lambda: "ric-crud-application-dev-ricPost"
 };
+// Send the custom log event object to centralised log group.
 await logToCustomLogGroup(cloudWatchLogsClient, logGroupName, logStreamName, customLogEvent);
 if (event.isRequestForKeepLambdaAlive) {
   console.log("This is a keep-alive request.");
@@ -83,10 +90,10 @@ if (event.isRequestForKeepLambdaAlive) {
 };
 }
 
-  // Log Lambda invocation
+  // Log Lambda invocation to logger
   logger.info(`Request ID: ${requestId} - Lambda invoked at ${startTime}`);
 
-  // Parse and validate the request body
+  // Parse and validate the request body received form request.
   let item;
   try {
     item = JSON.parse(event.body);
@@ -98,7 +105,7 @@ if (event.isRequestForKeepLambdaAlive) {
       body: JSON.stringify({ error: "Invalid JSON in request body" }),
     };
   }
-
+// send response if validation failed
   const validationErrors = validateInput(item);
   if (validationErrors.length > 0) {
     logger.warn(`Request ID: ${requestId} - Validation failed: ${validationErrors.join(", ")}`);
@@ -108,7 +115,7 @@ if (event.isRequestForKeepLambdaAlive) {
     };
   }
 
-  // DynamoDB parameters
+  // DynamoDB parameters configuration from received request
   const { id, pps, name, age, position } = item;
   const params = {
     TableName: "RIC-EMPLOYEEE-TABLE",
@@ -124,20 +131,22 @@ if (event.isRequestForKeepLambdaAlive) {
   try {
     // Insert data into DynamoDB
     await dynamoDBClient.send(new PutCommand(params));
-
+    // calculate the time taken
     const endTime = moment().format();
     const duration = moment(endTime).diff(moment(startTime), "milliseconds");
-
+    // log success
     logger.info(
       `Request ID: ${requestId} - Item created successfully. Execution time: ${duration}ms`,
       { item }
     );
-
+    // return creation success response to client
     return {
       statusCode: 201,
       body: JSON.stringify({ message: "Item created successfully", requestId }),
     };
-  } catch (error) {
+  } 
+  // log error
+  catch (error) {
     logger.error(`Request ID: ${requestId} - Error creating item`, { error: error.message });
     return {
       statusCode: 500,

@@ -1,16 +1,24 @@
+// aws-sdk libraries importing.
 const { DynamoDBClient } = require("@aws-sdk/client-dynamodb");
 const { DynamoDBDocumentClient, UpdateCommand } = require("@aws-sdk/lib-dynamodb");
 const { CloudWatchLogsClient } = require("@aws-sdk/client-cloudwatch-logs");
+
+// packages importing from layer.
 const winston = require("winston");
 const moment = require("moment");
 const validator = require("validator");
+
 const { logToCustomLogGroup } = require("./logToCustomCloudWatch");
 const { randomUUID } = require("crypto");
-// const LOG_GROUP_NAME = "RIC-CRUD-log-group";
-const logGroupName = process.env.CENTRALISED_LOG_GROUP_NAME;
-const lambdaExecutionEnvironment = randomUUID(); // Unique ID for each Lambda invocation
-const logStreamName = `RIC-PUT-Stream-${lambdaExecutionEnvironment}`; // Unique stream name
 
+// Unique ID for each Lambda invocation. This is used to distinguish the execution environment.
+const lambdaExecutionEnvironment = randomUUID();
+
+// Configuring centralized log group stream.
+const logGroupName = process.env.CENTRALISED_LOG_GROUP_NAME;
+const logStreamName = `RIC-PUT-Stream-${lambdaExecutionEnvironment}`;
+
+// The below line is the custom code for adding artificial delay to the Lambda cold start.
 require('./delayInitialization');
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -19,7 +27,7 @@ const client = new DynamoDBClient({ region: process.env.AWS_REGION });
 const dynamoDBClient = DynamoDBDocumentClient.from(client);
 const cloudWatchLogsClient = new CloudWatchLogsClient({ region: process.env.AWS_REGION });
 
-// Set up Winston logger
+// Set up Winston logger for logging
 const logger = winston.createLogger({
   level: "info",
   format: winston.format.combine(
@@ -32,7 +40,8 @@ const logger = winston.createLogger({
   ),
   transports: [new winston.transports.Console()],
 });
-// Validate input data
+
+// The validateUpdateData function is for validating the incoming request parameters.
 const validateUpdateData = (data) => {
   const errors = [];
   if (!data.id || !validator.isInt(data.id)) {
@@ -46,33 +55,38 @@ const validateUpdateData = (data) => {
   }
   return errors;
 };
-// Lambda handler
-const handler = async (event, context) => {
-  
-  // await delay(500);
-  const requestId = context.awsRequestId;
-  const startTime = moment().format();
 
-  // Log to custom CloudWatch log group
+// Lambda handler function. This code block will be invoked by events. Every code written above 
+// has to be executed before starting this execution.
+const handler = async (event, context) => {
+  const requestId = context.awsRequestId; // Unique ID for each Lambda invocation
+  const startTime = moment().format(); // Start time for logging execution duration
+
+  // Create the custom log event object
   const customLogEvent = {
     requestId,
     invocationTime: startTime,
     method: "PUT",
     lambda: "ric-crud-application-dev-ricPut"
-
   };
+
+  // Send the custom log event object to the centralized log group.
   await logToCustomLogGroup(cloudWatchLogsClient, logGroupName, logStreamName, customLogEvent);
+  // The below code block is for detecting the lambda warming request
   if (event.isRequestForKeepLambdaAlive) {
     console.log("This is a keep-alive request.");
+    // stop execution for lambda warming request
     return {
       statusCode: 200,
       body: JSON.stringify({ message: "Keep-alive request processed successfully." }),
-  };
-}
+    };
+  }
+
+  // Log Lambda invocation to logger
   logger.info(`Request ID: ${requestId} - Lambda invoked at ${startTime}`);
   logger.info(`Request ID: ${requestId} - Received event`, { event });
 
-  // Parse and validate the request body
+  // Parse and validate the request body received from the request.
   let updateData;
   try {
     updateData = JSON.parse(event.body);
@@ -85,6 +99,7 @@ const handler = async (event, context) => {
     };
   }
 
+  // Send response if validation failed
   const validationErrors = validateUpdateData(updateData);
   if (validationErrors.length > 0) {
     logger.warn(`Request ID: ${requestId} - Validation failed: ${validationErrors.join(", ")}`);
@@ -122,7 +137,7 @@ const handler = async (event, context) => {
       body: JSON.stringify({ error: "No attributes provided to update" }),
     };
   }
-
+  // Prepare parameters for updating DynamoDB
   const params = {
     TableName: "RIC-EMPLOYEEE-TABLE",
     Key: {
@@ -138,19 +153,22 @@ const handler = async (event, context) => {
   try {
     // Update item in DynamoDB
     const data = await dynamoDBClient.send(new UpdateCommand(params));
-
+    // Calculate the time taken
     const endTime = moment().format();
     const duration = moment(endTime).diff(moment(startTime), "milliseconds");
+    // Log success
     logger.info(
       `Request ID: ${requestId} - Item updated successfully. Execution time: ${duration}ms`,
       { updatedItem: data.Attributes }
     );
-
+    // Return update success response to client
     return {
       statusCode: 200,
       body: JSON.stringify({ message: "Item updated successfully", updatedItem: data.Attributes }),
     };
-  } catch (error) {
+  } 
+  // Log error
+  catch (error) {
     logger.error(`Request ID: ${requestId} - Error updating item`, { error: error.message });
     return {
       statusCode: 500,
@@ -162,4 +180,6 @@ const handler = async (event, context) => {
     };
   }
 };
+
+// Export the handler
 module.exports.handler = handler;

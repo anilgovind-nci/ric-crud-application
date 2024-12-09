@@ -1,20 +1,24 @@
-// delayInitialization.js
 let initialized = false;
+// delay function for executing configured delay.
 const delay = (ms) => {
   const start = Date.now();
+  // A blocking loop to simulate a synchronous delay.
   while (Date.now() - start < ms) {
-    // blocking loop to simulate a synchronous delay (no async/await here)
   }
 };
+//simulateColdStart function for simulating cold start.
 const simulateColdStart = () => {
   if (!initialized) {
     console.log("Simulating cold start with a 5-second synchronous delay...");
-    delay(1000); // Block execution for 5 seconds during cold start
+    // Block execution for 5 seconds. Change this parameter for cold start.
+    delay(1000); 
     console.log("Cold start delay complete.");
-    initialized = true; // Flag to prevent further delays
+    // Flag to prevent further delays. The code should execute only once when new VE is created
+    initialized = true; 
   }
 };
 
-// Call simulateColdStart immediately on module load
+// Call simulateColdStart immediately on module load to mimic cold start.
 simulateColdStart();
-module.exports = { delay }; // Exporting just in case we need it
+// Can use this function for introducing delay.
+module.exports = { delay };

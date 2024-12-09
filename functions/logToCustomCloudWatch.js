@@ -1,8 +1,9 @@
+// importing packages from aws-sdk
 const { CloudWatchLogsClient, PutLogEventsCommand, CreateLogStreamCommand, DescribeLogStreamsCommand } = require("@aws-sdk/client-cloudwatch-logs");
 
 let sequenceToken = null; // To track the sequence token for log events
 
-// Function to ensure log stream exists
+// Function to ensure log stream exists in cloud watch.
 const ensureLogStreamExists = async (cloudWatchLogsClient, logGroupName, logStreamName) => {
   try {
     const describeLogStreamsResponse = await cloudWatchLogsClient.send(
@@ -15,7 +16,7 @@ const ensureLogStreamExists = async (cloudWatchLogsClient, logGroupName, logStre
     const logStream = describeLogStreamsResponse.logStreams.find(
       (stream) => stream.logStreamName === logStreamName
     );
-
+    // if there is no log stream create a new one.
     if (!logStream) {
       await cloudWatchLogsClient.send(
         new CreateLogStreamCommand({
@@ -24,7 +25,8 @@ const ensureLogStreamExists = async (cloudWatchLogsClient, logGroupName, logStre
         })
       );
     } else {
-      sequenceToken = logStream.uploadSequenceToken; // Save the token for subsequent logs
+      // Save the token for subsequent log entries
+      sequenceToken = logStream.uploadSequenceToken; 
     }
   } catch (error) {
     console.error("Error ensuring log stream exists:", error.message);
@@ -34,10 +36,10 @@ const ensureLogStreamExists = async (cloudWatchLogsClient, logGroupName, logStre
 // Function to send logs to the custom log group
 const logToCustomLogGroup = async (cloudWatchLogsClient, logGroupName, logStreamName, logEvent) => {
   try {
-    // Ensure the log stream exists
+    // Ensure the log stream exists or create it.
     await ensureLogStreamExists(cloudWatchLogsClient, logGroupName, logStreamName);
 
-    // Send the log event
+    // Send the log event to the log group.
     const putLogEventsParams = {
       logGroupName,
       logStreamName,

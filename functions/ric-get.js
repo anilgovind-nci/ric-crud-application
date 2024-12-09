@@ -1,24 +1,27 @@
 const { randomUUID } = require('crypto');
+// aws-sdk libraries importing.
 const { DynamoDBClient } = require("@aws-sdk/client-dynamodb");
 const { DynamoDBDocumentClient, GetCommand } = require("@aws-sdk/lib-dynamodb");
 const { CloudWatchLogsClient } = require("@aws-sdk/client-cloudwatch-logs");
+// packages importing from layer.
 const moment = require("moment");
 const validator = require("validator");
+
 const { logToCustomLogGroup } = require('./logToCustomCloudWatch'); 
+
 //The below line is the custom code for adding artificial delay to the lambda cold start.
 require('./delayInitialization');
-const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-// Create clients for DynamoDB and CloudWatch Logs
+// Create client for DynamoDB and CloudWatch Logs
 const client = new DynamoDBClient({ region: process.env.AWS_REGION });
 const dynamoDBClient = DynamoDBDocumentClient.from(client);
 const cloudWatchLogsClient = new CloudWatchLogsClient({ region: process.env.AWS_REGION });
 const logGroupName = process.env.CENTRALISED_LOG_GROUP_NAME;
 
-
-// const LOG_GROUP_NAME = "RIC-CRUD-log-group";
-const lambdaExecutionEnvironment = randomUUID(); // Unique ID for each Lambda invocation
-const logStreamName = `RIC-GET-Stream-${lambdaExecutionEnvironment}`; // Unique stream name
-// Function to validate query parameters
+// Unique ID for each Lambda invocation. This need to distinguish the execution environment.
+const lambdaExecutionEnvironment = randomUUID(); 
+// configuring centralised log group stream.
+const logStreamName = `RIC-GET-Stream-${lambdaExecutionEnvironment}`;
+// The validateQueryParams function is for validating the incoming request parameters.
 const validateQueryParams = (params) => {
   const errors = [];
 
@@ -31,34 +34,37 @@ const validateQueryParams = (params) => {
   }
   return errors;
 };
-// Lambda handler function
+// Lambda handler function. This code block will be invoked by events. Every code written above 
+// have to be executed before to start this execution.
 const handler = async (event, context) => {
-  // await delay(500);
   const requestId = context.awsRequestId;
   const startTime = moment().format();
 
-  // Log the start of the Lambda invocation
+  // Log the start of the Lambda invocation 
   console.log(`Request ID: ${requestId} - Lambda invoked at ${startTime}`);
   console.log(`Request ID: ${requestId} - Received event`, event);
 
-  // Send custom log to the log group
+  // Create the custom log event object
   const customLogEvent = {
     requestId,
     invocationTime: startTime,
     method: "GET",
     lambda: "ric-crud-application-dev-ricGet"
   };
+  // Send the custom log event object to centralised log group.
   await logToCustomLogGroup(cloudWatchLogsClient, logGroupName, logStreamName, customLogEvent);
   if (event.isRequestForKeepLambdaAlive) {
     console.log("This is a keep-alive request.");
+    // End the execution for for Lambda warming environments
     return {
       statusCode: 200,
       body: JSON.stringify({ message: "Keep-alive request processed successfully." }),
   };
 }
 
-  // Extract query parameters
+  // Fetch Query Parameters from the incoming request.
   const { id, pps } = event.queryStringParameters || {};
+  // Call Validation function to validate.
   const validationErrors = validateQueryParams({ id, pps });
 
   if (validationErrors.length > 0) {
@@ -73,7 +79,7 @@ const handler = async (event, context) => {
       }),
     };
   }
-
+// create connection parameter for DynamoDB
   const params = {
     TableName: "RIC-EMPLOYEEE-TABLE",
     Key: {
@@ -94,12 +100,13 @@ const handler = async (event, context) => {
     }
 
     const endTime = moment().format();
+    // calculating duration
     const duration = moment(endTime).diff(moment(startTime), "milliseconds");
     console.log(
       `Request ID: ${requestId} - Item retrieved successfully. Execution time: ${duration}ms`,
       { item: data.Item }
     );
-
+   // return success message
     return {
       statusCode: 200,
       body: JSON.stringify(data.Item),
