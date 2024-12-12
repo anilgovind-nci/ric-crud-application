@@ -1,7 +1,7 @@
 {
   "/Users/anilgovindka/CollageDays/Thesis/ric-crud-application/keepLambdaWarm/viaSNS": {
     "versionSfCore": null,
-    "versionFramework": "4.4.14",
+    "versionFramework": "4.4.16",
     "isWithinCompose": false,
     "isCompose": false,
     "composeOrgName": null,
@@ -189,7 +189,7 @@
                     "Properties": {
                       "Code": {
                         "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
-                        "S3Key": "serverless/ric-sns-lambda/dev/1733343428189-2024-12-04T20:17:08.189Z/ric-sns-lambda.zip"
+                        "S3Key": "serverless/ric-sns-lambda/dev/1733981013846-2024-12-12T05:23:33.846Z/ric-sns-lambda.zip"
                       },
                       "Handler": "./selfInvokingLambdaToPostMessageToSNS.handler",
                       "Runtime": "nodejs18.x",
@@ -219,7 +219,7 @@
                     "Properties": {
                       "Code": {
                         "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
-                        "S3Key": "serverless/ric-sns-lambda/dev/1733343428189-2024-12-04T20:17:08.189Z/ric-sns-lambda.zip"
+                        "S3Key": "serverless/ric-sns-lambda/dev/1733981013846-2024-12-12T05:23:33.846Z/ric-sns-lambda.zip"
                       },
                       "Handler": "./snsInvokingGetLambda.handler",
                       "Runtime": "nodejs18.x",
@@ -250,7 +250,7 @@
                     "Properties": {
                       "Code": {
                         "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
-                        "S3Key": "serverless/ric-sns-lambda/dev/1733343428189-2024-12-04T20:17:08.189Z/ric-sns-lambda.zip"
+                        "S3Key": "serverless/ric-sns-lambda/dev/1733981013846-2024-12-12T05:23:33.846Z/ric-sns-lambda.zip"
                       },
                       "Handler": "./snsInvokingPostLambda.handler",
                       "Runtime": "nodejs18.x",
@@ -281,7 +281,7 @@
                     "Properties": {
                       "Code": {
                         "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
-                        "S3Key": "serverless/ric-sns-lambda/dev/1733343428189-2024-12-04T20:17:08.189Z/ric-sns-lambda.zip"
+                        "S3Key": "serverless/ric-sns-lambda/dev/1733981013846-2024-12-12T05:23:33.846Z/ric-sns-lambda.zip"
                       },
                       "Handler": "./snsInvokingPutLambda.handler",
                       "Runtime": "nodejs18.x",
@@ -312,7 +312,7 @@
                     "Properties": {
                       "Code": {
                         "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
-                        "S3Key": "serverless/ric-sns-lambda/dev/1733343428189-2024-12-04T20:17:08.189Z/ric-sns-lambda.zip"
+                        "S3Key": "serverless/ric-sns-lambda/dev/1733981013846-2024-12-12T05:23:33.846Z/ric-sns-lambda.zip"
                       },
                       "Handler": "./snsInvokingDeleteLambda.handler",
                       "Runtime": "nodejs18.x",
@@ -338,61 +338,61 @@
                       "SnsInvokingDeleteLambdaLogGroup"
                     ]
                   },
-                  "SelfInvokingLambdaToPostMessageToSNSLambdaVersionolCoCihbc5mPJSiZhVIP0FmMPrdhx4Tg93OSneWnjk": {
+                  "SelfInvokingLambdaToPostMessageToSNSLambdaVersionLQzyLSxFJvGRVvBf7FPaWu6MwzKzGKKJ5ND58N4Xtw": {
                     "Type": "AWS::Lambda::Version",
                     "DeletionPolicy": "Retain",
                     "Properties": {
                       "FunctionName": {
                         "Ref": "SelfInvokingLambdaToPostMessageToSNSLambdaFunction"
                       },
-                      "CodeSha256": "pjb1mlHNf2MIcKFxrtLe2o4wBWCzVtwGBBI2EWVtt1E="
+                      "CodeSha256": "FQmZgEj82iZ0FPCmYnyi+8wJilhQgsvAJQarC+Bdd3k="
                     }
                   },
-                  "SnsInvokingGetLambdaLambdaVersionlEwo8quyR0gUa7kiCuBuFQ6sczgVxzoy6fL78m2a8I": {
+                  "SnsInvokingGetLambdaLambdaVersionhVSs6USmnU7um7qs8sFkXojIp2Sr2ERfw6GRCl8yOk": {
                     "Type": "AWS::Lambda::Version",
                     "DeletionPolicy": "Retain",
                     "Properties": {
                       "FunctionName": {
                         "Ref": "SnsInvokingGetLambdaLambdaFunction"
                       },
-                      "CodeSha256": "pjb1mlHNf2MIcKFxrtLe2o4wBWCzVtwGBBI2EWVtt1E="
+                      "CodeSha256": "FQmZgEj82iZ0FPCmYnyi+8wJilhQgsvAJQarC+Bdd3k="
                     }
                   },
-                  "SnsInvokingPostLambdaLambdaVersionAZr5G9JdNLLEl9sFihte5jMyB4PmaKe39j8CVaf6E": {
+                  "SnsInvokingPostLambdaLambdaVersionNkw5sYV6mxJHaBxw5G2sLwHMPSvqomaj5syFAxXu4": {
                     "Type": "AWS::Lambda::Version",
                     "DeletionPolicy": "Retain",
                     "Properties": {
                       "FunctionName": {
                         "Ref": "SnsInvokingPostLambdaLambdaFunction"
                       },
-                      "CodeSha256": "pjb1mlHNf2MIcKFxrtLe2o4wBWCzVtwGBBI2EWVtt1E="
+                      "CodeSha256": "FQmZgEj82iZ0FPCmYnyi+8wJilhQgsvAJQarC+Bdd3k="
                     }
                   },
-                  "SnsInvokingPutLambdaLambdaVersionhGdES9KLsPjivf5K0ZYIyX6AgHBuHGjAaI6Usvuc8": {
+                  "SnsInvokingPutLambdaLambdaVersion1DNv44hKgxuFM9PiX1ABhEtsS3XsyqhzmPyn6Q9R6I": {
                     "Type": "AWS::Lambda::Version",
                     "DeletionPolicy": "Retain",
                     "Properties": {
                       "FunctionName": {
                         "Ref": "SnsInvokingPutLambdaLambdaFunction"
                       },
-                      "CodeSha256": "pjb1mlHNf2MIcKFxrtLe2o4wBWCzVtwGBBI2EWVtt1E="
+                      "CodeSha256": "FQmZgEj82iZ0FPCmYnyi+8wJilhQgsvAJQarC+Bdd3k="
                     }
                   },
-                  "SnsInvokingDeleteLambdaLambdaVersionBLVP91YAxFyJXsVcFtQDEGFQsrz1X0TwLmpHJonA": {
+                  "SnsInvokingDeleteLambdaLambdaVersionuDOM52853lgm3gLjVG8EyFgu8ofBZeOQ7fhovLMyk": {
                     "Type": "AWS::Lambda::Version",
                     "DeletionPolicy": "Retain",
                     "Properties": {
                       "FunctionName": {
                         "Ref": "SnsInvokingDeleteLambdaLambdaFunction"
                       },
-                      "CodeSha256": "pjb1mlHNf2MIcKFxrtLe2o4wBWCzVtwGBBI2EWVtt1E="
+                      "CodeSha256": "FQmZgEj82iZ0FPCmYnyi+8wJilhQgsvAJQarC+Bdd3k="
                     }
                   },
                   "SelfInvokingLambdaToPostMessageToSNSEventsRuleSchedule1": {
                     "Type": "AWS::Events::Rule",
                     "Properties": {
                       "ScheduleExpression": "rate(3 minutes)",
-                      "State": "DISABLED",
+                      "State": "ENABLED",
                       "Targets": [
                         {
                           "Arn": {
@@ -566,7 +566,7 @@
                   "SelfInvokingLambdaToPostMessageToSNSLambdaFunctionQualifiedArn": {
                     "Description": "Current Lambda function version",
                     "Value": {
-                      "Ref": "SelfInvokingLambdaToPostMessageToSNSLambdaVersionolCoCihbc5mPJSiZhVIP0FmMPrdhx4Tg93OSneWnjk"
+                      "Ref": "SelfInvokingLambdaToPostMessageToSNSLambdaVersionLQzyLSxFJvGRVvBf7FPaWu6MwzKzGKKJ5ND58N4Xtw"
                     },
                     "Export": {
                       "Name": "sls-ric-sns-lambda-dev-SelfInvokingLambdaToPostMessageToSNSLambdaFunctionQualifiedArn"
@@ -575,7 +575,7 @@
                   "SnsInvokingGetLambdaLambdaFunctionQualifiedArn": {
                     "Description": "Current Lambda function version",
                     "Value": {
-                      "Ref": "SnsInvokingGetLambdaLambdaVersionlEwo8quyR0gUa7kiCuBuFQ6sczgVxzoy6fL78m2a8I"
+                      "Ref": "SnsInvokingGetLambdaLambdaVersionhVSs6USmnU7um7qs8sFkXojIp2Sr2ERfw6GRCl8yOk"
                     },
                     "Export": {
                       "Name": "sls-ric-sns-lambda-dev-SnsInvokingGetLambdaLambdaFunctionQualifiedArn"
@@ -584,7 +584,7 @@
                   "SnsInvokingPostLambdaLambdaFunctionQualifiedArn": {
                     "Description": "Current Lambda function version",
                     "Value": {
-                      "Ref": "SnsInvokingPostLambdaLambdaVersionAZr5G9JdNLLEl9sFihte5jMyB4PmaKe39j8CVaf6E"
+                      "Ref": "SnsInvokingPostLambdaLambdaVersionNkw5sYV6mxJHaBxw5G2sLwHMPSvqomaj5syFAxXu4"
                     },
                     "Export": {
                       "Name": "sls-ric-sns-lambda-dev-SnsInvokingPostLambdaLambdaFunctionQualifiedArn"
@@ -593,7 +593,7 @@
                   "SnsInvokingPutLambdaLambdaFunctionQualifiedArn": {
                     "Description": "Current Lambda function version",
                     "Value": {
-                      "Ref": "SnsInvokingPutLambdaLambdaVersionhGdES9KLsPjivf5K0ZYIyX6AgHBuHGjAaI6Usvuc8"
+                      "Ref": "SnsInvokingPutLambdaLambdaVersion1DNv44hKgxuFM9PiX1ABhEtsS3XsyqhzmPyn6Q9R6I"
                     },
                     "Export": {
                       "Name": "sls-ric-sns-lambda-dev-SnsInvokingPutLambdaLambdaFunctionQualifiedArn"
@@ -602,7 +602,7 @@
                   "SnsInvokingDeleteLambdaLambdaFunctionQualifiedArn": {
                     "Description": "Current Lambda function version",
                     "Value": {
-                      "Ref": "SnsInvokingDeleteLambdaLambdaVersionBLVP91YAxFyJXsVcFtQDEGFQsrz1X0TwLmpHJonA"
+                      "Ref": "SnsInvokingDeleteLambdaLambdaVersionuDOM52853lgm3gLjVG8EyFgu8ofBZeOQ7fhovLMyk"
                     },
                     "Export": {
                       "Name": "sls-ric-sns-lambda-dev-SnsInvokingDeleteLambdaLambdaFunctionQualifiedArn"
@@ -626,7 +626,7 @@
                       "rate": [
                         "rate(3 minutes)"
                       ],
-                      "enabled": false
+                      "enabled": true
                     }
                   }
                 ],
@@ -636,7 +636,7 @@
                 "timeout": 30,
                 "runtime": "nodejs18.x",
                 "vpc": {},
-                "versionLogicalId": "SelfInvokingLambdaToPostMessageToSNSLambdaVersionolCoCihbc5mPJSiZhVIP0FmMPrdhx4Tg93OSneWnjk"
+                "versionLogicalId": "SelfInvokingLambdaToPostMessageToSNSLambdaVersionLQzyLSxFJvGRVvBf7FPaWu6MwzKzGKKJ5ND58N4Xtw"
               },
               "snsInvokingGetLambda": {
                 "handler": "./snsInvokingGetLambda.handler",
@@ -662,7 +662,7 @@
                 "timeout": 30,
                 "runtime": "nodejs18.x",
                 "vpc": {},
-                "versionLogicalId": "SnsInvokingGetLambdaLambdaVersionlEwo8quyR0gUa7kiCuBuFQ6sczgVxzoy6fL78m2a8I"
+                "versionLogicalId": "SnsInvokingGetLambdaLambdaVersionhVSs6USmnU7um7qs8sFkXojIp2Sr2ERfw6GRCl8yOk"
               },
               "snsInvokingPostLambda": {
                 "handler": "./snsInvokingPostLambda.handler",
@@ -688,7 +688,7 @@
                 "timeout": 30,
                 "runtime": "nodejs18.x",
                 "vpc": {},
-                "versionLogicalId": "SnsInvokingPostLambdaLambdaVersionAZr5G9JdNLLEl9sFihte5jMyB4PmaKe39j8CVaf6E"
+                "versionLogicalId": "SnsInvokingPostLambdaLambdaVersionNkw5sYV6mxJHaBxw5G2sLwHMPSvqomaj5syFAxXu4"
               },
               "snsInvokingPutLambda": {
                 "handler": "./snsInvokingPutLambda.handler",
@@ -714,7 +714,7 @@
                 "timeout": 30,
                 "runtime": "nodejs18.x",
                 "vpc": {},
-                "versionLogicalId": "SnsInvokingPutLambdaLambdaVersionhGdES9KLsPjivf5K0ZYIyX6AgHBuHGjAaI6Usvuc8"
+                "versionLogicalId": "SnsInvokingPutLambdaLambdaVersion1DNv44hKgxuFM9PiX1ABhEtsS3XsyqhzmPyn6Q9R6I"
               },
               "snsInvokingDeleteLambda": {
                 "handler": "./snsInvokingDeleteLambda.handler",
@@ -740,7 +740,7 @@
                 "timeout": 30,
                 "runtime": "nodejs18.x",
                 "vpc": {},
-                "versionLogicalId": "SnsInvokingDeleteLambdaLambdaVersionBLVP91YAxFyJXsVcFtQDEGFQsrz1X0TwLmpHJonA"
+                "versionLogicalId": "SnsInvokingDeleteLambdaLambdaVersionuDOM52853lgm3gLjVG8EyFgu8ofBZeOQ7fhovLMyk"
               }
             },
             "resources": {
@@ -959,7 +959,7 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
-                  "S3Key": "serverless/ric-sns-lambda/dev/1733343428189-2024-12-04T20:17:08.189Z/ric-sns-lambda.zip"
+                  "S3Key": "serverless/ric-sns-lambda/dev/1733981013846-2024-12-12T05:23:33.846Z/ric-sns-lambda.zip"
                 },
                 "Handler": "./selfInvokingLambdaToPostMessageToSNS.handler",
                 "Runtime": "nodejs18.x",
@@ -989,7 +989,7 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
-                  "S3Key": "serverless/ric-sns-lambda/dev/1733343428189-2024-12-04T20:17:08.189Z/ric-sns-lambda.zip"
+                  "S3Key": "serverless/ric-sns-lambda/dev/1733981013846-2024-12-12T05:23:33.846Z/ric-sns-lambda.zip"
                 },
                 "Handler": "./snsInvokingGetLambda.handler",
                 "Runtime": "nodejs18.x",
@@ -1020,7 +1020,7 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
-                  "S3Key": "serverless/ric-sns-lambda/dev/1733343428189-2024-12-04T20:17:08.189Z/ric-sns-lambda.zip"
+                  "S3Key": "serverless/ric-sns-lambda/dev/1733981013846-2024-12-12T05:23:33.846Z/ric-sns-lambda.zip"
                 },
                 "Handler": "./snsInvokingPostLambda.handler",
                 "Runtime": "nodejs18.x",
@@ -1051,7 +1051,7 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
-                  "S3Key": "serverless/ric-sns-lambda/dev/1733343428189-2024-12-04T20:17:08.189Z/ric-sns-lambda.zip"
+                  "S3Key": "serverless/ric-sns-lambda/dev/1733981013846-2024-12-12T05:23:33.846Z/ric-sns-lambda.zip"
                 },
                 "Handler": "./snsInvokingPutLambda.handler",
                 "Runtime": "nodejs18.x",
@@ -1082,7 +1082,7 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
-                  "S3Key": "serverless/ric-sns-lambda/dev/1733343428189-2024-12-04T20:17:08.189Z/ric-sns-lambda.zip"
+                  "S3Key": "serverless/ric-sns-lambda/dev/1733981013846-2024-12-12T05:23:33.846Z/ric-sns-lambda.zip"
                 },
                 "Handler": "./snsInvokingDeleteLambda.handler",
                 "Runtime": "nodejs18.x",
@@ -1108,61 +1108,61 @@
                 "SnsInvokingDeleteLambdaLogGroup"
               ]
             },
-            "SelfInvokingLambdaToPostMessageToSNSLambdaVersionolCoCihbc5mPJSiZhVIP0FmMPrdhx4Tg93OSneWnjk": {
+            "SelfInvokingLambdaToPostMessageToSNSLambdaVersionLQzyLSxFJvGRVvBf7FPaWu6MwzKzGKKJ5ND58N4Xtw": {
               "Type": "AWS::Lambda::Version",
               "DeletionPolicy": "Retain",
               "Properties": {
                 "FunctionName": {
                   "Ref": "SelfInvokingLambdaToPostMessageToSNSLambdaFunction"
                 },
-                "CodeSha256": "pjb1mlHNf2MIcKFxrtLe2o4wBWCzVtwGBBI2EWVtt1E="
+                "CodeSha256": "FQmZgEj82iZ0FPCmYnyi+8wJilhQgsvAJQarC+Bdd3k="
               }
             },
-            "SnsInvokingGetLambdaLambdaVersionlEwo8quyR0gUa7kiCuBuFQ6sczgVxzoy6fL78m2a8I": {
+            "SnsInvokingGetLambdaLambdaVersionhVSs6USmnU7um7qs8sFkXojIp2Sr2ERfw6GRCl8yOk": {
               "Type": "AWS::Lambda::Version",
               "DeletionPolicy": "Retain",
               "Properties": {
                 "FunctionName": {
                   "Ref": "SnsInvokingGetLambdaLambdaFunction"
                 },
-                "CodeSha256": "pjb1mlHNf2MIcKFxrtLe2o4wBWCzVtwGBBI2EWVtt1E="
+                "CodeSha256": "FQmZgEj82iZ0FPCmYnyi+8wJilhQgsvAJQarC+Bdd3k="
               }
             },
-            "SnsInvokingPostLambdaLambdaVersionAZr5G9JdNLLEl9sFihte5jMyB4PmaKe39j8CVaf6E": {
+            "SnsInvokingPostLambdaLambdaVersionNkw5sYV6mxJHaBxw5G2sLwHMPSvqomaj5syFAxXu4": {
               "Type": "AWS::Lambda::Version",
               "DeletionPolicy": "Retain",
               "Properties": {
                 "FunctionName": {
                   "Ref": "SnsInvokingPostLambdaLambdaFunction"
                 },
-                "CodeSha256": "pjb1mlHNf2MIcKFxrtLe2o4wBWCzVtwGBBI2EWVtt1E="
+                "CodeSha256": "FQmZgEj82iZ0FPCmYnyi+8wJilhQgsvAJQarC+Bdd3k="
               }
             },
-            "SnsInvokingPutLambdaLambdaVersionhGdES9KLsPjivf5K0ZYIyX6AgHBuHGjAaI6Usvuc8": {
+            "SnsInvokingPutLambdaLambdaVersion1DNv44hKgxuFM9PiX1ABhEtsS3XsyqhzmPyn6Q9R6I": {
               "Type": "AWS::Lambda::Version",
               "DeletionPolicy": "Retain",
               "Properties": {
                 "FunctionName": {
                   "Ref": "SnsInvokingPutLambdaLambdaFunction"
                 },
-                "CodeSha256": "pjb1mlHNf2MIcKFxrtLe2o4wBWCzVtwGBBI2EWVtt1E="
+                "CodeSha256": "FQmZgEj82iZ0FPCmYnyi+8wJilhQgsvAJQarC+Bdd3k="
               }
             },
-            "SnsInvokingDeleteLambdaLambdaVersionBLVP91YAxFyJXsVcFtQDEGFQsrz1X0TwLmpHJonA": {
+            "SnsInvokingDeleteLambdaLambdaVersionuDOM52853lgm3gLjVG8EyFgu8ofBZeOQ7fhovLMyk": {
               "Type": "AWS::Lambda::Version",
               "DeletionPolicy": "Retain",
               "Properties": {
                 "FunctionName": {
                   "Ref": "SnsInvokingDeleteLambdaLambdaFunction"
                 },
-                "CodeSha256": "pjb1mlHNf2MIcKFxrtLe2o4wBWCzVtwGBBI2EWVtt1E="
+                "CodeSha256": "FQmZgEj82iZ0FPCmYnyi+8wJilhQgsvAJQarC+Bdd3k="
               }
             },
             "SelfInvokingLambdaToPostMessageToSNSEventsRuleSchedule1": {
               "Type": "AWS::Events::Rule",
               "Properties": {
                 "ScheduleExpression": "rate(3 minutes)",
-                "State": "DISABLED",
+                "State": "ENABLED",
                 "Targets": [
                   {
                     "Arn": {
@@ -1336,7 +1336,7 @@
             "SelfInvokingLambdaToPostMessageToSNSLambdaFunctionQualifiedArn": {
               "Description": "Current Lambda function version",
               "Value": {
-                "Ref": "SelfInvokingLambdaToPostMessageToSNSLambdaVersionolCoCihbc5mPJSiZhVIP0FmMPrdhx4Tg93OSneWnjk"
+                "Ref": "SelfInvokingLambdaToPostMessageToSNSLambdaVersionLQzyLSxFJvGRVvBf7FPaWu6MwzKzGKKJ5ND58N4Xtw"
               },
               "Export": {
                 "Name": "sls-ric-sns-lambda-dev-SelfInvokingLambdaToPostMessageToSNSLambdaFunctionQualifiedArn"
@@ -1345,7 +1345,7 @@
             "SnsInvokingGetLambdaLambdaFunctionQualifiedArn": {
               "Description": "Current Lambda function version",
               "Value": {
-                "Ref": "SnsInvokingGetLambdaLambdaVersionlEwo8quyR0gUa7kiCuBuFQ6sczgVxzoy6fL78m2a8I"
+                "Ref": "SnsInvokingGetLambdaLambdaVersionhVSs6USmnU7um7qs8sFkXojIp2Sr2ERfw6GRCl8yOk"
               },
               "Export": {
                 "Name": "sls-ric-sns-lambda-dev-SnsInvokingGetLambdaLambdaFunctionQualifiedArn"
@@ -1354,7 +1354,7 @@
             "SnsInvokingPostLambdaLambdaFunctionQualifiedArn": {
               "Description": "Current Lambda function version",
               "Value": {
-                "Ref": "SnsInvokingPostLambdaLambdaVersionAZr5G9JdNLLEl9sFihte5jMyB4PmaKe39j8CVaf6E"
+                "Ref": "SnsInvokingPostLambdaLambdaVersionNkw5sYV6mxJHaBxw5G2sLwHMPSvqomaj5syFAxXu4"
               },
               "Export": {
                 "Name": "sls-ric-sns-lambda-dev-SnsInvokingPostLambdaLambdaFunctionQualifiedArn"
@@ -1363,7 +1363,7 @@
             "SnsInvokingPutLambdaLambdaFunctionQualifiedArn": {
               "Description": "Current Lambda function version",
               "Value": {
-                "Ref": "SnsInvokingPutLambdaLambdaVersionhGdES9KLsPjivf5K0ZYIyX6AgHBuHGjAaI6Usvuc8"
+                "Ref": "SnsInvokingPutLambdaLambdaVersion1DNv44hKgxuFM9PiX1ABhEtsS3XsyqhzmPyn6Q9R6I"
               },
               "Export": {
                 "Name": "sls-ric-sns-lambda-dev-SnsInvokingPutLambdaLambdaFunctionQualifiedArn"
@@ -1372,7 +1372,7 @@
             "SnsInvokingDeleteLambdaLambdaFunctionQualifiedArn": {
               "Description": "Current Lambda function version",
               "Value": {
-                "Ref": "SnsInvokingDeleteLambdaLambdaVersionBLVP91YAxFyJXsVcFtQDEGFQsrz1X0TwLmpHJonA"
+                "Ref": "SnsInvokingDeleteLambdaLambdaVersionuDOM52853lgm3gLjVG8EyFgu8ofBZeOQ7fhovLMyk"
               },
               "Export": {
                 "Name": "sls-ric-sns-lambda-dev-SnsInvokingDeleteLambdaLambdaFunctionQualifiedArn"
@@ -1396,7 +1396,7 @@
                 "rate": [
                   "rate(3 minutes)"
                 ],
-                "enabled": false
+                "enabled": true
               }
             }
           ],
@@ -1406,7 +1406,7 @@
           "timeout": 30,
           "runtime": "nodejs18.x",
           "vpc": {},
-          "versionLogicalId": "SelfInvokingLambdaToPostMessageToSNSLambdaVersionolCoCihbc5mPJSiZhVIP0FmMPrdhx4Tg93OSneWnjk"
+          "versionLogicalId": "SelfInvokingLambdaToPostMessageToSNSLambdaVersionLQzyLSxFJvGRVvBf7FPaWu6MwzKzGKKJ5ND58N4Xtw"
         },
         "snsInvokingGetLambda": {
           "handler": "./snsInvokingGetLambda.handler",
@@ -1432,7 +1432,7 @@
           "timeout": 30,
           "runtime": "nodejs18.x",
           "vpc": {},
-          "versionLogicalId": "SnsInvokingGetLambdaLambdaVersionlEwo8quyR0gUa7kiCuBuFQ6sczgVxzoy6fL78m2a8I"
+          "versionLogicalId": "SnsInvokingGetLambdaLambdaVersionhVSs6USmnU7um7qs8sFkXojIp2Sr2ERfw6GRCl8yOk"
         },
         "snsInvokingPostLambda": {
           "handler": "./snsInvokingPostLambda.handler",
@@ -1458,7 +1458,7 @@
           "timeout": 30,
           "runtime": "nodejs18.x",
           "vpc": {},
-          "versionLogicalId": "SnsInvokingPostLambdaLambdaVersionAZr5G9JdNLLEl9sFihte5jMyB4PmaKe39j8CVaf6E"
+          "versionLogicalId": "SnsInvokingPostLambdaLambdaVersionNkw5sYV6mxJHaBxw5G2sLwHMPSvqomaj5syFAxXu4"
         },
         "snsInvokingPutLambda": {
           "handler": "./snsInvokingPutLambda.handler",
@@ -1484,7 +1484,7 @@
           "timeout": 30,
           "runtime": "nodejs18.x",
           "vpc": {},
-          "versionLogicalId": "SnsInvokingPutLambdaLambdaVersionhGdES9KLsPjivf5K0ZYIyX6AgHBuHGjAaI6Usvuc8"
+          "versionLogicalId": "SnsInvokingPutLambdaLambdaVersion1DNv44hKgxuFM9PiX1ABhEtsS3XsyqhzmPyn6Q9R6I"
         },
         "snsInvokingDeleteLambda": {
           "handler": "./snsInvokingDeleteLambda.handler",
@@ -1510,7 +1510,7 @@
           "timeout": 30,
           "runtime": "nodejs18.x",
           "vpc": {},
-          "versionLogicalId": "SnsInvokingDeleteLambdaLambdaVersionBLVP91YAxFyJXsVcFtQDEGFQsrz1X0TwLmpHJonA"
+          "versionLogicalId": "SnsInvokingDeleteLambdaLambdaVersionuDOM52853lgm3gLjVG8EyFgu8ofBZeOQ7fhovLMyk"
         }
       },
       "resources": {
@@ -1530,14 +1530,14 @@
         }
       }
     },
-    "serviceRawFile": "service: ric-sns-lambda\n\norg: x23176458\napp: lambdas\nprovider:\n  name: aws\n  runtime: nodejs18.x\n  region: eu-west-1\n  timeout: 30\n  iam:\n    role:\n      statements:\n        - Effect: Allow\n          Action:\n            - sns:Publish\n          Resource:\n            - !Ref SNSTopic\n        - Effect: Allow\n          Action:\n            - \"dynamodb:*\"\n            - \"logs:*\"\n            - lambda:GetLayerVersion\n          Resource:\n            - arn:aws:dynamodb:us-east-1:123456789012:table/RIC-EMPLOYEEE-TABLE\n  logs:\n    restApi: true\n    httpApi: true\n    lambda: true\n\nfunctions:\n  selfInvokingLambdaToPostMessageToSNS:\n    handler: ./selfInvokingLambdaToPostMessageToSNS.handler\n    environment:\n      SNS_TOPIC_ARN: !Ref SNSTopic\n    events:\n      - schedule:\n          rate: rate(3 minutes)\n          enabled: false\n\n  snsInvokingGetLambda:\n    handler: ./snsInvokingGetLambda.handler\n    environment:\n      TABLE_NAME: RIC-EMPLOYEEE-TABLE\n    layers:\n      - arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13\n    events:\n      - sns:\n          arn: !Ref SNSTopic\n          topicName: RIC-SNS-TO-TRIGGER-LAMBDAS\n\n  snsInvokingPostLambda:\n    handler: ./snsInvokingPostLambda.handler\n    environment:\n      TABLE_NAME: RIC-EMPLOYEEE-TABLE\n    layers:\n      - arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13\n    events:\n      - sns:\n          arn: !Ref SNSTopic\n          topicName: RIC-SNS-TO-TRIGGER-LAMBDAS\n\n  snsInvokingPutLambda:\n    handler: ./snsInvokingPutLambda.handler\n    environment:\n      TABLE_NAME: RIC-EMPLOYEEE-TABLE\n    layers:\n      - arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13\n    events:\n      - sns:\n          arn: !Ref SNSTopic\n          topicName: RIC-SNS-TO-TRIGGER-LAMBDAS\n\n  snsInvokingDeleteLambda:\n    handler: ./snsInvokingDeleteLambda.handler\n    environment:\n      TABLE_NAME: RIC-EMPLOYEEE-TABLE\n    layers:\n      - arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13\n    events:\n      - sns:\n          arn: !Ref SNSTopic\n          topicName: RIC-SNS-TO-TRIGGER-LAMBDAS\n\nresources:\n  Resources:\n    SNSTopic:\n      Type: AWS::SNS::Topic\n      Properties:\n        TopicName: RIC-SNS-TO-TRIGGER-LAMBDAS\n\ncustom:\n  dotenv:\n    logging: false\n",
+    "serviceRawFile": "service: ric-sns-lambda\n\norg: x23176458\napp: lambdas\nprovider:\n  name: aws\n  runtime: nodejs18.x\n  region: eu-west-1\n  timeout: 30\n  iam:\n    role:\n      statements:\n        - Effect: Allow\n          Action:\n            - sns:Publish\n          Resource:\n            - !Ref SNSTopic\n        - Effect: Allow\n          Action:\n            - \"dynamodb:*\"\n            - \"logs:*\"\n            - lambda:GetLayerVersion\n          Resource:\n            - arn:aws:dynamodb:us-east-1:123456789012:table/RIC-EMPLOYEEE-TABLE\n  logs:\n    restApi: true\n    httpApi: true\n    lambda: true\n\nfunctions:\n  selfInvokingLambdaToPostMessageToSNS:\n    handler: ./selfInvokingLambdaToPostMessageToSNS.handler\n    environment:\n      SNS_TOPIC_ARN: !Ref SNSTopic\n    events:\n      - schedule:\n          rate: rate(3 minutes)\n          enabled: true\n\n  snsInvokingGetLambda:\n    handler: ./snsInvokingGetLambda.handler\n    environment:\n      TABLE_NAME: RIC-EMPLOYEEE-TABLE\n    layers:\n      - arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13\n    events:\n      - sns:\n          arn: !Ref SNSTopic\n          topicName: RIC-SNS-TO-TRIGGER-LAMBDAS\n\n  snsInvokingPostLambda:\n    handler: ./snsInvokingPostLambda.handler\n    environment:\n      TABLE_NAME: RIC-EMPLOYEEE-TABLE\n    layers:\n      - arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13\n    events:\n      - sns:\n          arn: !Ref SNSTopic\n          topicName: RIC-SNS-TO-TRIGGER-LAMBDAS\n\n  snsInvokingPutLambda:\n    handler: ./snsInvokingPutLambda.handler\n    environment:\n      TABLE_NAME: RIC-EMPLOYEEE-TABLE\n    layers:\n      - arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13\n    events:\n      - sns:\n          arn: !Ref SNSTopic\n          topicName: RIC-SNS-TO-TRIGGER-LAMBDAS\n\n  snsInvokingDeleteLambda:\n    handler: ./snsInvokingDeleteLambda.handler\n    environment:\n      TABLE_NAME: RIC-EMPLOYEEE-TABLE\n    layers:\n      - arn:aws:lambda:eu-west-1:557690584148:layer:dependencies-layer:13\n    events:\n      - sns:\n          arn: !Ref SNSTopic\n          topicName: RIC-SNS-TO-TRIGGER-LAMBDAS\n\nresources:\n  Resources:\n    SNSTopic:\n      Type: AWS::SNS::Topic\n      Properties:\n        TopicName: RIC-SNS-TO-TRIGGER-LAMBDAS\n\ncustom:\n  dotenv:\n    logging: false\n",
     "command": [
       "deploy"
     ],
     "options": {},
     "error": null,
     "params": {},
-    "machineId": "9874c5a76f7c849173020c26e20eb269",
+    "machineId": "6f43936fbdac0a586b433122c5be3fd3",
     "stage": "dev",
     "accessKeyV2": "<REDACTED>",
     "accessKeyV1": "<REDACTED>",
@@ -1563,36 +1563,36 @@
     "serviceProviderAwsCredentials": "<REDACTED>",
     "serviceProviderAwsAccountId": "557690584148",
     "projectType": "traditional",
-    "versionSf": "4.4.14",
+    "versionSf": "4.4.16",
     "serviceProviderAwsCfStackName": "ric-sns-lambda-dev",
     "integrations": {},
     "serviceUniqueId": "arn:aws:cloudformation:eu-west-1:557690584148:stack/ric-sns-lambda-dev/7b6ec920-ae41-11ef-aca3-0240b0653cdf",
     "serviceProviderAwsCfStackId": "arn:aws:cloudformation:eu-west-1:557690584148:stack/ric-sns-lambda-dev/7b6ec920-ae41-11ef-aca3-0240b0653cdf",
     "serviceProviderAwsCfStackCreated": "2024-11-29T11:02:53.971Z",
-    "serviceProviderAwsCfStackUpdated": "2024-12-04T20:17:09.810Z",
+    "serviceProviderAwsCfStackUpdated": "2024-12-12T05:23:36.179Z",
     "serviceProviderAwsCfStackStatus": "UPDATE_COMPLETE",
     "serviceProviderAwsCfStackOutputs": [
       {
         "OutputKey": "SelfInvokingLambdaToPostMessageToSNSLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:eu-west-1:557690584148:function:ric-sns-lambda-dev-selfInvokingLambdaToPostMessageToSNS:11",
+        "OutputValue": "arn:aws:lambda:eu-west-1:557690584148:function:ric-sns-lambda-dev-selfInvokingLambdaToPostMessageToSNS:12",
         "Description": "Current Lambda function version",
         "ExportName": "sls-ric-sns-lambda-dev-SelfInvokingLambdaToPostMessageToSNSLambdaFunctionQualifiedArn"
       },
       {
         "OutputKey": "SnsInvokingGetLambdaLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:eu-west-1:557690584148:function:ric-sns-lambda-dev-snsInvokingGetLambda:11",
+        "OutputValue": "arn:aws:lambda:eu-west-1:557690584148:function:ric-sns-lambda-dev-snsInvokingGetLambda:12",
         "Description": "Current Lambda function version",
         "ExportName": "sls-ric-sns-lambda-dev-SnsInvokingGetLambdaLambdaFunctionQualifiedArn"
       },
       {
         "OutputKey": "SnsInvokingPutLambdaLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:eu-west-1:557690584148:function:ric-sns-lambda-dev-snsInvokingPutLambda:11",
+        "OutputValue": "arn:aws:lambda:eu-west-1:557690584148:function:ric-sns-lambda-dev-snsInvokingPutLambda:12",
         "Description": "Current Lambda function version",
         "ExportName": "sls-ric-sns-lambda-dev-SnsInvokingPutLambdaLambdaFunctionQualifiedArn"
       },
       {
         "OutputKey": "SnsInvokingPostLambdaLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:eu-west-1:557690584148:function:ric-sns-lambda-dev-snsInvokingPostLambda:11",
+        "OutputValue": "arn:aws:lambda:eu-west-1:557690584148:function:ric-sns-lambda-dev-snsInvokingPostLambda:12",
         "Description": "Current Lambda function version",
         "ExportName": "sls-ric-sns-lambda-dev-SnsInvokingPostLambdaLambdaFunctionQualifiedArn"
       },
@@ -1603,7 +1603,7 @@
       },
       {
         "OutputKey": "SnsInvokingDeleteLambdaLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:eu-west-1:557690584148:function:ric-sns-lambda-dev-snsInvokingDeleteLambda:11",
+        "OutputValue": "arn:aws:lambda:eu-west-1:557690584148:function:ric-sns-lambda-dev-snsInvokingDeleteLambda:12",
         "Description": "Current Lambda function version",
         "ExportName": "sls-ric-sns-lambda-dev-SnsInvokingDeleteLambdaLambdaFunctionQualifiedArn"
       }

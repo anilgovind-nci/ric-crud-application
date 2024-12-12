@@ -122,7 +122,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
-                "S3Key": "serverless/ric-self-invoking-lambda/dev/1733343532190-2024-12-04T20:18:52.190Z/ric-self-invoking-lambda.zip"
+                "S3Key": "serverless/ric-self-invoking-lambda/dev/1733981009115-2024-12-12T05:23:29.115Z/ric-self-invoking-lambda.zip"
               },
               "Handler": "autoInvokingGetLambda.handler",
               "Runtime": "nodejs18.x",
@@ -153,7 +153,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
-                "S3Key": "serverless/ric-self-invoking-lambda/dev/1733343532190-2024-12-04T20:18:52.190Z/ric-self-invoking-lambda.zip"
+                "S3Key": "serverless/ric-self-invoking-lambda/dev/1733981009115-2024-12-12T05:23:29.115Z/ric-self-invoking-lambda.zip"
               },
               "Handler": "autoInvokingPostLambda.handler",
               "Runtime": "nodejs18.x",
@@ -184,7 +184,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
-                "S3Key": "serverless/ric-self-invoking-lambda/dev/1733343532190-2024-12-04T20:18:52.190Z/ric-self-invoking-lambda.zip"
+                "S3Key": "serverless/ric-self-invoking-lambda/dev/1733981009115-2024-12-12T05:23:29.115Z/ric-self-invoking-lambda.zip"
               },
               "Handler": "autoInvokingPutLambda.handler",
               "Runtime": "nodejs18.x",
@@ -215,7 +215,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
-                "S3Key": "serverless/ric-self-invoking-lambda/dev/1733343532190-2024-12-04T20:18:52.190Z/ric-self-invoking-lambda.zip"
+                "S3Key": "serverless/ric-self-invoking-lambda/dev/1733981009115-2024-12-12T05:23:29.115Z/ric-self-invoking-lambda.zip"
               },
               "Handler": "autoInvokingDeleteLambda.handler",
               "Runtime": "nodejs18.x",
@@ -241,44 +241,44 @@
               "AutoInvokingDeleteLambdaLogGroup"
             ]
           },
-          "AutoInvokingGetLambdaLambdaVersionc5yanFpSrFBqMl7XtF8SOLhPCpLaV7nF5QMzVk8Y": {
+          "AutoInvokingGetLambdaLambdaVersionBoQJmthL53AHwqK9Hsv8CIl3YFogZwOY7kymGBMSxw0": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "AutoInvokingGetLambdaLambdaFunction"
               },
-              "CodeSha256": "q/HM91Sk4+gcrnUFGKxrodHT6KNQE2MTnCTanXnnu98="
+              "CodeSha256": "MoxSqBOvjocwrJumHYehnpammsMISBM8HHMbI9QyHic="
             }
           },
-          "AutoInvokingPostLambdaLambdaVersiondBs0fyAGMADmzgQx3ouVv1sTEGLO7TifO5xZWk2FFM": {
+          "AutoInvokingPostLambdaLambdaVersionZx0f33pJdMjP2ziJJo2i8pfx0Idh6nhHsBok3UOxk": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "AutoInvokingPostLambdaLambdaFunction"
               },
-              "CodeSha256": "q/HM91Sk4+gcrnUFGKxrodHT6KNQE2MTnCTanXnnu98="
+              "CodeSha256": "MoxSqBOvjocwrJumHYehnpammsMISBM8HHMbI9QyHic="
             }
           },
-          "AutoInvokingPutLambdaLambdaVersionAw41inuS1h7nYchAPtseF4x0Ocb9OvhXE468LL4mzs": {
+          "AutoInvokingPutLambdaLambdaVersionSHsxYiWoJuinhxMkEPFEaIJpftlPze902GTYHWoPAo": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "AutoInvokingPutLambdaLambdaFunction"
               },
-              "CodeSha256": "q/HM91Sk4+gcrnUFGKxrodHT6KNQE2MTnCTanXnnu98="
+              "CodeSha256": "MoxSqBOvjocwrJumHYehnpammsMISBM8HHMbI9QyHic="
             }
           },
-          "AutoInvokingDeleteLambdaLambdaVersionXqNZF0PDzMrJ4KLOY25AweO4XFQm3fZTzz5DX6mLw": {
+          "AutoInvokingDeleteLambdaLambdaVersion4q5i5rdm0VujIs6If39G3QfMu9M6EsMxdsrWtrs2A": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "AutoInvokingDeleteLambdaLambdaFunction"
               },
-              "CodeSha256": "q/HM91Sk4+gcrnUFGKxrodHT6KNQE2MTnCTanXnnu98="
+              "CodeSha256": "MoxSqBOvjocwrJumHYehnpammsMISBM8HHMbI9QyHic="
             }
           },
           "RicselfinvokinglambdadevautoInvokingGetLambdarule1EventBridgeRule": {
@@ -286,7 +286,7 @@
             "Properties": {
               "Name": "ric-self-invoking-lambda-dev-autoInvokingGetLambda-rule-1",
               "ScheduleExpression": "rate(3 minutes)",
-              "State": "DISABLED",
+              "State": "ENABLED",
               "Targets": [
                 {
                   "Arn": {
@@ -343,7 +343,7 @@
             "Properties": {
               "Name": "ric-self-invoking-lambda-dev-autoInvokingPostLambda-rule-1",
               "ScheduleExpression": "rate(3 minutes)",
-              "State": "DISABLED",
+              "State": "ENABLED",
               "Targets": [
                 {
                   "Arn": {
@@ -400,7 +400,7 @@
             "Properties": {
               "Name": "ric-self-invoking-lambda-dev-autoInvokingPutLambda-rule-1",
               "ScheduleExpression": "rate(3 minutes)",
-              "State": "DISABLED",
+              "State": "ENABLED",
               "Targets": [
                 {
                   "Arn": {
@@ -457,7 +457,7 @@
             "Properties": {
               "Name": "ric-self-invoking-lambda-dev-autoInvokingDeleteLambda-rule-1",
               "ScheduleExpression": "rate(3 minutes)",
-              "State": "DISABLED",
+              "State": "ENABLED",
               "Targets": [
                 {
                   "Arn": {
@@ -520,7 +520,7 @@
           "AutoInvokingGetLambdaLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "AutoInvokingGetLambdaLambdaVersionc5yanFpSrFBqMl7XtF8SOLhPCpLaV7nF5QMzVk8Y"
+              "Ref": "AutoInvokingGetLambdaLambdaVersionBoQJmthL53AHwqK9Hsv8CIl3YFogZwOY7kymGBMSxw0"
             },
             "Export": {
               "Name": "sls-ric-self-invoking-lambda-dev-AutoInvokingGetLambdaLambdaFunctionQualifiedArn"
@@ -529,7 +529,7 @@
           "AutoInvokingPostLambdaLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "AutoInvokingPostLambdaLambdaVersiondBs0fyAGMADmzgQx3ouVv1sTEGLO7TifO5xZWk2FFM"
+              "Ref": "AutoInvokingPostLambdaLambdaVersionZx0f33pJdMjP2ziJJo2i8pfx0Idh6nhHsBok3UOxk"
             },
             "Export": {
               "Name": "sls-ric-self-invoking-lambda-dev-AutoInvokingPostLambdaLambdaFunctionQualifiedArn"
@@ -538,7 +538,7 @@
           "AutoInvokingPutLambdaLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "AutoInvokingPutLambdaLambdaVersionAw41inuS1h7nYchAPtseF4x0Ocb9OvhXE468LL4mzs"
+              "Ref": "AutoInvokingPutLambdaLambdaVersionSHsxYiWoJuinhxMkEPFEaIJpftlPze902GTYHWoPAo"
             },
             "Export": {
               "Name": "sls-ric-self-invoking-lambda-dev-AutoInvokingPutLambdaLambdaFunctionQualifiedArn"
@@ -547,7 +547,7 @@
           "AutoInvokingDeleteLambdaLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "AutoInvokingDeleteLambdaLambdaVersionXqNZF0PDzMrJ4KLOY25AweO4XFQm3fZTzz5DX6mLw"
+              "Ref": "AutoInvokingDeleteLambdaLambdaVersion4q5i5rdm0VujIs6If39G3QfMu9M6EsMxdsrWtrs2A"
             },
             "Export": {
               "Name": "sls-ric-self-invoking-lambda-dev-AutoInvokingDeleteLambdaLambdaFunctionQualifiedArn"
@@ -565,7 +565,7 @@
           {
             "eventBridge": {
               "schedule": "rate(3 minutes)",
-              "enabled": false,
+              "enabled": true,
               "input": {
                 "isRequestForKeepLambdaAlive": true
               }
@@ -584,7 +584,7 @@
         "timeout": 30,
         "runtime": "nodejs18.x",
         "vpc": {},
-        "versionLogicalId": "AutoInvokingGetLambdaLambdaVersionc5yanFpSrFBqMl7XtF8SOLhPCpLaV7nF5QMzVk8Y"
+        "versionLogicalId": "AutoInvokingGetLambdaLambdaVersionBoQJmthL53AHwqK9Hsv8CIl3YFogZwOY7kymGBMSxw0"
       },
       "autoInvokingPostLambda": {
         "handler": "autoInvokingPostLambda.handler",
@@ -592,7 +592,7 @@
           {
             "eventBridge": {
               "schedule": "rate(3 minutes)",
-              "enabled": false,
+              "enabled": true,
               "input": {
                 "isRequestForKeepLambdaAlive": true
               }
@@ -611,7 +611,7 @@
         "timeout": 30,
         "runtime": "nodejs18.x",
         "vpc": {},
-        "versionLogicalId": "AutoInvokingPostLambdaLambdaVersiondBs0fyAGMADmzgQx3ouVv1sTEGLO7TifO5xZWk2FFM"
+        "versionLogicalId": "AutoInvokingPostLambdaLambdaVersionZx0f33pJdMjP2ziJJo2i8pfx0Idh6nhHsBok3UOxk"
       },
       "autoInvokingPutLambda": {
         "handler": "autoInvokingPutLambda.handler",
@@ -619,7 +619,7 @@
           {
             "eventBridge": {
               "schedule": "rate(3 minutes)",
-              "enabled": false,
+              "enabled": true,
               "input": {
                 "isRequestForKeepLambdaAlive": true
               }
@@ -638,7 +638,7 @@
         "timeout": 30,
         "runtime": "nodejs18.x",
         "vpc": {},
-        "versionLogicalId": "AutoInvokingPutLambdaLambdaVersionAw41inuS1h7nYchAPtseF4x0Ocb9OvhXE468LL4mzs"
+        "versionLogicalId": "AutoInvokingPutLambdaLambdaVersionSHsxYiWoJuinhxMkEPFEaIJpftlPze902GTYHWoPAo"
       },
       "autoInvokingDeleteLambda": {
         "handler": "autoInvokingDeleteLambda.handler",
@@ -646,7 +646,7 @@
           {
             "eventBridge": {
               "schedule": "rate(3 minutes)",
-              "enabled": false,
+              "enabled": true,
               "input": {
                 "isRequestForKeepLambdaAlive": true
               }
@@ -665,7 +665,7 @@
         "timeout": 30,
         "runtime": "nodejs18.x",
         "vpc": {},
-        "versionLogicalId": "AutoInvokingDeleteLambdaLambdaVersionXqNZF0PDzMrJ4KLOY25AweO4XFQm3fZTzz5DX6mLw"
+        "versionLogicalId": "AutoInvokingDeleteLambdaLambdaVersion4q5i5rdm0VujIs6If39G3QfMu9M6EsMxdsrWtrs2A"
       }
     },
     "configValidationMode": "warn",
@@ -689,7 +689,7 @@
     "artifact": "/Users/anilgovindka/CollageDays/Thesis/ric-crud-application/keepLambdaWarm/viaEventBridge/.serverless/ric-self-invoking-lambda.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/ric-self-invoking-lambda/dev/1733343532190-2024-12-04T20:18:52.190Z",
+    "artifactDirectoryName": "serverless/ric-self-invoking-lambda/dev/1733981009115-2024-12-12T05:23:29.115Z",
     "artifact": "ric-self-invoking-lambda.zip"
   }
 }

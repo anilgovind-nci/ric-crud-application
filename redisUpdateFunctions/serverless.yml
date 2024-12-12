@@ -9,7 +9,7 @@ provider:
   timeout: 30
   iam:
     role:
-      statements:  # Default IAM role permissions for all functions
+      statements: 
         - Effect: "Allow"
           Action:
             - "logs:*"
@@ -35,15 +35,15 @@ functions:
 
   queryCloudwatchAndUpdateFunctionTimes:
     handler: ./queryCloudwatchAndUpdateFunctionTimes.handler
-    memorySize: 256 # Increase memory if required
-    timeout: 900 # Maximum timeout of 15 minutes
+    memorySize: 256 
+    timeout: 900 
     environment:
       REDIS_FUNCTION_NAME:
         Ref: RedisTimeAdjustmentsForEndpointsLambdaFunction
     events:
       - schedule:
-          rate: rate(15 minutes) # Runs every 15 minutes
-          enabled: true # Ensures the rule is active
+          rate: rate(15 minutes) 
+          enabled: true 
   keepLambdasWarm:
     handler: ./keepLambdasWarm.handler
     memorySize: 256 

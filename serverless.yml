@@ -9,7 +9,7 @@ provider:
   iamRoleStatements:
     - Effect: "Allow"
       Action:
-        - "dynamodb:*"         # Allows access to DynamoDB
+        - "dynamodb:*" 
         - "logs:*"
         - "secretsmanager:GetSecretValue"
         - lambda:GetLayerVersion
@@ -18,7 +18,7 @@ provider:
     restApi:
       accessLogging: true
       format: '{"requestId":"$context.requestId","ip":"$context.identity.sourceIp","caller":"$context.identity.caller","user":"$context.identity.user","requestTime":"$context.requestTime","httpMethod":"$context.httpMethod","resourcePath":"$context.resourcePath","status":"$context.status","protocol":"$context.protocol","responseLength":"$context.responseLength"}'
-      level: INFO  # Choose from INFO | ERROR
+      level: INFO  
       executionLogging: true
       fullExecutionData: true
       roleManagedExternally: false

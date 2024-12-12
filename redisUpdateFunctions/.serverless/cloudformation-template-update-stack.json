@@ -126,7 +126,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
-          "S3Key": "serverless/ric-redis-operations/dev/1733870294359-2024-12-10T22:38:14.359Z/ric-redis-operations.zip"
+          "S3Key": "serverless/ric-redis-operations/dev/1733981200286-2024-12-12T05:26:40.286Z/ric-redis-operations.zip"
         },
         "Handler": "./redisTimeAdjustmentsForEndpoints.handler",
         "Runtime": "nodejs18.x",
@@ -162,7 +162,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
-          "S3Key": "serverless/ric-redis-operations/dev/1733870294359-2024-12-10T22:38:14.359Z/ric-redis-operations.zip"
+          "S3Key": "serverless/ric-redis-operations/dev/1733981200286-2024-12-12T05:26:40.286Z/ric-redis-operations.zip"
         },
         "Handler": "./queryCloudwatchAndUpdateFunctionTimes.handler",
         "Runtime": "nodejs18.x",
@@ -192,7 +192,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "serverless-framework-deployments-eu-west-1-2843d33d-7e87",
-          "S3Key": "serverless/ric-redis-operations/dev/1733870294359-2024-12-10T22:38:14.359Z/ric-redis-operations.zip"
+          "S3Key": "serverless/ric-redis-operations/dev/1733981200286-2024-12-12T05:26:40.286Z/ric-redis-operations.zip"
         },
         "Handler": "./keepLambdasWarm.handler",
         "Runtime": "nodejs18.x",
@@ -286,7 +286,7 @@
       "Type": "AWS::Events::Rule",
       "Properties": {
         "ScheduleExpression": "rate(3 minutes)",
-        "State": "DISABLED",
+        "State": "ENABLED",
         "Targets": [
           {
             "Arn": {

@@ -1,8 +1,56 @@
-[2024-12-11T19:39:56.418Z] Processing firstInvoke with 5 delays...
-[2024-12-11T19:39:56.419Z] Starting GET requests...
-[2024-12-11T19:39:57.584Z] Request 1: Response time = 228 ms, Status = 200
-[2024-12-11T19:39:58.979Z] Request 2: Response time = 154 ms, Status = 200
-[2024-12-11T19:40:00.207Z] Request 3: Response time = 198 ms, Status = 200
-[2024-12-11T19:40:01.464Z] Waiting for 15 minutes before the next group...
-[2024-12-11T19:40:01.598Z] Request 4: Response time = 170 ms, Status = 200
-[2024-12-11T19:40:01.659Z] Request 5: Response time = 198 ms, Status = 200
+[2024-12-12T05:25:01.634Z] Processing FirstInvoke with 25 delays...
+[2024-12-12T05:25:01.635Z] Starting GET requests...
+[2024-12-12T05:25:04.052Z] Request 11: Error - Request failed with status code 500, Response time = 86 ms
+[2024-12-12T05:25:04.238Z] Request 12: Error - Request failed with status code 500, Response time = 65 ms
+[2024-12-12T05:25:04.574Z] Request 13: Error - Request failed with status code 500, Response time = 96 ms
+[2024-12-12T05:25:04.779Z] Request 14: Error - Request failed with status code 500, Response time = 70 ms
+[2024-12-12T05:25:05.089Z] Request 15: Error - Request failed with status code 500, Response time = 77 ms
+[2024-12-12T05:25:05.519Z] Request 16: Error - Request failed with status code 500, Response time = 333 ms
+[2024-12-12T05:25:05.694Z] Request 17: Error - Request failed with status code 500, Response time = 69 ms
+[2024-12-12T05:25:06.033Z] Request 18: Error - Request failed with status code 500, Response time = 71 ms
+[2024-12-12T05:25:06.076Z] Request 19: Error - Request failed with status code 500, Response time = 69 ms
+[2024-12-12T05:25:06.231Z] Request 20: Error - Request failed with status code 500, Response time = 71 ms
+[2024-12-12T05:25:06.413Z] Request 21: Error - Request failed with status code 500, Response time = 77 ms
+[2024-12-12T05:25:06.812Z] Request 22: Error - Request failed with status code 500, Response time = 89 ms
+[2024-12-12T05:25:06.979Z] Request 23: Error - Request failed with status code 500, Response time = 70 ms
+[2024-12-12T05:25:07.018Z] All GET requests completed.
+[2024-12-12T05:25:07.080Z] Request 24: Error - Request failed with status code 500, Response time = 80 ms
+[2024-12-12T05:25:07.097Z] Request 25: Error - Request failed with status code 500, Response time = 81 ms
+[2024-12-12T05:25:08.191Z] Request 1: Response time = 6342 ms, Status = 200
+[2024-12-12T05:25:08.229Z] Request 2: Response time = 6093 ms, Status = 200
+[2024-12-12T05:25:08.479Z] Request 3: Response time = 5956 ms, Status = 200
+[2024-12-12T05:25:08.801Z] Request 5: Response time = 5938 ms, Status = 200
+[2024-12-12T05:25:08.912Z] Request 4: Response time = 6061 ms, Status = 200
+[2024-12-12T05:25:08.993Z] Request 6: Response time = 5973 ms, Status = 200
+[2024-12-12T05:25:09.049Z] Request 7: Response time = 6012 ms, Status = 200
+[2024-12-12T05:25:09.215Z] Request 8: Response time = 5952 ms, Status = 200
+[2024-12-12T05:25:09.486Z] Request 9: Response time = 5925 ms, Status = 200
+[2024-12-12T05:25:09.822Z] Request 10: Response time = 5964 ms, Status = 200
+[2024-12-12T05:32:18.674Z] Processing FirstInvoke with 25 delays...
+[2024-12-12T05:32:18.675Z] Starting GET requests...
+[2024-12-12T05:32:19.467Z] Request 1: Response time = 577 ms, Status = 200
+[2024-12-12T05:32:19.543Z] Request 2: Response time = 380 ms, Status = 200
+[2024-12-12T05:32:19.763Z] Request 3: Response time = 210 ms, Status = 200
+[2024-12-12T05:32:20.032Z] Request 4: Response time = 152 ms, Status = 200
+[2024-12-12T05:32:20.095Z] Request 5: Response time = 203 ms, Status = 200
+[2024-12-12T05:32:20.233Z] Request 6: Response time = 185 ms, Status = 200
+[2024-12-12T05:32:20.303Z] Request 7: Response time = 239 ms, Status = 200
+[2024-12-12T05:32:20.569Z] Request 8: Response time = 279 ms, Status = 200
+[2024-12-12T05:32:20.809Z] Request 9: Response time = 220 ms, Status = 200
+[2024-12-12T05:32:21.064Z] Request 10: Response time = 176 ms, Status = 200
+[2024-12-12T05:32:21.198Z] Request 11: Response time = 202 ms, Status = 200
+[2024-12-12T05:32:21.375Z] Request 12: Response time = 170 ms, Status = 200
+[2024-12-12T05:32:21.682Z] Request 13: Response time = 173 ms, Status = 200
+[2024-12-12T05:32:21.921Z] Request 14: Response time = 191 ms, Status = 200
+[2024-12-12T05:32:22.230Z] Request 15: Response time = 196 ms, Status = 200
+[2024-12-12T05:32:22.433Z] Request 16: Response time = 233 ms, Status = 200
+[2024-12-12T05:32:22.598Z] Request 17: Response time = 170 ms, Status = 200
+[2024-12-12T05:32:22.906Z] Request 18: Response time = 139 ms, Status = 200
+[2024-12-12T05:32:22.981Z] Request 19: Response time = 165 ms, Status = 200
+[2024-12-12T05:32:23.108Z] Request 20: Response time = 140 ms, Status = 200
+[2024-12-12T05:32:23.364Z] Request 21: Response time = 220 ms, Status = 200
+[2024-12-12T05:32:23.673Z] Request 22: Response time = 143 ms, Status = 200
+[2024-12-12T05:32:23.820Z] All GET requests completed.
+[2024-12-12T05:32:23.905Z] Request 23: Response time = 193 ms, Status = 200
+[2024-12-12T05:32:24.005Z] Request 24: Response time = 203 ms, Status = 200
+[2024-12-12T05:32:24.069Z] Request 25: Response time = 251 ms, Status = 200
