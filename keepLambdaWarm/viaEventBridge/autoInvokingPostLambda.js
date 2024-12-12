@@ -1,23 +1,29 @@
+// aws-sdk libraries importing.
 const { DynamoDBClient, PutItemCommand } = require("@aws-sdk/client-dynamodb");
+
+// packages importing from layer.
 const winston = require("winston");
 const moment = require("moment");
 const validator = require("validator");
 
+// Set up Winston logger for logging
 const logger = winston.createLogger({
   level: "info",
   format: winston.format.combine(
     winston.format.timestamp(),
     winston.format.printf(({ timestamp, level, message, ...meta }) => {
-      return `${timestamp} [${level.toUpperCase()}] ${message} ${Object.keys(meta).length ? JSON.stringify(meta) : ""}`;
+      return `${timestamp} [${level.toUpperCase()}] ${message} ${
+        Object.keys(meta).length ? JSON.stringify(meta) : ""
+      }`;
     })
   ),
-  transports: [
-    new winston.transports.Console(),
-  ],
+  transports: [new winston.transports.Console()],
 });
 
+// Create client for DynamoDB
 const dynamoDBClient = new DynamoDBClient();
 
+// The validateInput function is for validating the incoming request parameters.
 const validateInput = (data) => {
   const errors = [];
 
@@ -33,7 +39,7 @@ const validateInput = (data) => {
     errors.push("Invalid or missing 'name' (must be a non-empty string)");
   }
 
-  if (typeof data.age === 'undefined' || !validator.isInt(data.age.toString(), { min: 0 })) {
+  if (typeof data.age === "undefined" || !validator.isInt(data.age.toString(), { min: 0 })) {
     errors.push("Invalid or missing 'age' (must be a non-negative integer)");
   }
 
@@ -44,7 +50,10 @@ const validateInput = (data) => {
   return errors;
 };
 
+// Lambda handler function. This code block will be invoked by events. Every code written above 
+// have to be executed before to start this execution.
 exports.handler = async (event, context) => {
+  // The below If loop is for detecting the invocation request from lambda warming architecture
   if (event.isRequestForKeepLambdaAlive === true) {
     console.log("This is a keep-alive request.");
     return {
@@ -55,9 +64,11 @@ exports.handler = async (event, context) => {
 
   const requestId = context.awsRequestId;
   const startTime = moment().format();
-  
+
+  // Log Lambda invocation to logger
   logger.info(`Request ID: ${requestId} - Lambda invoked at ${startTime}`);
 
+  // Parse and validate the request body received form request.
   let item;
   try {
     item = JSON.parse(event.body);
@@ -70,6 +81,7 @@ exports.handler = async (event, context) => {
     };
   }
 
+  // send response if validation failed
   const validationErrors = validateInput(item);
   if (validationErrors.length > 0) {
     logger.warn(`Request ID: ${requestId} - Validation failed: ${validationErrors.join(", ")}`);
@@ -79,6 +91,7 @@ exports.handler = async (event, context) => {
     };
   }
 
+  // DynamoDB parameters configuration from received request
   const { id, pps, name, age, position } = item;
 
   const params = {
@@ -93,22 +106,36 @@ exports.handler = async (event, context) => {
   };
 
   try {
+    // Insert data into DynamoDB
     const command = new PutItemCommand(params);
     await dynamoDBClient.send(command);
-    
-    const endTime = moment().format();
-    const duration = moment(endTime).diff(moment(startTime), 'milliseconds');
-    logger.info(`Request ID: ${requestId} - Item created successfully. Execution time: ${duration}ms`, { item });
 
+    // calculate the time taken
+    const endTime = moment().format();
+    const duration = moment(endTime).diff(moment(startTime), "milliseconds");
+
+    // log success
+    logger.info(
+      `Request ID: ${requestId} - Item created successfully. Execution time: ${duration}ms`,
+      { item }
+    );
+
+    // return creation success response to client
     return {
       statusCode: 201,
       body: JSON.stringify({ message: "Item created successfully", requestId }),
     };
-  } catch (error) {
+  } 
+  // log error
+  catch (error) {
     logger.error(`Request ID: ${requestId} - Error creating item`, { error: error.message });
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: "Could not create item", message: error.message, requestId }),
+      body: JSON.stringify({
+        error: "Could not create item",
+        message: error.message,
+        requestId,
+      }),
     };
   }
 };

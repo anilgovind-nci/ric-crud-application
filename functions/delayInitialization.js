@@ -11,7 +11,7 @@ const simulateColdStart = () => {
   if (!initialized) {
     console.log("Simulating cold start with a 5-second synchronous delay...");
     // Block execution for 5 seconds. Change this parameter for cold start.
-    delay(1000); 
+    delay(5000); 
     console.log("Cold start delay complete.");
     // Flag to prevent further delays. The code should execute only once when new VE is created
     initialized = true; 

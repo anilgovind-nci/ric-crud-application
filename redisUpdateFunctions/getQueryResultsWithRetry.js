@@ -1,6 +1,6 @@
 const { GetQueryResultsCommand } = require('@aws-sdk/client-cloudwatch-logs');
 
-
+//Attempting the query
 const getQueryResultsWithRetry = async (client, queryId, maxRetries = 10) => {
   let attempts = 0;
   let isQueryComplete = false;

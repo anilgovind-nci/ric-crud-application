@@ -11,7 +11,7 @@ module.exports.handler = async (event) => {
     for (const logGroup of logGroups) {
       const { name: logGroupName, functionSecretManagerKey } = logGroup;
 
-      // Define the query for CloudWatch Logs
+      // Query for getting avgBilledDuration and avgInitDuration
       const query = `
           fields @billedDuration, @initDuration
           | filter @type = "REPORT"
@@ -19,7 +19,7 @@ module.exports.handler = async (event) => {
       `;
 
       console.log(`Processing log group: ${logGroupName}`);
-
+      // prepare command for query
       const startQueryCommand = new StartQueryCommand({
           logGroupName,
           startTime: Math.floor(Date.now() / 1000) - 3600,
@@ -52,6 +52,7 @@ module.exports.handler = async (event) => {
         });
 
         try {
+          // invoke command for lambda
           const invokeResponse = await lambdaClient.send(invokeCommand);
           console.log(`Lambda invoked with status: ${invokeResponse.StatusCode}`);
         } catch (invokeError) {

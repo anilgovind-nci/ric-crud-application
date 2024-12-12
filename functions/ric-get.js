@@ -8,7 +8,6 @@ const moment = require("moment");
 const validator = require("validator");
 
 const { logToCustomLogGroup } = require('./logToCustomCloudWatch'); 
-
 //The below line is the custom code for adding artificial delay to the lambda cold start.
 require('./delayInitialization');
 // Create client for DynamoDB and CloudWatch Logs
@@ -42,7 +41,7 @@ const handler = async (event, context) => {
 
   // Log the start of the Lambda invocation 
   console.log(`Request ID: ${requestId} - Lambda invoked at ${startTime}`);
-  console.log(`Request ID: ${requestId} - Received event`, event);
+  // console.log(`Request ID: ${requestId} - Received event`, event);
 
   // Create the custom log event object
   const customLogEvent = {

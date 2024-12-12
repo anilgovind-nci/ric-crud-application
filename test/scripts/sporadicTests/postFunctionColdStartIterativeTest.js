@@ -11,56 +11,70 @@ function writeLog(message) {
     fs.appendFileSync(logFilePath, logMessage, 'utf8'); // Append log message to file
 }
 
-// Function to send POST requests without waiting (fire-and-forget)
-async function postEndpointWithDelays(delays, endpoint, initialPayload) {
+// Function to send POST requests without the delay
+async function sendPostRequestWithDelay(i, endpoint, currentPayload) {
+    const startTime = Date.now(); // Record start time
+
+    // Modify the payload for each request
+    // currentPayload = {
+    //     id: currentPayload.id, // Increment ID
+    //     pps: currentPayload.pps, // Increment PPS
+    //     position: currentPayload.position,
+    //     age: currentPayload.age,
+    //     name: currentPayload.name
+    // };
+
+    console.log(currentPayload);
+
+    const config = {
+        method: 'post',
+        maxBodyLength: Infinity,
+        url: endpoint,
+        headers: { 'Content-Type': 'application/json' },
+        data: JSON.stringify(currentPayload)
+    };
+
+    try {
+        const response = await axios.request(config);
+        const responseTime = Date.now() - startTime; // Calculate response time
+        const logMessage = `Request ${i + 1}: Response time = ${responseTime} ms, Status = ${response.status}`;
+        console.log(logMessage);
+        writeLog(logMessage);
+    } catch (error) {
+        const responseTime = Date.now() - startTime; // Calculate response time
+        const logMessage = `Request ${i + 1}: Error - ${error.message}, Response time = ${responseTime} ms`;
+        console.error(logMessage);
+        writeLog(logMessage);
+    }
+
+    // Return the last modified payload
+    return currentPayload;
+}
+
+// Function to send POST requests sequentially with delays (without waiting for completion)
+async function postEndpointWithDelaysSequentially(delays, endpoint, initialPayload) {
     console.log('Starting POST requests...');
     writeLog('Starting POST requests...');
 
     let currentPayload = { ...initialPayload }; // Copy of initial payload to modify
 
-    // Loop through delays and send requests
-    delays.forEach((delay, i) => {
+    // Loop through delays and send requests sequentially
+    for (let i = 0; i < delays.length; i++) {
+        const delay = delays[i];
+        currentPayload.pps = (parseInt(currentPayload.pps) + 1).toString();
+        currentPayload.id = (parseInt(currentPayload.id) + 1).toString();
+        // Wait for the specified delay before sending the request
         if (!isNaN(delay) && delay > 0) {
-            // Create a timeout for delayed execution
-            setTimeout(async () => {
-                const startTime = Date.now(); // Record start time
-
-                // Modify the payload for each request
-                currentPayload = {
-                    id: `${parseInt(currentPayload.id) + 1}`, // Increment ID
-                    pps: `${parseInt(currentPayload.pps) + 1}`, // Increment PPS
-                    position: currentPayload.position,
-                    age: currentPayload.age,
-                    name: currentPayload.name
-                };
-
-                console.log(currentPayload);
-
-                const config = {
-                    method: 'post',
-                    maxBodyLength: Infinity,
-                    url: endpoint,
-                    headers: { 'Content-Type': 'application/json' },
-                    data: JSON.stringify(currentPayload)
-                };
-
-                try {
-                    const response = await axios.request(config);
-                    const responseTime = Date.now() - startTime; // Calculate response time
-                    const logMessage = `Request ${i + 1}: Response time = ${responseTime} ms, Status = ${response.status}`;
-                    console.log(logMessage);
-                    writeLog(logMessage);
-                } catch (error) {
-                    const responseTime = Date.now() - startTime; // Calculate response time
-                    const logMessage = `Request ${i + 1}: Error - ${error.message}, Response time = ${responseTime} ms`;
-                    console.error(logMessage);
-                    writeLog(logMessage);
-                }
-            }, delay); // Fire the request after the delay
+            await new Promise(resolve => setTimeout(resolve, delay)); // Wait for the delay
         }
-    });
 
-    // Return the last modified payload (synchronously)
+        // Fire the request asynchronously without waiting for its completion
+        sendPostRequestWithDelay(i, endpoint, currentPayload);
+
+        // Continue to next iteration without waiting for the previous request to complete
+    }
+
+    // Return the last modified payload
     return currentPayload;
 }
 
@@ -85,7 +99,7 @@ async function processPostJsonData(jsonFilePath, endpoint, payloadTemplate) {
             writeLog(logMessage);
 
             // Process the group and get the updated payload
-            currentPayload = await postEndpointWithDelays(delays, endpoint, currentPayload);
+            currentPayload = await postEndpointWithDelaysSequentially(delays, endpoint, currentPayload);
 
             // Wait for 15 minutes between groups, except after the last group
             if (i < invokeGroups.length - 1) {

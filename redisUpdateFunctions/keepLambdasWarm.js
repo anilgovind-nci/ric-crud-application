@@ -12,7 +12,7 @@ exports.handler = async (event) => {
         const endTime = Date.now();
         const startTime = calculateStartTime(timeRange, endTime);
         const lambdaNames = logGroups.map(group => group.name.split('/').pop());
-
+        // Query for fetching last 2 minutes invocations
         const queryString = `
               fields lambda, @timestamp
               | filter @message like /invocationTime/
@@ -75,7 +75,7 @@ exports.handler = async (event) => {
         };
     }
 };
-
+// function to convert input times 
 function calculateStartTime(timeRange, endTime) {
     const units = timeRange.slice(-1);
     const amount = parseInt(timeRange.slice(0, -1), 10);
@@ -96,16 +96,18 @@ function calculateStartTime(timeRange, endTime) {
     }
     return startTime;
 }
-
+// function to invoke lambdas which are not invoked in last configured minutes.
 async function invokeMissingLambdas(lambdaNames) {
     console.log(`Invoking missing Lambdas: ${lambdaNames.join(", ")}`);
     const invocations = lambdaNames.map(async (lambdaName) => {
         try {
+            // creating lambda invocation params
             const params = {
                 FunctionName: lambdaName,
-                InvocationType: "RequestResponse", // Use "Event" for asynchronous invocation
+                InvocationType: "RequestResponse",
                 Payload: JSON.stringify({ isRequestForKeepLambdaAlive: true })
             };
+            //invoking lambda
             const command = new InvokeCommand(params);
             const response = await lambdaClient.send(command);
             console.log(`Successfully invoked ${lambdaName}: StatusCode=${response.StatusCode}`);

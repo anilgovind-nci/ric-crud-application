@@ -26,14 +26,14 @@ function generateRandomMilliseconds(totalTimeInSeconds, invocations) {
 }
 
 function saveToCsv(data, filePath) {
-    const csvContent = data.join('\n'); // Join array with new lines
+    const csvContent = `[${data.join(', ')}]`; // Join array with commas and wrap in brackets
     fs.writeFileSync(filePath, csvContent, 'utf8'); // Write to the file
     console.log(`Data saved to ${filePath}`);
 }
 
 // Example usage:
 const timeInSeconds = 5; // Total time in seconds
-const invocations = 15;    // Number of invocations
+const invocations = 25;    // Number of invocations
 const result = generateRandomMilliseconds(timeInSeconds, invocations);
 
 // Specify the output file path

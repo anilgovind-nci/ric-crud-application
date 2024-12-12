@@ -18,7 +18,7 @@ const handler = async (event) => {
   let redisClient;
 
   try {
-    // Extract parameters from event
+    // Extract parameters from incoming event
     const {
       lambdaAverageColdStartTime,
       lambdaAverageExecutionTime,
@@ -33,7 +33,7 @@ const handler = async (event) => {
     // Initialize Secrets Manager client
     const secretsManagerClient = new SecretsManagerClient({ region: "us-east-1" });
 
-    // Fetch secrets
+    // Fetch secrets from secret manager
     const SecretString = await getSecretValue(secretsManagerClient, ricSecretManegerKey);
     const getLambdaDetailskey = SecretString[functionSecretManagerKey]
     const redisHost = SecretString.RedisHost
@@ -48,7 +48,7 @@ const handler = async (event) => {
     redisClient = new Redis({
       host: redisHost,
       port: redisPort,
-      tls: {}, // Ensure secure connection to the cluster if required
+      tls: {},
     });
 
     // Fetch data from Redis using the key
@@ -58,10 +58,10 @@ const handler = async (event) => {
       throw new Error(`No data found in Redis for key: ${getLambdaDetailskey}`);
     }
 
-    // Parse and update the data
+    // Parse and update the data in redis
     const parsedData = JSON.parse(redisData);
 
-    // Update lambdaAverageColdStartTime if provided
+    // Update lambdaAverageColdStartTime if provided from 
     if (lambdaAverageColdStartTime != null && lambdaAverageColdStartTime != undefined) {
       parsedData.lambdaAverageColdStartTime = Math.round(parseFloat(lambdaAverageColdStartTime));;
     }

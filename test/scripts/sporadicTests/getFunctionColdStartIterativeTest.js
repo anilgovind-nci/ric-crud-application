@@ -2,11 +2,6 @@ const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
 
-// Utility to sleep for a given number of milliseconds
-async function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-
 // Function to write logs to a file
 function writeLog(message) {
     const logFilePath = path.join(__dirname, 'logsForGet.txt'); // Log file path
@@ -16,41 +11,62 @@ function writeLog(message) {
     fs.appendFileSync(logFilePath, logMessage, 'utf8'); // Append log message to file
 }
 
-// Function to send GET requests with delays
-async function getEndpointWithDelays(delays, endpoint, currentPayload) {
+// Function to send GET requests sequentially with delay
+async function sendGetRequestWithDelay(i, endpoint, currentPayload) {
+    const startTime = Date.now(); // Record start time
+
+    // Build the query string from the payload
+    const queryParams = new URLSearchParams(currentPayload).toString();
+    const urlWithParams = `${endpoint}?${queryParams}`;
+
+    // console.log(`Sending GET request to: ${urlWithParams}`);
+
+    const config = {
+        method: 'get', // HTTP GET method
+        maxBodyLength: Infinity,
+        url: urlWithParams,
+        headers: {}, // Add any required headers here
+    };
+
+    try {
+        const response = await axios.request(config);
+        const responseTime = Date.now() - startTime; // Calculate response time
+        const logMessage = `Request ${i + 1}: Response time = ${responseTime} ms, Status = ${response.status}`;
+        // console.log(logMessage);
+        writeLog(logMessage);
+    } catch (error) {
+        const responseTime = Date.now() - startTime; // Calculate response time
+        const logMessage = `Request ${i + 1}: Error - ${error.message}, Response time = ${responseTime} ms`;
+        console.error(logMessage);
+        writeLog(logMessage);
+    }
+}
+
+// Function to send GET requests sequentially with delays (without waiting for completion)
+async function getEndpointWithDelaysSequentially(delays, endpoint, initialPayload) {
     console.log('Starting GET requests...');
     writeLog('Starting GET requests...');
 
-    // Loop through the delays array and send requests
-    delays.forEach((delay, i) => {
+    let currentPayload = { ...initialPayload }; // Copy of initial payload to modify
+    console.log(currentPayload)
+    // Loop through delays and send requests sequentially
+    for (let i = 0; i < delays.length; i++) {
+        const delay = delays[i];
+
+        // Increment parameters if required (example: incrementing `id` and `pps`)
+        currentPayload.id = (parseInt(currentPayload.id) + 1).toString();
+        currentPayload.pps = (parseInt(currentPayload.pps) + 1).toString();
+
+        // Wait for the specified delay before sending the request
         if (!isNaN(delay) && delay > 0) {
-            // Create a timeout for delayed execution
-            setTimeout(async () => {
-                const startTime = Date.now(); // Record start time
-
-                try {
-                    // Send GET request with payload as query parameters
-                    const response = await axios.get(endpoint, { params: { ...currentPayload } });
-
-                    const responseTime = Date.now() - startTime; // Calculate response time
-                    const logMessage = `Request ${i + 1}: Response time = ${responseTime} ms, Status = ${response.status}`;
-                    console.log(logMessage);
-                    writeLog(logMessage);
-
-                    // Update payload if necessary based on the response
-                    // Uncomment and customize if your API response should affect the payload
-                    // currentPayload = response.data; 
-                } catch (error) {
-                    const responseTime = Date.now() - startTime; // Calculate response time
-                    const logMessage = `Request ${i + 1}: Error - ${error.message}, Response time = ${responseTime} ms`;
-                    console.error(logMessage);
-                    writeLog(logMessage);
-                }
-            }, delay); // Delay the execution by the specified delay
+            await new Promise(resolve => setTimeout(resolve, delay)); // Wait for the delay
         }
-    });
 
-    // Return the current payload (synchronously)
+        // Send GET request
+        sendGetRequestWithDelay(i, endpoint, currentPayload);
+    }
+
+    // Return the last modified payload
     return currentPayload;
 }
 
@@ -75,14 +91,14 @@ async function processGetJsonData(jsonFilePath, endpoint, payloadTemplate) {
             writeLog(logMessage);
 
             // Process the group and get the updated payload
-            currentPayload = await getEndpointWithDelays(delays, endpoint, currentPayload);
+            currentPayload = await getEndpointWithDelaysSequentially(delays, endpoint, currentPayload);
 
             // Wait for 15 minutes between groups, except after the last group
             if (i < invokeGroups.length - 1) {
                 const waitMessage = 'Waiting for 15 minutes before the next group...';
                 console.log(waitMessage);
                 writeLog(waitMessage);
-                await sleep(900000); // 15 minutes in milliseconds
+                await new Promise(resolve => setTimeout(resolve, 900000)); // 15 minutes in milliseconds
             }
         }
 
@@ -97,12 +113,12 @@ async function processGetJsonData(jsonFilePath, endpoint, payloadTemplate) {
 
 // Example usage:
 const jsonFilePath = path.join(__dirname, 'sporadicHitTimimgs.json'); // Path to your JSON file
-// const apiEndpoint = 'https://vpsllm3pah.execute-api.eu-west-1.amazonaws.com/dev/ric-get'; // Replace with your endpoint
+// const apiEndpoint = 'https://vpsllm3pah.execute-api.eu-west-1.amazonaws.com/dev/ric-get'; // Replace with your GET endpoint
 const apiEndpoint = 'http://localhost:3000/ric'
 
 let payloadTemplate = {
-    id: "75", // Example initial value
-    pps: "999" // Example initial value
+    id: "1",  // Starting ID
+    pps: "100" // Starting PPS
 };
 
 processGetJsonData(jsonFilePath, apiEndpoint, payloadTemplate);

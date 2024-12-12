@@ -11,56 +11,60 @@ function writeLog(message) {
     fs.appendFileSync(logFilePath, logMessage, 'utf8'); // Append log message to file
 }
 
-// Function to send DELETE requests without waiting (fire-and-forget)
-async function deleteEndpointWithDelays(delays, endpoint, initialPayload) {
+async function sendDeleteRequestWithDelay(i, endpoint, currentPayload) {
+    const startTime = Date.now(); // Record start time
+
+    console.log(`Deleting entry with ID: ${currentPayload.id}`);
+
+    const config = {
+        method: 'delete', // HTTP DELETE method
+        maxBodyLength: Infinity,
+        url: endpoint,
+        headers: { 'Content-Type': 'application/json' }, // Match headers from Postman
+        data: JSON.stringify(currentPayload) // Include payload in DELETE request
+    };
+
+    try {
+        const response = await axios.request(config);
+        const responseTime = Date.now() - startTime; // Calculate response time
+        const logMessage = `Request ${i + 1}: Response time = ${responseTime} ms, Status = ${response.status}`;
+        console.log(logMessage);
+        writeLog(logMessage);
+    } catch (error) {
+        const responseTime = Date.now() - startTime; // Calculate response time
+        const logMessage = `Request ${i + 1}: Error - ${error.message}, Response time = ${responseTime} ms`;
+        console.error(logMessage);
+        writeLog(logMessage);
+    }
+
+    return currentPayload; // Return payload to continue processing
+}
+
+
+// Function to send DELETE requests sequentially with delays (without waiting for completion)
+async function deleteEndpointWithDelaysSequentially(delays, endpoint, initialPayload) {
     console.log('Starting DELETE requests...');
     writeLog('Starting DELETE requests...');
 
     let currentPayload = { ...initialPayload }; // Copy of initial payload to modify
 
-    // Loop through delays and send requests
-    delays.forEach((delay, i) => {
+    // Loop through delays and send requests sequentially
+    for (let i = 0; i < delays.length; i++) {
+        const delay = delays[i];
+        currentPayload.id = (parseInt(currentPayload.id) + 1).toString(); // Increment ID or unique identifier for DELETE
+        currentPayload.pps = (parseInt(currentPayload.pps) + 1).toString();
+        // Wait for the specified delay before sending the request
         if (!isNaN(delay) && delay > 0) {
-            // Create a timeout for delayed execution
-            setTimeout(async () => {
-                const startTime = Date.now(); // Record start time
-
-                // Modify the payload for each request
-                currentPayload = {
-                    id: `${parseInt(currentPayload.id) + 1}`, // Increment ID
-                    pps: `${parseInt(currentPayload.pps) + 1}`, // Increment PPS
-                    position: currentPayload.position,
-                    age: currentPayload.age,
-                    name: currentPayload.name
-                };
-
-                console.log(currentPayload);
-
-                const config = {
-                    method: 'delete',
-                    maxBodyLength: Infinity,
-                    url: endpoint,
-                    headers: { 'Content-Type': 'application/json' },
-                    data: JSON.stringify(currentPayload)
-                };
-
-                try {
-                    const response = await axios.request(config);
-                    const responseTime = Date.now() - startTime; // Calculate response time
-                    const logMessage = `Request ${i + 1}: Response time = ${responseTime} ms, Status = ${response.status}`;
-                    console.log(logMessage);
-                    writeLog(logMessage);
-                } catch (error) {
-                    const responseTime = Date.now() - startTime; // Calculate response time
-                    const logMessage = `Request ${i + 1}: Error - ${error.message}, Response time = ${responseTime} ms`;
-                    console.error(logMessage);
-                    writeLog(logMessage);
-                }
-            }, delay); // Fire the request after the delay
+            await new Promise(resolve => setTimeout(resolve, delay)); // Wait for the delay
         }
-    });
 
-    // Return the last modified payload (synchronously)
+        // Fire the request asynchronously without waiting for its completion
+        sendDeleteRequestWithDelay(i, endpoint, currentPayload);
+
+        // Continue to next iteration without waiting for the previous request to complete
+    }
+
+    // Return the last modified payload
     return currentPayload;
 }
 
@@ -85,14 +89,13 @@ async function processDeleteJsonData(jsonFilePath, endpoint, payloadTemplate) {
             writeLog(logMessage);
 
             // Process the group and get the updated payload
-            currentPayload = await deleteEndpointWithDelays(delays, endpoint, currentPayload);
+            currentPayload = await deleteEndpointWithDelaysSequentially(delays, endpoint, currentPayload);
 
-            // Wait for 15 minutes between groups, except after the last group
             if (i < invokeGroups.length - 1) {
                 const waitMessage = 'Waiting for 15 minutes before the next group...';
                 console.log(waitMessage);
                 writeLog(waitMessage);
-                await new Promise(resolve => setTimeout(resolve, 900000)); // 15 minutes in milliseconds
+                await new Promise(resolve => setTimeout(resolve, 900000));
             }
         }
 
@@ -106,11 +109,12 @@ async function processDeleteJsonData(jsonFilePath, endpoint, payloadTemplate) {
 }
 
 // Example usage:
-const jsonFilePath = path.join(__dirname, 'sporadicHitTimimgs.json'); // Path to your JSON file
-// const apiEndpoint = 'https://vpsllm3pah.execute-api.eu-west-1.amazonaws.com/dev/ric-delete'; // Replace with your endpoint
+const jsonFilePath = path.join(__dirname, 'sporadicHitTimimgs.json'); 
+// const apiEndpoint = 'https://vpsllm3pah.execute-api.eu-west-1.amazonaws.com/dev/ric-delete';
 const apiEndpoint = 'http://localhost:3000/ric'
+
 let payloadTemplate = {
-    id: "1",
+    id: "1",  // Assuming ID is used to identify the resource to be deleted
     pps: "100",
     position: "Developer Lead",
     age: "28",

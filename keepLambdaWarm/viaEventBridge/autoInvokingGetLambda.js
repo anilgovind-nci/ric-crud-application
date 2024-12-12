@@ -17,8 +17,10 @@ const logger = winston.createLogger({
   ],
 });
 
+// Create client for DynamoDB
 const dynamoDBClient = new DynamoDBClient();
 
+// The validateQueryParams function is for validating the incoming request parameters.
 const validateQueryParams = (params) => {
   const errors = [];
 
@@ -31,32 +33,47 @@ const validateQueryParams = (params) => {
   }
   return errors;
 };
+
+// Lambda handler function. This code block will be invoked by events. Every code written above 
+// have to be executed before to start this execution.
 module.exports.handler = async (event, context) => {
+  // Handle keep-alive requests to maintain Lambda warm state
   if (event.isRequestForKeepLambdaAlive === true) {
     console.log("This is a keep-alive request.");
+    // End the execution for for Lambda warming environments
     return {
       statusCode: 200,
       body: JSON.stringify({ message: "Keep-alive request processed successfully." }),
     };
   }
 
+  // Fetch Query Parameters from the incoming request.
   const requestId = context.awsRequestId;
   const startTime = moment().format();
 
+  // Log the start of the Lambda invocation 
   logger.info(`Request ID: ${requestId} - Lambda invoked at ${startTime}`);
   logger.info(`Request ID: ${requestId} - Received event`, { event });
 
+  // Fetch query parameters from the incoming request
   const { id, pps } = event.queryStringParameters || {};
+  // Call Validation function to validate.
   const validationErrors = validateQueryParams({ id, pps });
 
   if (validationErrors.length > 0) {
-    logger.warn(`Request ID: ${requestId} - Validation failed: ${validationErrors.join(", ")}`);
+    logger.warn(
+      `Request ID: ${requestId} - Validation failed: ${validationErrors.join(", ")}`
+    );
     return {
       statusCode: 400,
-      body: JSON.stringify({ error: "Validation failed", details: validationErrors }),
+      body: JSON.stringify({
+        error: "Validation failed",
+        details: validationErrors,
+      }),
     };
   }
 
+  // create connection parameter for DynamoDB
   const params = {
     TableName: "RIC-EMPLOYEEE-TABLE",
     Key: {
@@ -66,6 +83,7 @@ module.exports.handler = async (event, context) => {
   };
 
   try {
+    // Execute the GetItemCommand to fetch data from DynamoDB
     const command = new GetItemCommand(params);
     const data = await dynamoDBClient.send(command);
 
@@ -78,18 +96,29 @@ module.exports.handler = async (event, context) => {
     }
 
     const endTime = moment().format();
-    const duration = moment(endTime).diff(moment(startTime), 'milliseconds');
-    logger.info(`Request ID: ${requestId} - Item retrieved successfully. Execution time: ${duration}ms`, { item: data.Item });
+    // calculating duration
+    const duration = moment(endTime).diff(moment(startTime), "milliseconds");
+    logger.info(
+      `Request ID: ${requestId} - Item retrieved successfully. Execution time: ${duration}ms`,
+      { item: data.Item }
+    );
 
+    // return success message
     return {
       statusCode: 200,
       body: JSON.stringify(data.Item),
     };
   } catch (error) {
-    logger.error(`Request ID: ${requestId} - Error retrieving item`, { error: error.message });
+    logger.error(`Request ID: ${requestId} - Error retrieving item`, {
+      error: error.message,
+    });
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: "Could not retrieve item", message: error.message, requestId }),
+      body: JSON.stringify({
+        error: "Could not retrieve item",
+        message: error.message,
+        requestId,
+      }),
     };
   }
 };

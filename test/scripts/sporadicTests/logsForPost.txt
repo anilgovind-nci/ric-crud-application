@@ -1,39 +1,8 @@
-[2024-12-09T14:50:54.383Z] Processing firstInvoke with 5 delays...
-[2024-12-09T14:50:54.384Z] Starting POST requests...
-[2024-12-09T14:50:54.384Z] Waiting for 15 minutes before the next group...
-[2024-12-09T14:50:55.169Z] Request 2: Response time = 392 ms, Status = 200
-[2024-12-09T14:50:55.263Z] Request 4: Response time = 601 ms, Status = 200
-[2024-12-09T14:50:55.341Z] Request 5: Response time = 172 ms, Status = 200
-[2024-12-09T14:50:56.235Z] Request 1: Response time = 147 ms, Status = 200
-[2024-12-09T14:50:56.385Z] Request 3: Response time = 147 ms, Status = 200
-[2024-12-09T15:05:54.410Z] Processing secondInvoke with 10 delays...
-[2024-12-09T15:05:54.417Z] Starting POST requests...
-[2024-12-09T15:05:54.419Z] Waiting for 15 minutes before the next group...
-[2024-12-09T15:05:54.909Z] Request 1: Response time = 446 ms, Status = 200
-[2024-12-09T15:05:54.925Z] Request 5: Response time = 405 ms, Status = 200
-[2024-12-09T15:05:55.032Z] Request 7: Response time = 271 ms, Status = 200
-[2024-12-09T15:05:55.047Z] Request 6: Response time = 111 ms, Status = 200
-[2024-12-09T15:05:55.164Z] Request 3: Response time = 113 ms, Status = 200
-[2024-12-09T15:05:55.322Z] Request 4: Response time = 116 ms, Status = 200
-[2024-12-09T15:05:55.472Z] Request 2: Response time = 168 ms, Status = 200
-[2024-12-09T15:05:57.171Z] Request 9: Response time = 2569 ms, Status = 200
-[2024-12-09T15:05:57.268Z] Request 8: Response time = 1957 ms, Status = 200
-[2024-12-09T15:05:57.352Z] Request 10: Response time = 2315 ms, Status = 200
-[2024-12-09T15:20:54.408Z] Processing ThirdInvoke with 15 delays...
-[2024-12-09T15:20:54.416Z] Starting POST requests...
-[2024-12-09T15:20:54.418Z] All POST requests completed.
-[2024-12-09T15:20:54.930Z] Request 15: Response time = 474 ms, Status = 200
-[2024-12-09T15:20:55.011Z] Request 6: Response time = 234 ms, Status = 200
-[2024-12-09T15:20:55.111Z] Request 12: Response time = 567 ms, Status = 200
-[2024-12-09T15:20:55.170Z] Request 14: Response time = 620 ms, Status = 200
-[2024-12-09T15:20:55.209Z] Request 10: Response time = 198 ms, Status = 200
-[2024-12-09T15:20:55.277Z] Request 5: Response time = 433 ms, Status = 200
-[2024-12-09T15:20:55.345Z] Request 9: Response time = 483 ms, Status = 200
-[2024-12-09T15:20:55.391Z] Request 4: Response time = 525 ms, Status = 200
-[2024-12-09T15:20:55.458Z] Request 8: Response time = 988 ms, Status = 200
-[2024-12-09T15:20:55.526Z] Request 13: Response time = 730 ms, Status = 200
-[2024-12-09T15:20:55.595Z] Request 2: Response time = 626 ms, Status = 200
-[2024-12-09T15:20:57.135Z] Request 1: Response time = 2632 ms, Status = 200
-[2024-12-09T15:20:57.195Z] Request 3: Response time = 2337 ms, Status = 200
-[2024-12-09T15:20:57.303Z] Request 7: Response time = 2300 ms, Status = 200
-[2024-12-09T15:20:57.364Z] Request 11: Response time = 2591 ms, Status = 200
+[2024-12-11T19:39:41.398Z] Processing firstInvoke with 5 delays...
+[2024-12-11T19:39:41.398Z] Starting POST requests...
+[2024-12-11T19:39:42.661Z] Request 1: Response time = 327 ms, Status = 200
+[2024-12-11T19:39:44.008Z] Request 2: Response time = 213 ms, Status = 200
+[2024-12-11T19:39:45.155Z] Request 3: Response time = 176 ms, Status = 200
+[2024-12-11T19:39:46.440Z] Waiting for 15 minutes before the next group...
+[2024-12-11T19:39:46.559Z] Request 4: Response time = 158 ms, Status = 200
+[2024-12-11T19:39:46.615Z] Request 5: Response time = 177 ms, Status = 200
